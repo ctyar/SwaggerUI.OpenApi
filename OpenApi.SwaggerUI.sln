@@ -22,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{353FB157-6B0C-4EEB-ACE0-35A04CFB6CC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenApi.SwaggerUI", "OpenApi.SwaggerUI\OpenApi.SwaggerUI.csproj", "{46993E6A-F826-43B5-B9B3-96532EED63C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenApi.SwaggerUi", "src\OpenApi.SwaggerUi\OpenApi.SwaggerUi.csproj", "{46993E6A-F826-43B5-B9B3-96532EED63C0}"
 EndProject
 Global
 	GlobalSection(NestedProjects) = preSolution
