@@ -2,9 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34902.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc", "OpenApi\Mvc.csproj", "{347C77F6-B7BB-4B2D-8B72-91ACAF9B0036}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc", "Mvc\Mvc.csproj", "{347C77F6-B7BB-4B2D-8B72-91ACAF9B0036}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalApi", "MInimalApi\MinimalApi.csproj", "{C20A98FC-5285-41CA-92FB-7D7E75E1A072}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalApi", "MinimalApi\MinimalApi.csproj", "{C20A98FC-5285-41CA-92FB-7D7E75E1A072}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{013FBBA6-5195-4218-8270-D6E31B9A7471}"
 	ProjectSection(SolutionItems) = preProject
