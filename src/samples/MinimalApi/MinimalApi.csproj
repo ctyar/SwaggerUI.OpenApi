@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\OpenApi.SwaggerUI\OpenApi.SwaggerUI.csproj" />
+    <ProjectReference Include="..\..\OpenApi.SwaggerUi\OpenApi.SwaggerUi.csproj" />
   </ItemGroup>
 
 </Project>
