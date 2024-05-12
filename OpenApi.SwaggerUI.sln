@@ -1,0 +1,56 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34902.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mvc", "src\samples\Mvc\Mvc.csproj", "{347C77F6-B7BB-4B2D-8B72-91ACAF9B0036}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MinimalApi", "src\samples\MinimalApi\MinimalApi.csproj", "{C20A98FC-5285-41CA-92FB-7D7E75E1A072}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{013FBBA6-5195-4218-8270-D6E31B9A7471}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		azure-pipelines.yml = azure-pipelines.yml
+		build.ps1 = build.ps1
+		Directory.Build.props = Directory.Build.props
+		global.json = global.json
+		LICENSE = LICENSE
+		NuGet.Config = NuGet.Config
+		README.md = README.md
+		version.json = version.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{353FB157-6B0C-4EEB-ACE0-35A04CFB6CC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenApi.SwaggerUI", "OpenApi.SwaggerUI\OpenApi.SwaggerUI.csproj", "{46993E6A-F826-43B5-B9B3-96532EED63C0}"
+EndProject
+Global
+	GlobalSection(NestedProjects) = preSolution
+		{347C77F6-B7BB-4B2D-8B72-91ACAF9B0036} = {353FB157-6B0C-4EEB-ACE0-35A04CFB6CC6}
+		{C20A98FC-5285-41CA-92FB-7D7E75E1A072} = {353FB157-6B0C-4EEB-ACE0-35A04CFB6CC6}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{347C77F6-B7BB-4B2D-8B72-91ACAF9B0036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{347C77F6-B7BB-4B2D-8B72-91ACAF9B0036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{347C77F6-B7BB-4B2D-8B72-91ACAF9B0036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{347C77F6-B7BB-4B2D-8B72-91ACAF9B0036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46993E6A-F826-43B5-B9B3-96532EED63C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46993E6A-F826-43B5-B9B3-96532EED63C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46993E6A-F826-43B5-B9B3-96532EED63C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46993E6A-F826-43B5-B9B3-96532EED63C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C20A98FC-5285-41CA-92FB-7D7E75E1A072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C20A98FC-5285-41CA-92FB-7D7E75E1A072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C20A98FC-5285-41CA-92FB-7D7E75E1A072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C20A98FC-5285-41CA-92FB-7D7E75E1A072}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {940AA555-A9D7-4FA8-9BFC-C334114A1BFE}
+	EndGlobalSection
+EndGlobal
