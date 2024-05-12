@@ -1,10 +1,16 @@
-﻿namespace MinimalApi;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 
-internal static class OpenApiEndpointRouteBuilderExtensions
+namespace MinimalApi;
+
+public static class OpenApiEndpointRouteBuilderExtensions
 {
     /// <summary>
-    ///  Helper method to render Swagger UI view for testing.
+    /// Helper method to render Swagger UI view.
     /// </summary>
+    /// <param name="endpoints"></param>
+    /// <returns></returns>
     public static IEndpointConventionBuilder MapSwaggerUi(this IEndpointRouteBuilder endpoints)
     {
         return endpoints.MapGet("/swagger/{documentName}", (string documentName) => Results.Content($$"""

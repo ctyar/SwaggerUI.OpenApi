@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.0-preview.4.24260.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\OpenApi.SwaggerUI\OpenApi.SwaggerUI.csproj" />
+  </ItemGroup>
+
 </Project>
