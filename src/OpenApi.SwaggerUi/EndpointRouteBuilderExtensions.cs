@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Routing;
 
 namespace MinimalApi;
 
-public static class OpenApiEndpointRouteBuilderExtensions
+public static class EndpointRouteBuilderExtensions
 {
     /// <summary>
     /// Helper method to render Swagger UI view.
