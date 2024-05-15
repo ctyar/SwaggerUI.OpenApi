@@ -1,6 +1,6 @@
 # SwaggerUi.OpenApi
 
-[![Build Status](https://ctyar.visualstudio.com/SwaggerUi.OpenApi/_apis/build/status%2Fctyar.OpenApi.SwaggerUi?branchName=main)](https://ctyar.visualstudio.com/SwaggerUi.OpenApi/_build/latest?definitionId=11&branchName=main)
+[![Build Status](https://ctyar.visualstudio.com/SwaggerUi.OpenApi/_apis/build/status%2Fctyar.SwaggerUi.OpenApi?branchName=main)](https://ctyar.visualstudio.com/SwaggerUi.OpenApi/_build/latest?definitionId=12&branchName=main)
 [![SwaggerUi.OpenApi](https://img.shields.io/nuget/v/SwaggerUi.OpenApi.svg)](https://www.nuget.org/packages/SwaggerUi.OpenApi/)
 
 A package to simplify adding Swagger UI to .NET 9's Microsoft.AspNetCore.OpenApi.
