@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <RootNamespace>Ctyar.OpenApi.SwaggerUi</RootNamespace>
+    <RootNamespace>Ctyar.SwaggerUi.OpenApi</RootNamespace>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>OpenApi.SwaggerUi</PackageId>
+    <PackageId>SwaggerUi.OpenApi</PackageId>
     <PackageTags>openapi;swagger;swaggerui;discovery;webapi;aspnet;aspnetcore;auth;authentication;oauth2;auth0;identityserver</PackageTags>
-    <Title>OpenApi.SwaggerUi</Title>
+    <Title>SwaggerUi.OpenApi</Title>
     <Description>A package to simplify adding Swagger UI to Microsoft.AspNetCore.OpenApi.</Description>
     <Authors>Shahriyar Qulami</Authors>
     <PackageProjectUrl>https://github.com/ctyar/OpenApi.SwaggerUI</PackageProjectUrl>
@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0-preview.4.24260.3" />
+    <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>

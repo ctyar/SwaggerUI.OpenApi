@@ -33,7 +33,7 @@ stages:
       inputs:
         command: 'build'
         projects: |
-          OpenApi.SwaggerUI.sln
+          SwaggerUi.OpenApi.sln
 
     - task: DotNetCoreCLI@2
       displayName: 'Pack'
