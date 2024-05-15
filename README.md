@@ -7,7 +7,12 @@ A package to simplify adding Swagger UI to .NET 9's Microsoft.AspNetCore.OpenApi
 
 ## Usage
 
+In your `Program.cs` file Add `app.MapSwaggerUi()` after `app.MapOpenApi()`:
+
 ```csharp
+app.MapOpenApi();
+
+app.MapSwaggerUi();
 ```
 
 ## Build
