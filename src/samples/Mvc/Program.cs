@@ -1,36 +1,41 @@
+namespace Mvc;
 
-namespace OpenApi
+public class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
+        var builder = WebApplication.CreateBuilder(args);
+
+        // Add services to the container.
+
+        builder.Services.AddControllers();
+
+        builder.Services.AddOpenApi("v1", o =>
         {
-            var builder = WebApplication.CreateBuilder(args);
+            o.UseTransformer(new BearerSecuritySchemeTransformer("https://demo.duendesoftware.com/connect/authorize",
+                "https://demo.duendesoftware.com/connect/token", ["openid", "profile", "email", "api", "offline_access"]));
+        });
 
-            // Add services to the container.
+        var app = builder.Build();
 
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+        app.MapOpenApi();
+        app.MapSwaggerUi(new SwaggerUiOptions
+        {
+            OAuthOptions = new OAuthOptions
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
+                ClientId = "interactive.public",
+                UsePkceWithAuthorizationCodeGrant = true,
+                Scopes = ["openid", "profile", "email", "api", "offline_access"]
             }
+        });
 
-            app.UseHttpsRedirection();
+        app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+        app.UseAuthorization();
 
 
-            app.MapControllers();
+        app.MapControllers();
 
-            app.Run();
-        }
+        app.Run();
     }
 }

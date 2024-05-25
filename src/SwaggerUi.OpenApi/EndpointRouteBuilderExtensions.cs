@@ -1,26 +1,50 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
-namespace MinimalApi;
+namespace Microsoft.AspNetCore.Builder;
 
 public static class EndpointRouteBuilderExtensions
 {
+    private static SwaggerUiOptions _swaggerUiOptions = new();
+    private static readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions()
+    {
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, false) }
+    };
+
     /// <summary>
     /// Helper method to render Swagger UI view.
     /// </summary>
     /// <param name="endpoints"></param>
     /// <returns></returns>
-    public static IEndpointConventionBuilder MapSwaggerUi(this IEndpointRouteBuilder endpoints)
+    public static IEndpointConventionBuilder MapSwaggerUi(this IEndpointRouteBuilder endpoints, SwaggerUiOptions? options = null)
     {
+        if (options is not null)
+        {
+            _swaggerUiOptions = options;
+        }
+
         endpoints.MapGet("/swagger/{documentName}",
-            (string documentName) => Results.Content(GetIndexHtml(documentName), "text/html")
+            (string documentName) => Results.Content(GetIndex(documentName), "text/html")
         ).ExcludeFromDescription();
 
         return endpoints.MapGet("/swagger/oauth2-redirect.html",
             () => Results.Content(GetOAuthRedirectHtml(), "text/html")
         )
         .ExcludeFromDescription();
+    }
+
+    private static string GetIndex(string documentName)
+    {
+        var result = new StringBuilder(GetIndexHtml(documentName));
+
+        result.Replace("%(OAuthConfigObject)", JsonSerializer.Serialize(_swaggerUiOptions.OAuthOptions, _jsonSerializerOptions));
+
+        return result.ToString();
     }
 
     private static string GetIndexHtml(string documentName)
@@ -43,19 +67,29 @@ public static class EndpointRouteBuilderExtensions
           <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
           <script>
               window.onload = function() {
-                window.ui = SwaggerUIBundle({
-                url: "/openapi/{{documentName}}.json",
-                dom_id: '#swagger-ui',
-                deepLinking: true,
-                presets: [
-                  SwaggerUIBundle.presets.apis,
-                  SwaggerUIStandalonePreset
-                ],
-                plugins: [
-                  SwaggerUIBundle.plugins.DownloadUrl
-                ],
-                layout: "StandaloneLayout"
-              });
+                var configObject = {
+                  url: "/openapi/{{documentName}}.json",
+                  dom_id: '#swagger-ui',
+                  deepLinking: true,
+                  presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                  ],
+                  plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                  ],
+                  layout: "StandaloneLayout"
+                };
+
+                if (!configObject.hasOwnProperty("oauth2RedirectUrl"))
+                  configObject.oauth2RedirectUrl = (new URL("oauth2-redirect.html", window.location.href)).href;
+
+                const ui = SwaggerUIBundle(configObject);
+
+                var oauthConfigObject = JSON.parse('%(OAuthConfigObject)');
+                ui.initOAuth(oauthConfigObject);
+
+                window.ui = ui;
             };
           </script>
         </body>

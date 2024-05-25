@@ -1,7 +1,7 @@
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using MinimalApi.Transformers;
-using System.Text.Json.Serialization;
 
 namespace MinimalApi;
 
@@ -17,7 +17,7 @@ public class Program
         builder.Services.AddOpenApi("v1", options =>
         {
             options.AddHeader("X-Version", "1.0");
-            options.UseTransformer<BearerSecuritySchemeTransformer>();
+            //options.UseTransformer<BearerSecuritySchemeTransformer>();
         });
         builder.Services.AddOpenApi("v2", options =>
         {
@@ -87,7 +87,8 @@ public class Program
     }
 
     internal record Todo(int Id, string Title, bool Completed, DateTime CreatedAt);
-    internal record TodoWithDueDate(int Id, string Title, bool Completed, DateTime CreatedAt, DateTime DueDate) : Todo(Id, Title, Completed, CreatedAt);
+    internal record TodoWithDueDate(int Id, string Title, bool Completed, DateTime CreatedAt, DateTime DueDate)
+        : Todo(Id, Title, Completed, CreatedAt);
 
     [JsonDerivedType(typeof(Triangle), typeDiscriminator: "triangle")]
     [JsonDerivedType(typeof(Square), typeDiscriminator: "square")]
