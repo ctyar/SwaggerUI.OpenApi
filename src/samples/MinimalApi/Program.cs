@@ -34,18 +34,12 @@ public class Program
         var app = builder.Build();
 
         app.MapOpenApi();
-        if (app.Environment.IsDevelopment())
-        {
-            app.MapSwaggerUi();
-        }
+        app.MapSwaggerUi();
 
         var forms = app.MapGroup("forms")
             .WithGroupName("forms");
 
-        if (app.Environment.IsDevelopment())
-        {
-            forms.DisableAntiforgery();
-        }
+        forms.DisableAntiforgery();
 
         forms.MapPost("/form-file", (IFormFile resume) => Results.Ok(resume.FileName));
         forms.MapPost("/form-files", (IFormFileCollection files) => Results.Ok(files.Count));
