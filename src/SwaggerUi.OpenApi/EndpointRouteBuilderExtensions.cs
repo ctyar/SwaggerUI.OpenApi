@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http;
@@ -8,8 +9,8 @@ namespace Microsoft.AspNetCore.Builder;
 
 public static class EndpointRouteBuilderExtensions
 {
-    private static SwaggerUiOptions _swaggerUiOptions = new();
-    private static readonly JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions()
+    private readonly static SwaggerUiOptions SwaggerUiOptions = new();
+    private static readonly JsonSerializerOptions JsonSerializerOptions = new()
     {
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -21,11 +22,12 @@ public static class EndpointRouteBuilderExtensions
     /// </summary>
     /// <param name="endpoints"></param>
     /// <returns></returns>
-    public static IEndpointConventionBuilder MapSwaggerUi(this IEndpointRouteBuilder endpoints, SwaggerUiOptions? options = null)
+    public static IEndpointConventionBuilder MapSwaggerUi(this IEndpointRouteBuilder endpoints,
+        Action<SwaggerUiOptions>? configureOptions = null)
     {
-        if (options is not null)
+        if (configureOptions is not null)
         {
-            _swaggerUiOptions = options;
+            configureOptions(SwaggerUiOptions);
         }
 
         endpoints.MapGet("/swagger/{documentName}",
@@ -42,7 +44,7 @@ public static class EndpointRouteBuilderExtensions
     {
         var result = new StringBuilder(GetIndexHtml(documentName));
 
-        result.Replace("%(OAuthConfigObject)", JsonSerializer.Serialize(_swaggerUiOptions.OAuthOptions, _jsonSerializerOptions));
+        result.Replace("%(OAuthConfigObject)", JsonSerializer.Serialize(SwaggerUiOptions.OAuthOptions, JsonSerializerOptions));
 
         return result.ToString();
     }
