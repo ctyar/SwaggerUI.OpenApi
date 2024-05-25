@@ -15,6 +15,22 @@ app.MapOpenApi();
 app.MapSwaggerUi();
 ```
 
+If you want to add authentication to your Swagger you can use following helper methods:
+```csharp
+builder.Services.AddOpenApi("v1", o =>
+{
+    o.AddOAuth2(authorizationUrl, tokenUrl, scopes);
+});
+
+app.MapSwaggerUi(o =>
+{
+    o.UseIdentityServer(clientId, scopes);
+});
+```
+There are other helper methods for Duende Identity Server `AddIdentityServer()` and Auth0 `AddAuth0`.
+
+You can check the [samples](/src/samples) directory for complete working examples.
+
 ## Build
 [Install](https://get.dot.net) the [required](global.json) .NET SDK.
 

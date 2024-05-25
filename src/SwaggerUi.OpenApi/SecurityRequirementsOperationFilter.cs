@@ -39,7 +39,6 @@ internal sealed class SecurityRequirementsTransformer : IOpenApiDocumentTransfor
                 {
                     StatusCode = 403,
                 });
-
             }
         }
 

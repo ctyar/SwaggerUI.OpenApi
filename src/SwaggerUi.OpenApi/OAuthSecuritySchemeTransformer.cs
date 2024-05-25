@@ -26,7 +26,7 @@ internal sealed class BearerSecuritySchemeTransformer : IOpenApiDocumentTransfor
     public Task TransformAsync(OpenApiDocument document, OpenApiDocumentTransformerContext context,
         CancellationToken cancellationToken)
     {
-        var requirements = new Dictionary<string, OpenApiSecurityScheme>
+        var schemes = new Dictionary<string, OpenApiSecurityScheme>
         {
             [SchemeId] = new OpenApiSecurityScheme
             {
@@ -44,7 +44,7 @@ internal sealed class BearerSecuritySchemeTransformer : IOpenApiDocumentTransfor
         };
 
         document.Components ??= new OpenApiComponents();
-        document.Components.SecuritySchemes = requirements;
+        document.Components.SecuritySchemes = schemes;
 
         foreach (var operation in document.Paths.Values.SelectMany(path => path.Operations))
         {
