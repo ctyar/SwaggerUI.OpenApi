@@ -1,4 +1,4 @@
-# SwaggerUi.OpenApi
+﻿# SwaggerUi.OpenApi
 
 [![Build Status](https://ctyar.visualstudio.com/SwaggerUi.OpenApi/_apis/build/status%2Fctyar.SwaggerUi.OpenApi?branchName=main)](https://ctyar.visualstudio.com/SwaggerUi.OpenApi/_build/latest?definitionId=12&branchName=main)
 [![SwaggerUi.OpenApi](https://img.shields.io/nuget/v/SwaggerUi.OpenApi.svg)](https://www.nuget.org/packages/SwaggerUi.OpenApi/)
@@ -34,7 +34,18 @@ You can check the [samples](/src/samples) directory for complete working example
 ## Build
 [Install](https://get.dot.net) the [required](global.json) .NET SDK.
 
-Run:
+## Roadmap
+✅ Basic UI
+
+✅ Authentication
+
+⏳ Enable all the documents
+
+
+## Pre-release builds
+Get the package from [here](https://github.com/ctyar/SwaggerUi.OpenApi/pkgs/nuget/SwaggerUi.OpenApi).
+
+## Build
 ```
 $ dotnet build
 ```
