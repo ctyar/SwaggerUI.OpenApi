@@ -5,6 +5,7 @@
 
 A package to simplify adding Swagger UI to .NET 9's Microsoft.AspNetCore.OpenApi.
 
+
 ## Usage
 
 In your `Program.cs` file Add `app.MapSwaggerUi()` after `app.MapOpenApi()`:
@@ -24,14 +25,16 @@ builder.Services.AddOpenApi("v1", o =>
 
 app.MapSwaggerUi(o =>
 {
-    o.UseIdentityServer(clientId, scopes);
+    o.UseOAuth2(clientId, scopes);
 });
 ```
 There are other helper methods for Duende Identity Server `AddIdentityServer()` and Auth0 `AddAuth0`.
 
 You can check the [samples](/src/samples) directory for complete working examples.
 
+
 ## Roadmap
+
 ✅ Basic UI
 
 ✅ Authentication
@@ -40,9 +43,12 @@ You can check the [samples](/src/samples) directory for complete working example
 
 
 ## Pre-release builds
+
 Get the package from [here](https://github.com/ctyar/SwaggerUi.OpenApi/pkgs/nuget/SwaggerUi.OpenApi).
 
+
 ## Build
+
 [Install](https://get.dot.net) the [required](global.json) .NET SDK and run:
 ```
 $ dotnet build
