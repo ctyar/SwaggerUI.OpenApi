@@ -8,7 +8,7 @@ using Microsoft.OpenApi.Models;
 
 namespace SwaggerUi;
 
-internal sealed class BearerSecuritySchemeTransformer : IOpenApiDocumentTransformer
+internal sealed class SecuritySchemeTransformer : IOpenApiDocumentTransformer
 {
     private const string SchemeId = "Bearer";
 
@@ -16,7 +16,7 @@ internal sealed class BearerSecuritySchemeTransformer : IOpenApiDocumentTransfor
     private readonly Uri _tokenUrl;
     private readonly string[] _scopes;
 
-    public BearerSecuritySchemeTransformer(Uri authorizationUrl, Uri tokenUrl, string[] scopes)
+    public SecuritySchemeTransformer(Uri authorizationUrl, Uri tokenUrl, string[] scopes)
     {
         _authorizationUrl = authorizationUrl;
         _tokenUrl = tokenUrl;

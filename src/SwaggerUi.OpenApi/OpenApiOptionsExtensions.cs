@@ -56,8 +56,8 @@ public static class OpenApiOptionsExtensions
     /// <param name="scopes">The scopes to be used for authorizationCode OAuth flow.</param>
     public static void AddOAuth2(this OpenApiOptions openApiOptions, Uri authorizationUrl, Uri tokenUrl, string[] scopes)
     {
-        openApiOptions.UseTransformer<SecurityRequirementsTransformer>();
+        openApiOptions.UseTransformer<AuthResponseStatusCodeTransformer>();
 
-        openApiOptions.UseTransformer(new BearerSecuritySchemeTransformer(authorizationUrl, tokenUrl, scopes));
+        openApiOptions.UseTransformer(new SecuritySchemeTransformer(authorizationUrl, tokenUrl, scopes));
     }
 }

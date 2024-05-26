@@ -13,8 +13,8 @@
     <Title>SwaggerUi.OpenApi</Title>
     <Description>A package to simplify adding Swagger UI to Microsoft.AspNetCore.OpenApi.</Description>
     <Authors>Shahriyar Qulami</Authors>
-    <PackageProjectUrl>https://github.com/ctyar/OpenApi.SwaggerUI</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/ctyar/OpenApi.SwaggerUI</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/ctyar/SwaggerUi.OpenApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ctyar/SwaggerUi.OpenApi</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
