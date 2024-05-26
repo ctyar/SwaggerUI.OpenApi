@@ -31,9 +31,6 @@ There are other helper methods for Duende Identity Server `AddIdentityServer()` 
 
 You can check the [samples](/src/samples) directory for complete working examples.
 
-## Build
-[Install](https://get.dot.net) the [required](global.json) .NET SDK.
-
 ## Roadmap
 ✅ Basic UI
 
@@ -46,6 +43,7 @@ You can check the [samples](/src/samples) directory for complete working example
 Get the package from [here](https://github.com/ctyar/SwaggerUi.OpenApi/pkgs/nuget/SwaggerUi.OpenApi).
 
 ## Build
+[Install](https://get.dot.net) the [required](global.json) .NET SDK and run:
 ```
 $ dotnet build
 ```
