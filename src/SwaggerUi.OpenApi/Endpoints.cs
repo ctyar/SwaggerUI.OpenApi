@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.OpenApi;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
-namespace Microsoft.AspNetCore.Builder;
+namespace SwaggerUi;
 
-public static class EndpointRouteBuilderExtensions
+internal static class Endpoints
 {
-    private readonly static SwaggerUiOptions SwaggerUiOptions = new();
     private static readonly JsonSerializerOptions JsonSerializerOptions = new()
     {
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
@@ -17,40 +21,44 @@ public static class EndpointRouteBuilderExtensions
         Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, false) }
     };
 
-    /// <summary>
-    /// Helper method to render Swagger UI view.
-    /// </summary>
-    /// <param name="endpoints"></param>
-    /// <returns></returns>
-    public static IEndpointConventionBuilder MapSwaggerUi(this IEndpointRouteBuilder endpoints,
-        Action<SwaggerUiOptions>? configureOptions = null)
+    public static string GetIndex2(HttpContext httpContext)
     {
-        if (configureOptions is not null)
-        {
-            configureOptions(SwaggerUiOptions);
-        }
+        var documentNames = GetDocumentNames(httpContext.RequestServices);
 
-        endpoints.MapGet("/swagger/{documentName}",
-            (string documentName) => Results.Content(GetIndex(documentName), "text/html")
-        ).ExcludeFromDescription();
+        var optionsMonitor = httpContext.RequestServices.GetService<IOptionsMonitor<SwaggerUiOptions>>()!;
+        var swaggerUiOptions = optionsMonitor.Get(documentNames[0]);
 
-        return endpoints.MapGet("/swagger/oauth2-redirect.html",
-            () => Results.Content(GetOAuthRedirectHtml(), "text/html")
-        )
-        .ExcludeFromDescription();
+        return GetIndexCore(documentNames[0], swaggerUiOptions);
     }
 
-    private static string GetIndex(string documentName)
+    public static string GetIndex(HttpContext httpContext, string documentName)
+    {
+        var optionsMonitor = httpContext.RequestServices.GetService<IOptionsMonitor<SwaggerUiOptions>>()!;
+
+        var swaggerUiOptions = optionsMonitor.Get(documentName);
+
+        return GetIndexCore(documentName, swaggerUiOptions);
+    }
+
+    private static string GetIndexCore(string documentName, SwaggerUiOptions swaggerUiOptions)
     {
         var result = new StringBuilder(GetIndexHtml(documentName));
 
-        result.Replace("%(OAuthConfigObject)", JsonSerializer.Serialize(SwaggerUiOptions.OAuthOptions, JsonSerializerOptions));
+        result.Replace("%(ConfigObject)", JsonSerializer.Serialize(swaggerUiOptions, JsonSerializerOptions));
+        result.Replace("%(OAuthConfigObject)", JsonSerializer.Serialize(swaggerUiOptions.OAuthOptions, JsonSerializerOptions));
 
         return result.ToString();
     }
 
     private static string GetIndexHtml(string documentName)
     {
+        /*
+         * var configObject = {
+                  plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                  ],
+                };
+         */
         return $$"""
         <!DOCTYPE html>
         <html lang="en">
@@ -69,19 +77,12 @@ public static class EndpointRouteBuilderExtensions
           <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
           <script>
               window.onload = function() {
-                var configObject = {
-                  url: "/openapi/{{documentName}}.json",
-                  dom_id: '#swagger-ui',
-                  deepLinking: true,
-                  presets: [
-                    SwaggerUIBundle.presets.apis,
-                    SwaggerUIStandalonePreset
-                  ],
-                  plugins: [
-                    SwaggerUIBundle.plugins.DownloadUrl
-                  ],
-                  layout: "StandaloneLayout"
-                };
+                var configObject = JSON.parse('%(ConfigObject)');
+
+                // Apply mandatory parameters
+                configObject.dom_id = "#swagger-ui";
+                configObject.presets = [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset];
+                configObject.layout = "StandaloneLayout";
 
                 if (!configObject.hasOwnProperty("oauth2RedirectUrl"))
                   configObject.oauth2RedirectUrl = (new URL("oauth2-redirect.html", window.location.href)).href;
@@ -99,7 +100,7 @@ public static class EndpointRouteBuilderExtensions
         """;
     }
 
-    private static string GetOAuthRedirectHtml()
+    public static string GetOAuthRedirectHtml()
     {
         return $$"""
         <!doctype html>
@@ -182,5 +183,18 @@ public static class EndpointRouteBuilderExtensions
         </body>
         </html>
         """;
+    }
+
+    private static List<string> GetDocumentNames(IServiceProvider serviceProvider)
+    {
+        // https://github.com/dotnet/runtime/issues/100105
+        // https://github.com/dotnet/aspnetcore/blob/3117946082a9c456f50e70075403bb024f9e323b/src/OpenApi/src/Services/OpenApiDocumentProvider.cs#L51
+        var type = typeof(OpenApiOptions).Assembly.GetType("Microsoft.Extensions.ApiDescriptions.OpenApiDocumentProvider")!;
+        var ctor = type.GetConstructor([typeof(IServiceProvider)])!;
+        var openApiDocumentProvider = ctor.Invoke([serviceProvider]);
+
+        var method = type.GetMethod("GetDocumentNames")!;
+        var documentNames = (IEnumerable<string>)method.Invoke(openApiDocumentProvider, [])!;
+        return documentNames.ToList();
     }
 }

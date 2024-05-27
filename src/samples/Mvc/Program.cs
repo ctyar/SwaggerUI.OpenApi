@@ -22,18 +22,22 @@ public class Program
         {
             o.AddIdentityServer("https://demo.duendesoftware.com", ["openid", "profile", "email", "api", "offline_access"]);
         });
+        builder.Services.AddSwaggerUi("v1", o =>
+        {
+            o.AddIdentityServer("interactive.public", ["openid", "profile", "email", "api", "offline_access"]);
+        });
+
+        builder.Services.AddOpenApi("v2", o =>
+        {
+            o.OpenApiVersion = Microsoft.OpenApi.OpenApiSpecVersion.OpenApi2_0;
+        });
+        builder.Services.AddSwaggerUi("v2");
 
 
         var app = builder.Build();
 
-
         app.MapOpenApi();
-
-        app.MapSwaggerUi(o =>
-        {
-            o.UseIdentityServer("interactive.public", ["openid", "profile", "email", "api", "offline_access"]);
-        });
-
+        app.MapSwaggerUi();
 
         app.UseHttpsRedirection();
         app.UseAuthentication();
