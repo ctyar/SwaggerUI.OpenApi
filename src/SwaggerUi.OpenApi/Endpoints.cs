@@ -21,7 +21,7 @@ internal static class Endpoints
         Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, false) }
     };
 
-    public static string GetIndex2(HttpContext httpContext)
+    public static string GetDefaultIndex(HttpContext httpContext)
     {
         var documentNames = GetDocumentNames(httpContext.RequestServices);
 

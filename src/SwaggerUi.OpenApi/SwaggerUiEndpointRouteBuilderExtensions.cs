@@ -7,18 +7,19 @@ namespace Microsoft.AspNetCore.Builder;
 public static class SwaggerUiEndpointRouteBuilderExtensions
 {
     /// <summary>
-    /// Helper method to render Swagger UI view.
+    /// Register endpoints onto the current application for resolving the SwaggerUI associated
+    /// with the current application.
     /// </summary>
-    /// <param name="endpoints"></param>
-    /// <returns></returns>
+    /// <param name="routeBuilder">The <see cref="IEndpointRouteBuilder"/>.</param>
+    /// <returns>An <see cref="IEndpointRouteBuilder"/> that can be used to further customize the endpoints.</returns>
     public static IEndpointConventionBuilder MapSwaggerUi(this IEndpointRouteBuilder routeBuilder)
     {
         routeBuilder.MapGet("/swagger", (HttpContext context) =>
-            Results.Content(Endpoints.GetIndex2(context), "text/html")
+            Results.Content(Endpoints.GetDefaultIndex(context), "text/html")
         ).ExcludeFromDescription();
 
-        routeBuilder.MapGet("/swagger/{documentName}",
-            (HttpContext context, string documentName) => Results.Content(Endpoints.GetIndex(context, documentName), "text/html")
+        routeBuilder.MapGet("/swagger/{documentName}", (HttpContext context, string documentName) =>
+            Results.Content(Endpoints.GetIndex(context, documentName), "text/html")
         ).ExcludeFromDescription();
 
         return routeBuilder.MapGet("/swagger/oauth2-redirect.html",

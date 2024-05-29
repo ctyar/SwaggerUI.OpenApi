@@ -10,7 +10,7 @@ namespace SwaggerUi;
 internal static class AuthResponseStatusCodeTransformer
 {
     public static Task TransformAsync(OpenApiOperation operation, OpenApiOperationTransformerContext context,
-        CancellationToken token)
+        CancellationToken _)
     {
         var actionMetadata = context.Description.ActionDescriptor.EndpointMetadata;
 
