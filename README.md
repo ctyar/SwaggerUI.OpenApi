@@ -42,6 +42,11 @@ You can check the [samples](/src/samples) directory for complete working example
 ⏳ Enable all the documents
 
 
+## Acknowledgement
+
+This project is based on [Swashbuckle.AspNetCore.SwaggerUI](https://github.com/domaindrivendev/Swashbuckle.AspNetCore). Thanks for their awesome work.
+
+
 ## Pre-release builds
 
 Get the package from [here](https://github.com/ctyar/SwaggerUi.OpenApi/pkgs/nuget/SwaggerUi.OpenApi).
