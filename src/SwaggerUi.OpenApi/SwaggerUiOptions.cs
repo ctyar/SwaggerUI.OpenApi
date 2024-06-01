@@ -5,18 +5,53 @@ using SwaggerUi;
 
 namespace Microsoft.AspNetCore.Builder;
 
+/// <summary>
+/// https://github.com/swagger-api/swagger-ui/blob/HEAD/docs/usage/configuration.md
+/// </summary>
 public sealed class SwaggerUiOptions
 {
     /// <summary>
-    /// Gets the JavaScript config object, represented as JSON, that will be passed to the initOAuth method
+    /// URL to fetch external configuration document from.
     /// </summary>
-    [JsonIgnore]
-    public OAuthOptions OAuthOptions { get; set; } = new OAuthOptions();
+    public string? ConfigUrl { get; set; }
+
+    [JsonPropertyName("dom_id")]
+    public string DomId { get; private set; } = "#swagger-ui";
 
     /// <summary>
-    /// One or more Swagger JSON endpoints (url and name) to power the UI
+    /// One or more API definitions used by Topbar plugin.
+    /// Names and URLs must be unique among all items, since they're used as identifiers.
     /// </summary>
     public IEnumerable<UrlDescriptor> Urls { get; set; } = [];
+
+    /// <summary>
+    /// If the value matches the name of a spec provided in <see cref="Urls"/>, that spec will be displayed when Swagger UI loads,
+    /// instead of defaulting to the first spec in <see cref="Urls"/>.
+    /// </summary>
+    [JsonPropertyName("urls.primaryName")]
+    public string? PrimaryUrl { get; set; }
+
+    /// <summary>
+    /// Enables overriding configuration parameters via URL search params.
+    /// </summary>
+    public bool? QueryConfigEnabled { get; set; }
+
+    /// <summary>
+    /// The name of a component available via the plugin system to use as the top-level layout for Swagger UI.
+    /// </summary>
+    public string? Layout { get; set; } = "StandaloneLayout";
+
+    /// <summary>
+    /// Plugin functions to use in Swagger UI.
+    /// </summary>
+    [JsonIgnore]
+    public IEnumerable<string>? Plugins { get; set; } = ["SwaggerUIBundle.plugins.DownloadUrl"];
+
+    /// <summary>
+    /// Presets to use in Swagger UI. Usually, you'll want to include ApisPreset if you use this option.
+    /// </summary>
+    [JsonIgnore]
+    public IEnumerable<string> Presets { get; set; } = ["SwaggerUIBundle.presets.apis", "SwaggerUIStandalonePreset"];
 
     /// <summary>
     /// If set to true, enables deep linking for tags and operations
@@ -112,6 +147,12 @@ public sealed class SwaggerUiOptions
 
     [JsonExtensionData]
     public Dictionary<string, object> AdditionalItems { get; set; } = [];
+
+    /// <summary>
+    /// Gets the JavaScript config object, represented as JSON, that will be passed to the initOAuth method
+    /// </summary>
+    [JsonIgnore]
+    public OAuthOptions OAuthOptions { get; set; } = new OAuthOptions();
 
     /// <summary>
     /// Set the Duende Identity Server clientId and scopes for the authorizatonCode flow with proof Key for Code Exchange.

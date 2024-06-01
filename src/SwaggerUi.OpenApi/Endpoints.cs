@@ -18,7 +18,7 @@ internal static class Endpoints
     {
         DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, false) }
+        Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase, false) },
     };
 
     public static string GetDefaultIndex(HttpContext httpContext)
@@ -45,6 +45,11 @@ internal static class Endpoints
         var result = new StringBuilder(GetIndexHtml(documentName));
 
         result.Replace("%(ConfigObject)", JsonSerializer.Serialize(swaggerUiOptions, JsonSerializerOptions));
+        result.Replace("%(Presets)", string.Join(",", swaggerUiOptions.Presets));
+        if (swaggerUiOptions.Plugins is not null)
+        {
+            result.Replace("%(Plugins)", $"configObject.plugins = [{string.Join(",", swaggerUiOptions.Plugins)}];");
+        }
         result.Replace("%(OAuthConfigObject)", JsonSerializer.Serialize(swaggerUiOptions.OAuthOptions, JsonSerializerOptions));
 
         return result.ToString();
@@ -52,13 +57,6 @@ internal static class Endpoints
 
     private static string GetIndexHtml(string documentName)
     {
-        /*
-         * var configObject = {
-                  plugins: [
-                    SwaggerUIBundle.plugins.DownloadUrl
-                  ],
-                };
-         */
         return $$"""
         <!DOCTYPE html>
         <html lang="en">
@@ -79,10 +77,8 @@ internal static class Endpoints
               window.onload = function() {
                 var configObject = JSON.parse('%(ConfigObject)');
 
-                // Apply mandatory parameters
-                configObject.dom_id = "#swagger-ui";
-                configObject.presets = [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset];
-                configObject.layout = "StandaloneLayout";
+                configObject.presets = [%(Presets)];
+                %(Plugins)
 
                 if (!configObject.hasOwnProperty("oauth2RedirectUrl"))
                   configObject.oauth2RedirectUrl = (new URL("oauth2-redirect.html", window.location.href)).href;
