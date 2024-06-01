@@ -46,10 +46,52 @@ internal static class Endpoints
 
         result.Replace("%(ConfigObject)", JsonSerializer.Serialize(swaggerUiOptions, JsonSerializerOptions));
         result.Replace("%(Presets)", string.Join(",", swaggerUiOptions.Presets));
-        if (swaggerUiOptions.Plugins is not null)
+
+        if (swaggerUiOptions.Plugins is null)
+        {
+            result.Replace("%(Plugins)", string.Empty);
+        }
+        else
         {
             result.Replace("%(Plugins)", $"configObject.plugins = [{string.Join(",", swaggerUiOptions.Plugins)}];");
         }
+
+        if (swaggerUiOptions.OperationsSorter is null)
+        {
+            result.Replace("%(OperationsSorter)", string.Empty);
+        }
+        else
+        {
+            result.Replace("%(OperationsSorter)", $"configObject.operationsSorter = {swaggerUiOptions.OperationsSorter}");
+        }
+
+        if (swaggerUiOptions.TagsSorter is null)
+        {
+            result.Replace("%(TagsSorter)", string.Empty);
+        }
+        else
+        {
+            result.Replace("%(TagsSorter)", $"configObject.tagsSorter = {swaggerUiOptions.TagsSorter}");
+        }
+
+        if (swaggerUiOptions.OnComplete is null)
+        {
+            result.Replace("%(OnComplete)", string.Empty);
+        }
+        else
+        {
+            result.Replace("%(OnComplete)", $"configObject.onComplete = {swaggerUiOptions.OnComplete}");
+        }
+
+        if (swaggerUiOptions.RequestSnippets is null)
+        {
+            result.Replace("%(RequestSnippets)", string.Empty);
+        }
+        else
+        {
+            result.Replace("%(RequestSnippets)", $"configObject.requestSnippets = {swaggerUiOptions.RequestSnippets}");
+        }
+
         result.Replace("%(OAuthConfigObject)", JsonSerializer.Serialize(swaggerUiOptions.OAuthOptions, JsonSerializerOptions));
 
         return result.ToString();
@@ -79,6 +121,10 @@ internal static class Endpoints
 
                 configObject.presets = [%(Presets)];
                 %(Plugins)
+                %(OperationsSorter)
+                %(TagsSorter)
+                %(OnComplete)
+                %(RequestSnippets)
 
                 if (!configObject.hasOwnProperty("oauth2RedirectUrl"))
                   configObject.oauth2RedirectUrl = (new URL("oauth2-redirect.html", window.location.href)).href;
