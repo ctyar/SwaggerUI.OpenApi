@@ -15,8 +15,9 @@ public sealed class SwaggerUiOptions
     /// </summary>
     public string? ConfigUrl { get; set; }
 
+    [JsonInclude]
     [JsonPropertyName("dom_id")]
-    public string DomId { get; private set; } = "#swagger-ui";
+    internal string DomId { get; private set; } = "#swagger-ui";
 
     /// <summary>
     /// One or more API definitions used by Topbar plugin.
