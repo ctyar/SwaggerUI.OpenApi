@@ -142,11 +142,6 @@ public sealed class SwaggerUiOptions
     public SyntaxHighlightOptions? SyntaxHighlight { get; set; }
 
     /// <summary>
-    /// If set to true, it persists authorization data and it would not be lost on browser close/refresh
-    /// </summary>
-    public bool PersistAuthorization { get; set; }
-
-    /// <summary>
     /// Controls whether the "Try it out" section should be enabled by default.
     /// </summary>
     public bool? TryItOutEnabled { get; set; }
@@ -163,23 +158,79 @@ public sealed class SwaggerUiOptions
     public string? RequestSnippets { get; set; }
 
     /// <summary>
-    /// OAuth redirect URL
+    /// OAuth redirect URL.
     /// </summary>
     [JsonPropertyName("oauth2RedirectUrl")]
     public string? OAuth2RedirectUrl { get; set; }
 
     /// <summary>
+    /// MUST be a function. Function to intercept remote definition, "Try it out", and OAuth 2.0 requests.
+    /// Accepts one argument requestInterceptor(request) and must return the modified request, or a Promise
+    /// that resolves to the modified request.
+    /// Ex: "function (req) { req.headers['MyCustomHeader'] = 'CustomValue'; return req; }"
+    /// </summary>
+    public string? RequestInterceptor { get; set; }
+
+    /// <summary>
+    /// Command line options available to the curl command. This can be set on the mutated request in the RequestInterceptor
+    /// function. For example request.curlOptions = ["-g", "--limit-rate 20k"]
+    /// </summary>
+    [JsonPropertyName("request.curlOptions")]
+    public IEnumerable<string>? RequestCurlOptions { get; set; }
+
+    /// <summary>
+    /// MUST be a function. Function to intercept remote definition, "Try it out", and OAuth 2.0 responses.
+    /// Accepts one argument responseInterceptor(response) and must return the modified response, or a Promise
+    /// that resolves to the modified response.
+    /// Ex: "function (res) { console.log(res); return res; }"
+    /// </summary>
+    public string? ResponseInterceptor { get; set; }
+
+    /// <summary>
+    /// If set to true, uses the mutated request returned from a requestInterceptor to produce the curl command
+    /// in the UI, otherwise the request before the requestInterceptor was applied is used.
+    /// </summary>
+    public bool? ShowMutatedRequest { get; set; }
+
+    /// <summary>
     /// List of HTTP methods that have the Try it out feature enabled.
-    /// An empty array disables Try it out for all operations. This does not filter the operations from the display
+    /// An empty array disables Try it out for all operations. This does not filter the operations from the display.
     /// </summary>
     public IEnumerable<SubmitMethod> SupportedSubmitMethods { get; set; } = Enum.GetValues<SubmitMethod>();
 
     /// <summary>
-    /// By default, Swagger-UI attempts to validate specs against swagger.io's online validator.
-    /// You can use this parameter to set a different validator URL, for example for locally deployed validators (Validator Badge).
-    /// Setting it to null will disable validation
+    /// By default, Swagger-UI attempts to validate specs against swagger.io's
+    /// <see href="https://validator.swagger.io/validator">online validator</see>.
+    /// You can use this parameter to set a different validator URL, for example for locally deployed validators
+    /// (<see href="https://github.com/swagger-api/validator-badge">Validator Badge</see>).
+    /// Setting it to none 127.0.0.1 or localhost will disable validation.
     /// </summary>
     public string? ValidatorUrl { get; set; }
+
+    /// <summary>
+    /// If set to true, enables passing credentials, as defined in the Fetch standard, in CORS requests that are
+    /// sent by the browser. Note that Swagger UI cannot currently set cookies cross-domain
+    /// - as a result, you will have to rely on browser-supplied cookies (which this setting enables sending)
+    /// that Swagger UI cannot control.
+    /// </summary>
+    public string? WithCredentials { get; set; }
+
+    /// <summary>
+    /// Function to set default values to each property in model. Accepts one argument modelPropertyMacro(property),
+    /// property is immutable
+    /// </summary>
+    public string? ModelPropertyMacro { get; set; }
+
+    /// <summary>
+    ///  Function to set default value to parameters. Accepts two arguments parameterMacro(operation, parameter).
+    ///  Operation and parameter are objects passed for context, both remain immutable
+    /// </summary>
+    public string? ParameterMacro { get; set; }
+
+    /// <summary>
+    /// If set to true, it persists authorization data and it would not be lost on browser close/refresh
+    /// </summary>
+    public bool? PersistAuthorization { get; set; }
 
     [JsonExtensionData]
     public Dictionary<string, object> AdditionalItems { get; set; } = [];

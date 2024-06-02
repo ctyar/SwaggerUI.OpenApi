@@ -92,6 +92,42 @@ internal static class Endpoints
             result.Replace("%(RequestSnippets)", $"configObject.requestSnippets = {swaggerUiOptions.RequestSnippets}");
         }
 
+        if (swaggerUiOptions.RequestInterceptor is null)
+        {
+            result.Replace("%(RequestInterceptor)", string.Empty);
+        }
+        else
+        {
+            result.Replace("%(RequestInterceptor)", $"configObject.requestInterceptor = {swaggerUiOptions.RequestInterceptor}");
+        }
+
+        if (swaggerUiOptions.ResponseInterceptor is null)
+        {
+            result.Replace("%(ResponseInterceptor)", string.Empty);
+        }
+        else
+        {
+            result.Replace("%(ResponseInterceptor)", $"configObject.responseInterceptor = {swaggerUiOptions.ResponseInterceptor}");
+        }
+
+        if (swaggerUiOptions.ModelPropertyMacro is null)
+        {
+            result.Replace("%(ModelPropertyMacro)", string.Empty);
+        }
+        else
+        {
+            result.Replace("%(ModelPropertyMacro)", $"configObject.modelPropertyMacro = {swaggerUiOptions.ModelPropertyMacro}");
+        }
+
+        if (swaggerUiOptions.ParameterMacro is null)
+        {
+            result.Replace("%(ParameterMacro)", string.Empty);
+        }
+        else
+        {
+            result.Replace("%(ParameterMacro)", $"configObject.parameterMacro = {swaggerUiOptions.ParameterMacro}");
+        }
+
         result.Replace("%(OAuthConfigObject)", JsonSerializer.Serialize(swaggerUiOptions.OAuthOptions, JsonSerializerOptions));
 
         return result.ToString();
@@ -104,7 +140,7 @@ internal static class Endpoints
         <html lang="en">
         <head>
           <meta charset="UTF-8">
-          <title>Swagger UI</title>
+          <title>{{documentName}}</title>
           <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
           <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/index.css" />
           <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-32x32.png" sizes="32x32" />
@@ -125,6 +161,10 @@ internal static class Endpoints
                 %(TagsSorter)
                 %(OnComplete)
                 %(RequestSnippets)
+                %(RequestInterceptor)
+                %(ResponseInterceptor)
+                %(ModelPropertyMacro)
+                %(ParameterMacro)
 
                 if (!configObject.hasOwnProperty("oauth2RedirectUrl"))
                   configObject.oauth2RedirectUrl = (new URL("oauth2-redirect.html", window.location.href)).href;
