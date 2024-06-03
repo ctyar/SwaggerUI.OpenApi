@@ -128,7 +128,52 @@ internal static class Endpoints
             result.Replace("%(ParameterMacro)", $"configObject.parameterMacro = {swaggerUiOptions.ParameterMacro}");
         }
 
-        result.Replace("%(OAuthConfigObject)", JsonSerializer.Serialize(swaggerUiOptions.OAuthOptions, JsonSerializerOptions));
+        if (swaggerUiOptions.OAuthOptions is null)
+        {
+            result.Replace("%(OAuth)", string.Empty);
+        }
+        else
+        {
+            var oauthValue = $"""
+                var oauthConfigObject = JSON.parse('{JsonSerializer.Serialize(swaggerUiOptions.OAuthOptions, JsonSerializerOptions)}');
+                ui.initOAuth(oauthConfigObject);
+                """;
+
+            result.Replace("%(OAuth)", oauthValue);
+        }
+
+        if (swaggerUiOptions.PreAuthorizeBasic is null)
+        {
+            result.Replace("%(PreAuthorizeBasic)", string.Empty);
+        }
+        else
+        {
+            var preAuthorizeValue = $$"""
+                ui.onComplete = function() { ui.preauthorizeBasic(
+                    "{{swaggerUiOptions.PreAuthorizeBasic.AuthDefinitionKey}}",
+                    "{{swaggerUiOptions.PreAuthorizeBasic.Username}}",
+                    "{{swaggerUiOptions.PreAuthorizeBasic.Password}}");
+                }
+                """;
+
+            result.Replace("%(PreAuthorizeBasic)", preAuthorizeValue);
+        }
+
+        if (swaggerUiOptions.PreAuthorizeApiKey is null)
+        {
+            result.Replace("%(PreAuthorizeApiKey)", string.Empty);
+        }
+        else
+        {
+            var preAuthorizeApiKeyValue = $$"""
+                ui.onComplete = function() { ui.preauthorizeApiKey(
+                    "{{swaggerUiOptions.PreAuthorizeApiKey.AuthDefinitionKey}}",
+                    "{{swaggerUiOptions.PreAuthorizeApiKey.ApiKey}}");
+                }
+                """;
+
+            result.Replace("%(PreAuthorizeApiKey)", preAuthorizeApiKeyValue);
+        }
 
         return result.ToString();
     }
@@ -171,8 +216,9 @@ internal static class Endpoints
 
                 const ui = SwaggerUIBundle(configObject);
 
-                var oauthConfigObject = JSON.parse('%(OAuthConfigObject)');
-                ui.initOAuth(oauthConfigObject);
+                %(OAuth)
+                %(PreAuthorizeBasic)
+                %(PreauthorizeApiKey)
 
                 window.ui = ui;
             };

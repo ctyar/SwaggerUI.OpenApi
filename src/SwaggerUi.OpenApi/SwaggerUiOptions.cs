@@ -239,7 +239,20 @@ public sealed class SwaggerUiOptions
     /// Gets the JavaScript config object, represented as JSON, that will be passed to the initOAuth method
     /// </summary>
     [JsonIgnore]
-    public OAuthOptions OAuthOptions { get; set; } = new OAuthOptions();
+    public OAuthOptions? OAuthOptions { get; set; }
+
+    /// <summary>
+    /// Set values for a Basic authorization scheme.
+    /// </summary>
+    [JsonIgnore]
+    public PreAuthorizeOptions? PreAuthorizeBasic { get; set; }
+
+    /// <summary>
+    /// Set values for an API key or Bearer authorization scheme. In case of OpenAPI 3.0 Bearer scheme, apiKeyValue must
+    /// contain just the token itself without the Bearer prefix.
+    /// </summary>
+    [JsonIgnore]
+    public PreAuthorizeApiKey? PreAuthorizeApiKey { get; set; }
 
     /// <summary>
     /// Set the Duende Identity Server clientId and scopes for the authorizatonCode flow with proof Key for Code Exchange.
@@ -268,6 +281,8 @@ public sealed class SwaggerUiOptions
     /// <param name="scopes">String array of initially selected OAuth scopes, default is empty array</param>
     public void AddOAuth2(string clientId, params string[] scopes)
     {
+        OAuthOptions ??= new OAuthOptions();
+
         OAuthOptions.ClientId = clientId;
 
         if (scopes is not null)
@@ -336,4 +351,20 @@ public enum SubmitMethod
     Head,
     Patch,
     Trace
+}
+
+public sealed class PreAuthorizeOptions
+{
+    public string AuthDefinitionKey { get; set; } = null!;
+
+    public string Username { get; set; } = null!;
+
+    public string Password { get; set; } = null!;
+}
+
+public sealed class PreAuthorizeApiKey
+{
+    public string AuthDefinitionKey { get; set; } = null!;
+
+    public string ApiKey { get; set; } = null!;
 }
