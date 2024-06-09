@@ -43,7 +43,7 @@ You can check the [samples](/src/samples) directory for complete working example
 
 ✅ Authentication
 
-⏳ Enable all the documents
+✅ Enable all the documents
 
 
 ## Acknowledgement
