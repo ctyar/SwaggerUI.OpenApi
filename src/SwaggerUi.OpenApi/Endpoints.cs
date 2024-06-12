@@ -218,7 +218,7 @@ internal static class Endpoints
 
                 %(OAuth)
                 %(PreAuthorizeBasic)
-                %(PreauthorizeApiKey)
+                %(PreAuthorizeApiKey)
 
                 window.ui = ui;
             };
