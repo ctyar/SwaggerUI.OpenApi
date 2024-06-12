@@ -77,8 +77,9 @@ Persists authorization data by default and it would not be lost on browser close
 
 ✅ Enable all the documents
 
-⏳ Implement all Swagger UI options
+✅ Implement all Swagger UI options
 
+⏳ Improve test coverage
 
 ## Acknowledgement
 
