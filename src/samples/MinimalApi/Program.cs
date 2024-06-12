@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace MinimalApi;
 
 public class Program
@@ -19,7 +21,8 @@ public class Program
         app.MapOpenApi();
         app.MapSwaggerUi();
 
-        app.MapGet("/array-of-guids", (Guid[] guids) => guids)
+        app.MapGet("/products", ([Range(0, 10000)] int id, [MinLength(3)][MaxLength(50)] string name,
+            [RegularExpression("\\d\\d-\\d\\d")] string code) => id)
             .WithGroupName("public");
 
         app.MapPost("/todos", (Todo todo) => Results.Created($"/todos/{todo.Id}", todo))

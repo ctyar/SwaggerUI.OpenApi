@@ -36,6 +36,35 @@ There are other helper methods for Duende Identity Server `AddIdentityServer()` 
 
 You can check the [samples](/src/samples) directory for complete working examples.
 
+## Features
+### More snippet
+Adds PowerShell and CMD cURL to the request snippet by default
+![Request snippet](https://github.com/ctyar/SwaggerUi.OpenApi/assets/1432648/34677d70-0720-4853-98d3-efa793f10b07)
+
+### Styles
+Easily change syntax highlighting style
+```csharp
+builder.Services.AddSwaggerUi(o =>
+{
+    o.SyntaxHighlight = new SyntaxHighlightOptions
+    {
+        Theme = SyntaxHighlightThemeType.Arta
+    };
+});
+```
+![Agate](https://github.com/ctyar/SwaggerUi.OpenApi/assets/1432648/7b8b0739-c85f-4ec9-b82b-b269b52cb373)
+![Arta](https://github.com/ctyar/SwaggerUi.OpenApi/assets/1432648/bd2289d4-d21b-4214-a707-8c6852e7f663)
+![Obsidian](https://github.com/ctyar/SwaggerUi.OpenApi/assets/1432648/0e9e39f6-c4b7-4599-ad13-5c4b70fbdc13)
+
+### Parameter validation
+Displays the common validations in the parameters form by default
+```csharp
+app.MapGet("/products",
+    ([Range(0, 10000)] int id,
+    [MinLength(3)][MaxLength(50)] string name,
+    [RegularExpression("\\d\\d-\\d\\d")] string code) => id)
+```
+![Validation](https://github.com/ctyar/SwaggerUi.OpenApi/assets/1432648/4d6e16a2-52d9-4265-9054-cde9542ed820)
 
 ## Roadmap
 
