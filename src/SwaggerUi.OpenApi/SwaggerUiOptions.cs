@@ -120,7 +120,7 @@ public sealed class SwaggerUiOptions
     /// <summary>
     /// Controls the display of extensions (pattern, maxLength, minLength, maximum, minimum) fields and values for Parameters.
     /// </summary>
-    public bool? ShowCommonExtensions { get; set; }
+    public bool? ShowCommonExtensions { get; set; } = true;
 
     /// <summary>
     /// Apply a sort to the tag list of each API. It can be 'alpha' (sort by paths alphanumerically) or a function
@@ -149,7 +149,7 @@ public sealed class SwaggerUiOptions
     /// <summary>
     /// Enables the request snippet section. When disabled, the legacy curl snippet will be used.
     /// </summary>
-    public bool? RequestSnippetsEnabled { get; set; }
+    public bool? RequestSnippetsEnabled { get; set; } = true;
 
     /// <summary>
     /// Configuration section for the requestSnippets plugin.
