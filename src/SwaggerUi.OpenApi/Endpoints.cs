@@ -212,7 +212,7 @@ internal static class Endpoints
                 %(ParameterMacro)
 
                 if (!configObject.hasOwnProperty("oauth2RedirectUrl"))
-                  configObject.oauth2RedirectUrl = (new URL("oauth2-redirect.html", window.location.href)).href;
+                  configObject.oauth2RedirectUrl = (new URL("swagger/oauth2-redirect.html", window.location.href)).href;
 
                 const ui = SwaggerUIBundle(configObject);
 

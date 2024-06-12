@@ -230,7 +230,7 @@ public sealed class SwaggerUiOptions
     /// <summary>
     /// If set to true, it persists authorization data and it would not be lost on browser close/refresh
     /// </summary>
-    public bool? PersistAuthorization { get; set; }
+    public bool? PersistAuthorization { get; set; } = true;
 
     [JsonExtensionData]
     public Dictionary<string, object> AdditionalItems { get; set; } = [];

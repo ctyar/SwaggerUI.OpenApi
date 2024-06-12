@@ -66,6 +66,9 @@ app.MapGet("/products",
 ```
 ![Validation](https://github.com/ctyar/SwaggerUi.OpenApi/assets/1432648/4d6e16a2-52d9-4265-9054-cde9542ed820)
 
+### Authorization persistence
+Persists authorization data by default and it would not be lost on browser close or refresh so you don't have to authenticate everytime.
+
 ## Roadmap
 
 ✅ Basic UI
