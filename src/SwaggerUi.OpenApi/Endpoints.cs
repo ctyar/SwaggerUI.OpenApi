@@ -42,143 +42,110 @@ internal static class Endpoints
 
     private static string GetIndexCore(string documentName, SwaggerUiOptions swaggerUiOptions)
     {
-        var result = new StringBuilder(GetIndexHtml(documentName));
+        var result = new StringBuilder(GetIndexStart(documentName));
 
-        result.Replace("%(ConfigObject)", JsonSerializer.Serialize(swaggerUiOptions, JsonSerializerOptions));
-        result.Replace("%(Presets)", string.Join(",", swaggerUiOptions.Presets));
+        AppendOption(result, $"var configObject = JSON.parse('" +
+            $"{JsonSerializer.Serialize(swaggerUiOptions, JsonSerializerOptions)}');\r\n");
 
-        if (swaggerUiOptions.Plugins is null)
+        AppendOption(result, $"configObject.presets = [{string.Join(",", swaggerUiOptions.Presets)}];");
+
+        if (swaggerUiOptions.Plugins is not null)
         {
-            result.Replace("%(Plugins)", string.Empty);
-        }
-        else
-        {
-            result.Replace("%(Plugins)", $"configObject.plugins = [{string.Join(",", swaggerUiOptions.Plugins)}];");
+            AppendOption(result, $"configObject.plugins = [{string.Join(",", swaggerUiOptions.Plugins)}];");
         }
 
-        if (swaggerUiOptions.OperationsSorter is null)
+        if (swaggerUiOptions.OperationsSorter is not null)
         {
-            result.Replace("%(OperationsSorter)", string.Empty);
-        }
-        else
-        {
-            result.Replace("%(OperationsSorter)", $"configObject.operationsSorter = {swaggerUiOptions.OperationsSorter}");
+            AppendOption(result, $"configObject.operationsSorter = {swaggerUiOptions.OperationsSorter}");
         }
 
-        if (swaggerUiOptions.TagsSorter is null)
+        if (swaggerUiOptions.TagsSorter is not null)
         {
-            result.Replace("%(TagsSorter)", string.Empty);
-        }
-        else
-        {
-            result.Replace("%(TagsSorter)", $"configObject.tagsSorter = {swaggerUiOptions.TagsSorter}");
+            AppendOption(result, $"configObject.tagsSorter = {swaggerUiOptions.TagsSorter}");
         }
 
-        if (swaggerUiOptions.OnComplete is null)
+        if (swaggerUiOptions.OnComplete is not null)
         {
-            result.Replace("%(OnComplete)", string.Empty);
-        }
-        else
-        {
-            result.Replace("%(OnComplete)", $"configObject.onComplete = {swaggerUiOptions.OnComplete}");
+            AppendOption(result, $"configObject.onComplete = {swaggerUiOptions.OnComplete}");
         }
 
-        if (swaggerUiOptions.RequestSnippets is null)
+        if (swaggerUiOptions.RequestSnippets is not null)
         {
-            result.Replace("%(RequestSnippets)", string.Empty);
-        }
-        else
-        {
-            result.Replace("%(RequestSnippets)", $"configObject.requestSnippets = {swaggerUiOptions.RequestSnippets}");
+            AppendOption(result, $"configObject.requestSnippets = {swaggerUiOptions.RequestSnippets}");
         }
 
-        if (swaggerUiOptions.RequestInterceptor is null)
+        if (swaggerUiOptions.RequestInterceptor is not null)
         {
-            result.Replace("%(RequestInterceptor)", string.Empty);
-        }
-        else
-        {
-            result.Replace("%(RequestInterceptor)", $"configObject.requestInterceptor = {swaggerUiOptions.RequestInterceptor}");
+            AppendOption(result, $"configObject.requestInterceptor = {swaggerUiOptions.RequestInterceptor}");
         }
 
-        if (swaggerUiOptions.ResponseInterceptor is null)
+        if (swaggerUiOptions.ResponseInterceptor is not null)
         {
-            result.Replace("%(ResponseInterceptor)", string.Empty);
-        }
-        else
-        {
-            result.Replace("%(ResponseInterceptor)", $"configObject.responseInterceptor = {swaggerUiOptions.ResponseInterceptor}");
+            AppendOption(result, $"configObject.responseInterceptor = {swaggerUiOptions.ResponseInterceptor}");
         }
 
-        if (swaggerUiOptions.ModelPropertyMacro is null)
+        if (swaggerUiOptions.ModelPropertyMacro is not null)
         {
-            result.Replace("%(ModelPropertyMacro)", string.Empty);
-        }
-        else
-        {
-            result.Replace("%(ModelPropertyMacro)", $"configObject.modelPropertyMacro = {swaggerUiOptions.ModelPropertyMacro}");
+            AppendOption(result, $"configObject.modelPropertyMacro = {swaggerUiOptions.ModelPropertyMacro}");
         }
 
-        if (swaggerUiOptions.ParameterMacro is null)
+        if (swaggerUiOptions.ParameterMacro is not null)
         {
-            result.Replace("%(ParameterMacro)", string.Empty);
-        }
-        else
-        {
-            result.Replace("%(ParameterMacro)", $"configObject.parameterMacro = {swaggerUiOptions.ParameterMacro}");
+            AppendOption(result, $"configObject.parameterMacro = {swaggerUiOptions.ParameterMacro}");
         }
 
-        if (swaggerUiOptions.OAuthOptions is null)
-        {
-            result.Replace("%(OAuth)", string.Empty);
-        }
-        else
+        result.Append("\r\n");
+        AppendOption(result, "if (!configObject.hasOwnProperty(\"oauth2RedirectUrl\"))");
+        AppendOption(result, "  configObject.oauth2RedirectUrl = (new URL(\"swagger/oauth2-redirect.html\", window.location.href)).href;\r\n");
+
+        AppendOption(result, "const ui = SwaggerUIBundle(configObject);");
+
+        if (swaggerUiOptions.OAuthOptions is not null)
         {
             var oauthValue = $"""
                 var oauthConfigObject = JSON.parse('{JsonSerializer.Serialize(swaggerUiOptions.OAuthOptions, JsonSerializerOptions)}');
                 ui.initOAuth(oauthConfigObject);
                 """;
 
-            result.Replace("%(OAuth)", oauthValue);
+            AppendOption(result, oauthValue);
         }
 
-        if (swaggerUiOptions.PreAuthorizeBasic is null)
-        {
-            result.Replace("%(PreAuthorizeBasic)", string.Empty);
-        }
-        else
+        if (swaggerUiOptions.PreAuthorizeBasic is not null)
         {
             var preAuthorizeValue = $$"""
                 ui.onComplete = function() { ui.preauthorizeBasic(
-                    "{{swaggerUiOptions.PreAuthorizeBasic.AuthDefinitionKey}}",
-                    "{{swaggerUiOptions.PreAuthorizeBasic.Username}}",
-                    "{{swaggerUiOptions.PreAuthorizeBasic.Password}}");
+                  "{{swaggerUiOptions.PreAuthorizeBasic.AuthDefinitionKey}}",
+                  "{{swaggerUiOptions.PreAuthorizeBasic.Username}}",
+                  "{{swaggerUiOptions.PreAuthorizeBasic.Password}}");
                 }
                 """;
 
-            result.Replace("%(PreAuthorizeBasic)", preAuthorizeValue);
+            AppendOption(result, preAuthorizeValue);
         }
 
-        if (swaggerUiOptions.PreAuthorizeApiKey is null)
-        {
-            result.Replace("%(PreAuthorizeApiKey)", string.Empty);
-        }
-        else
+        if (swaggerUiOptions.PreAuthorizeApiKey is not null)
         {
             var preAuthorizeApiKeyValue = $$"""
                 ui.onComplete = function() { ui.preauthorizeApiKey(
-                    "{{swaggerUiOptions.PreAuthorizeApiKey.AuthDefinitionKey}}",
-                    "{{swaggerUiOptions.PreAuthorizeApiKey.ApiKey}}");
+                  "{{swaggerUiOptions.PreAuthorizeApiKey.AuthDefinitionKey}}",
+                  "{{swaggerUiOptions.PreAuthorizeApiKey.ApiKey}}");
                 }
                 """;
 
-            result.Replace("%(PreAuthorizeApiKey)", preAuthorizeApiKeyValue);
+            AppendOption(result, preAuthorizeApiKeyValue);
         }
+
+        result.Append(GetIndexEnd());
 
         return result.ToString();
     }
 
-    private static string GetIndexHtml(string documentName)
+    private static void AppendOption(StringBuilder stringBuilder, string value)
+    {
+        stringBuilder.AppendFormat("      {0}\r\n", value);
+    }
+
+    private static string GetIndexStart(string documentName)
     {
         return $$"""
         <!DOCTYPE html>
@@ -197,30 +164,16 @@ internal static class Endpoints
           <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
           <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
           <script>
-              window.onload = function() {
-                var configObject = JSON.parse('%(ConfigObject)');
+            window.onload = function() {
 
-                configObject.presets = [%(Presets)];
-                %(Plugins)
-                %(OperationsSorter)
-                %(TagsSorter)
-                %(OnComplete)
-                %(RequestSnippets)
-                %(RequestInterceptor)
-                %(ResponseInterceptor)
-                %(ModelPropertyMacro)
-                %(ParameterMacro)
+        """;
+    }
 
-                if (!configObject.hasOwnProperty("oauth2RedirectUrl"))
-                  configObject.oauth2RedirectUrl = (new URL("swagger/oauth2-redirect.html", window.location.href)).href;
+    private static string GetIndexEnd()
+    {
+        return """
 
-                const ui = SwaggerUIBundle(configObject);
-
-                %(OAuth)
-                %(PreAuthorizeBasic)
-                %(PreAuthorizeApiKey)
-
-                window.ui = ui;
+              window.ui = ui;
             };
           </script>
         </body>

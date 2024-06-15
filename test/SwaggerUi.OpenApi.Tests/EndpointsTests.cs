@@ -45,18 +45,18 @@ public class EndpointsTests : IClassFixture<WebApplicationFactory<Program>>
               <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
               <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
               <script>
-                  window.onload = function() {
-                    var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[{"url":"/openapi/public.json","name":"public"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
+                window.onload = function() {
+                  var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[{"url":"/openapi/public.json","name":"public"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
 
-                    configObject.presets = [SwaggerUIBundle.presets.apis,SwaggerUIStandalonePreset];
-                    configObject.plugins = [SwaggerUIBundle.plugins.DownloadUrl];
+                  configObject.presets = [SwaggerUIBundle.presets.apis,SwaggerUIStandalonePreset];
+                  configObject.plugins = [SwaggerUIBundle.plugins.DownloadUrl];
 
-                    if (!configObject.hasOwnProperty("oauth2RedirectUrl"))
-                      configObject.oauth2RedirectUrl = (new URL("swagger/oauth2-redirect.html", window.location.href)).href;
+                  if (!configObject.hasOwnProperty("oauth2RedirectUrl"))
+                    configObject.oauth2RedirectUrl = (new URL("swagger/oauth2-redirect.html", window.location.href)).href;
 
-                    const ui = SwaggerUIBundle(configObject);
+                  const ui = SwaggerUIBundle(configObject);
 
-                    window.ui = ui;
+                  window.ui = ui;
                 };
               </script>
             </body>
@@ -67,6 +67,5 @@ public class EndpointsTests : IClassFixture<WebApplicationFactory<Program>>
         var actual = await client.GetStringAsync("swagger");
 
         Assert.Equal(expected, actual);
-
     }
 }
