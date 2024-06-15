@@ -21,7 +21,6 @@ stages:
       inputs:
         useGlobalJson: true
 
-     https://github.com/dotnet/format/issues/1500
      - task: DotNetCoreCLI@2
        displayName: 'dotnet format'
        inputs:
