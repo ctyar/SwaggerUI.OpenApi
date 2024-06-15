@@ -230,7 +230,7 @@ internal static class Endpoints
 
     public static string GetOAuthRedirectHtml()
     {
-        return $$"""
+        return """
         <!doctype html>
         <html lang="en-US">
         <head>
@@ -310,6 +310,7 @@ internal static class Endpoints
         </script>
         </body>
         </html>
+
         """;
     }
 
