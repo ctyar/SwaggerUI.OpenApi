@@ -21,12 +21,12 @@ stages:
       inputs:
         useGlobalJson: true
 
-     - task: DotNetCoreCLI@2
-       displayName: 'dotnet format'
-       inputs:
-         command: 'custom'
-         custom: 'format'
-         arguments: '--verify-no-changes'
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet format'
+      inputs:
+        command: 'custom'
+        custom: 'format'
+        arguments: '--verify-no-changes'
 
     - task: DotNetCoreCLI@2
       displayName: 'Build solution'
