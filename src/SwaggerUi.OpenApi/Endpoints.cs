@@ -56,7 +56,18 @@ internal static class Endpoints
 
         if (swaggerUiOptions.OperationsSorter is not null)
         {
-            AppendOption(result, $"configObject.operationsSorter = {swaggerUiOptions.OperationsSorter}");
+            if (swaggerUiOptions.OperationsSorter == "alpha")
+            {
+                AppendOption(result, $"configObject.operationsSorter = \"alpha\";");
+            }
+            else if (swaggerUiOptions.OperationsSorter == "method")
+            {
+                AppendOption(result, $"configObject.operationsSorter = \"method\";");
+            }
+            else
+            {
+                AppendOption(result, $"configObject.operationsSorter = {swaggerUiOptions.OperationsSorter}");
+            }
         }
 
         if (swaggerUiOptions.TagsSorter is not null)
