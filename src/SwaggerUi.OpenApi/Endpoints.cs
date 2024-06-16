@@ -40,7 +40,7 @@ internal static class Endpoints
         return GetIndexCore(documentName, swaggerUiOptions);
     }
 
-    private static string GetIndexCore(string documentName, SwaggerUiOptions swaggerUiOptions)
+    internal static string GetIndexCore(string documentName, SwaggerUiOptions swaggerUiOptions)
     {
         var result = new StringBuilder(GetIndexStart(documentName));
 
