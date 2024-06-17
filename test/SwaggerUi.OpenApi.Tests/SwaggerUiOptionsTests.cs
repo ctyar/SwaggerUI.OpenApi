@@ -419,4 +419,83 @@ public class SwaggerUiOptionsTests
 
         Assert.Equal(expected, actual);
     }
+
+    [Theory]
+    [InlineData("alpha", "\"alpha\";")]
+    [InlineData("(a, b) => a;", "(a, b) => a;")]
+    public void TagsSorter(string tagsSorter, string result)
+    {
+        var expected =
+            $"""
+            configObject.tagsSorter = {result}
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        {
+            TagsSorter = tagsSorter,
+        });
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void OnComplete()
+    {
+        var expected =
+            """
+            configObject.onComplete = () => { if(window.completeCount) { window.completeCount++ } else { window.completeCount = 1 }
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        {
+            OnComplete = "() => { if(window.completeCount) { window.completeCount++ } else { window.completeCount = 1 } }",
+        });
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void SyntaxHighlightActivated()
+    {
+        var expected =
+            """
+            "syntaxHighlight":{"activated":false}
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        {
+            SyntaxHighlight = new SyntaxHighlightOptions
+            {
+                Activated = false,
+            },
+        });
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Theory]
+    [InlineData(SyntaxHighlightThemeType.Agate, "agate")]
+    [InlineData(SyntaxHighlightThemeType.Arta, "arta")]
+    [InlineData(SyntaxHighlightThemeType.Monokai, "monokai")]
+    [InlineData(SyntaxHighlightThemeType.Nord, "nord")]
+    [InlineData(SyntaxHighlightThemeType.Obsidian, "obsidian")]
+    //[InlineData(SyntaxHighlightThemeType.TomorrowNight, "tomorrow-night")]
+    [InlineData(SyntaxHighlightThemeType.Idea, "idea")]
+    public void SyntaxHighlightOptions(SyntaxHighlightThemeType theme, string jsonValue)
+    {
+        var expected =
+            $$"""
+            "syntaxHighlight":{"theme":"{{jsonValue}}"}
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        {
+            SyntaxHighlight = new SyntaxHighlightOptions
+            {
+                Theme = theme,
+            },
+        });
+
+        Assert.Contains(expected, actual);
+    }
 }

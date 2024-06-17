@@ -72,7 +72,14 @@ internal static class Endpoints
 
         if (swaggerUiOptions.TagsSorter is not null)
         {
-            AppendOption(result, $"configObject.tagsSorter = {swaggerUiOptions.TagsSorter}");
+            if (swaggerUiOptions.TagsSorter == "alpha")
+            {
+                AppendOption(result, $"configObject.tagsSorter = \"alpha\";");
+            }
+            else
+            {
+                AppendOption(result, $"configObject.tagsSorter = {swaggerUiOptions.TagsSorter}");
+            }
         }
 
         if (swaggerUiOptions.OnComplete is not null)

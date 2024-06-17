@@ -334,9 +334,7 @@ public enum SyntaxHighlightThemeType
     Monokai,
     Nord,
     Obsidian,
-    // TODO: Implement
-    // https://stackoverflow.com/questions/59059989/system-text-json-how-do-i-specify-a-custom-name-for-an-enum-value
-    //[EnumMember(Value = "tomorrow-night")]
+    // TODO: Implement tomorrow-night
     //TomorrowNight,
     Idea,
 }
