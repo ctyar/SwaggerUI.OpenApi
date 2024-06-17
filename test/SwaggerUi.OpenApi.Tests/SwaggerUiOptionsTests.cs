@@ -498,4 +498,135 @@ public class SwaggerUiOptionsTests
 
         Assert.Contains(expected, actual);
     }
+
+    [Fact]
+    public void TryItOutEnabled()
+    {
+        var expected =
+            """
+            "tryItOutEnabled":false
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        {
+            TryItOutEnabled = false,
+        });
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void RequestSnippetsEnabled()
+    {
+        var expected =
+            """
+            "requestSnippetsEnabled":false
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        {
+            RequestSnippetsEnabled = false,
+        });
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void RequestSnippetsEnabledNull()
+    {
+        var expected = """
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>My Document</title>
+              <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
+              <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/index.css" />
+              <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-32x32.png" sizes="32x32" />
+              <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-16x16.png" sizes="16x16" />
+            </head>
+
+            <body>
+              <div id="swagger-ui"></div>
+              <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
+              <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+              <script>
+                window.onload = function() {
+                  var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[],"layout":"StandaloneLayout","showCommonExtensions":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
+
+                  configObject.presets = [SwaggerUIBundle.presets.apis,SwaggerUIStandalonePreset];
+                  configObject.plugins = [SwaggerUIBundle.plugins.DownloadUrl];
+
+                  if (!configObject.hasOwnProperty("oauth2RedirectUrl"))
+                    configObject.oauth2RedirectUrl = (new URL("swagger/oauth2-redirect.html", window.location.href)).href;
+
+                  const ui = SwaggerUIBundle(configObject);
+
+                  window.ui = ui;
+                };
+              </script>
+            </body>
+            </html>
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        {
+            RequestSnippetsEnabled = null,
+        });
+
+        Assert.Equal(expected, actual);
+    }
+
+    //[Fact]
+    public void RequestSnippets()
+    {
+        var expected =
+            """
+            configObject.requestSnippets = {
+              generators: {
+                curl_powershell: {
+                  title: "cURL (PowerShell)",
+                  syntax: "powershell"
+                 },
+                 curl_bash: {
+                   title: "cURL (bash)",
+                   syntax: "bash"
+                 },
+                 curl_cmd: {
+                   title: "cURL (CMD)",
+                   syntax: "bash"
+                 },
+               },
+               defaultExpanded: true,
+               languages: ['curl_powershell'],
+             };
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        {
+            RequestSnippets =
+            """
+            {
+                    generators: {
+                      curl_powershell: {
+                        title: "cURL (PowerShell)",
+                        syntax: "powershell"
+                      },
+                      curl_bash: {
+                        title: "cURL (bash)",
+                        syntax: "bash"
+                      },
+                      curl_cmd: {
+                        title: "cURL (CMD)",
+                        syntax: "bash"
+                      },
+                    },
+                    defaultExpanded: true,
+                    languages: ['curl_powershell'],
+                  };
+            """,
+        });
+
+        Assert.Contains(expected, actual);
+    }
 }
