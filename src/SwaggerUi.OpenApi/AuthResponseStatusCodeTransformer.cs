@@ -7,9 +7,9 @@ using Microsoft.OpenApi.Models;
 
 namespace SwaggerUi;
 
-internal static class AuthResponseStatusCodeTransformer
+internal class AuthResponseStatusCodeTransformer : IOpenApiOperationTransformer
 {
-    public static Task TransformAsync(OpenApiOperation operation, OpenApiOperationTransformerContext context,
+    public Task TransformAsync(OpenApiOperation operation, OpenApiOperationTransformerContext context,
         CancellationToken _)
     {
         var actionMetadata = context.Description.ActionDescriptor.EndpointMetadata;
