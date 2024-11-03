@@ -51,7 +51,7 @@ public static class SwaggerUiServiceCollectionExtensions
     /// with the specified options.
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection"/> to register services onto.</param>
-    /// <param name="configureOptions">A delegate used to configure the target <see cref="OpenApiOptions"/>.</param>
+    /// <param name="configureOptions">A delegate used to configure the target <see cref="SwaggerUiOptions"/>.</param>
     public static IServiceCollection AddSwaggerUi(this IServiceCollection services, Action<SwaggerUiOptions> configureOptions)
     {
         return services.AddSwaggerUi(SwaggerUiConstants.DefaultDocumentName, configureOptions);

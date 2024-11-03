@@ -58,11 +58,11 @@ internal static class Endpoints
         {
             if (swaggerUiOptions.OperationsSorter == "alpha")
             {
-                AppendOption(result, $"configObject.operationsSorter = \"alpha\";");
+                AppendOption(result, "configObject.operationsSorter = \"alpha\";");
             }
             else if (swaggerUiOptions.OperationsSorter == "method")
             {
-                AppendOption(result, $"configObject.operationsSorter = \"method\";");
+                AppendOption(result, "configObject.operationsSorter = \"method\";");
             }
             else
             {
@@ -74,7 +74,7 @@ internal static class Endpoints
         {
             if (swaggerUiOptions.TagsSorter == "alpha")
             {
-                AppendOption(result, $"configObject.tagsSorter = \"alpha\";");
+                AppendOption(result, "configObject.tagsSorter = \"alpha\";");
             }
             else
             {
@@ -160,7 +160,7 @@ internal static class Endpoints
 
     private static void AppendOption(StringBuilder stringBuilder, string value)
     {
-        stringBuilder.AppendFormat("      {0}\r\n", value);
+        stringBuilder.Append($"      {value}\r\n");
     }
 
     private static string GetIndexStart(string documentName)
