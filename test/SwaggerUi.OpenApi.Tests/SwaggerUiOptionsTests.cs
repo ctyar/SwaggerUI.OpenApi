@@ -578,7 +578,7 @@ public class SwaggerUiOptionsTests
     }
 
     //[Fact]
-    public void RequestSnippets()
+    internal void RequestSnippets()
     {
         var expected =
             """
