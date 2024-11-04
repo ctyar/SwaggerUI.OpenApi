@@ -19,7 +19,7 @@ public class Program
         var app = builder.Build();
 
         app.MapOpenApi();
-        app.MapSwaggerUi();
+        app.MapSwaggerUI();
 
         app.MapGet("/products", ([Range(0, 10000)] int id, [MinLength(3)][MaxLength(50)] string name,
             [RegularExpression("\\d\\d-\\d\\d")] string code) => id)

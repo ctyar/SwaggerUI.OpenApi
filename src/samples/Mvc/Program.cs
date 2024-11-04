@@ -30,7 +30,7 @@ public class Program
         var app = builder.Build();
 
         app.MapOpenApi();
-        app.MapSwaggerUi();
+        app.MapSwaggerUI();
 
         app.UseHttpsRedirection();
         app.UseAuthentication();

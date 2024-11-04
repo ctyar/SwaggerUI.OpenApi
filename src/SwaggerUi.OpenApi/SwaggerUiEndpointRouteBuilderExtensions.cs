@@ -12,7 +12,7 @@ public static class SwaggerUiEndpointRouteBuilderExtensions
     /// </summary>
     /// <param name="routeBuilder">The <see cref="IEndpointRouteBuilder"/>.</param>
     /// <returns>An <see cref="IEndpointRouteBuilder"/> that can be used to further customize the endpoints.</returns>
-    public static IEndpointConventionBuilder MapSwaggerUi(this IEndpointRouteBuilder routeBuilder)
+    public static IEndpointConventionBuilder MapSwaggerUI(this IEndpointRouteBuilder routeBuilder)
     {
         routeBuilder.MapGet("/swagger", (HttpContext context) =>
             Results.Content(Endpoints.GetDefaultIndex(context), "text/html")
