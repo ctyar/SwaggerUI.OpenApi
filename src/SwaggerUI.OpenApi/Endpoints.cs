@@ -288,6 +288,7 @@ internal static class Endpoints
     private static List<string> GetDocumentNames(IServiceProvider serviceProvider)
     {
         // https://github.com/dotnet/runtime/issues/100105
+
         // https://github.com/dotnet/aspnetcore/blob/3117946082a9c456f50e70075403bb024f9e323b/src/OpenApi/src/Services/OpenApiDocumentProvider.cs#L51
         var type = typeof(OpenApiOptions).Assembly.GetType("Microsoft.Extensions.ApiDescriptions.OpenApiDocumentProvider")!;
         var ctor = type.GetConstructor([typeof(IServiceProvider)])!;
