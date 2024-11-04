@@ -12,6 +12,7 @@ public class EndpointsTests : IClassFixture<WebApplicationFactory<Program>>
         _factory = factory;
     }
 
+    // TODO: Enable again
     //[Fact]
     private async Task OAuth2RedirectIsLatestVersion()
     {

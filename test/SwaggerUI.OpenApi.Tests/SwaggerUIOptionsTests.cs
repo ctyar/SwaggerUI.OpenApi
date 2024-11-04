@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using SwaggerUI;
 
 namespace SwaggerUI.OpenApi.Tests;
 
@@ -578,6 +577,7 @@ public class SwaggerUIOptionsTests
         Assert.Equal(expected, actual);
     }
 
+    // TODO: Enable again
     //[Fact]
     internal void RequestSnippets()
     {
