@@ -25,91 +25,91 @@ internal static class Endpoints
     {
         var documentNames = GetDocumentNames(httpContext.RequestServices);
 
-        var optionsMonitor = httpContext.RequestServices.GetService<IOptionsMonitor<SwaggerUiOptions>>()!;
-        var swaggerUiOptions = optionsMonitor.Get(documentNames[0]);
+        var optionsMonitor = httpContext.RequestServices.GetService<IOptionsMonitor<SwaggerUIOptions>>()!;
+        var swaggerUIOptions = optionsMonitor.Get(documentNames[0]);
 
-        return GetIndexCore(documentNames[0], swaggerUiOptions);
+        return GetIndexCore(documentNames[0], swaggerUIOptions);
     }
 
     public static string GetIndex(HttpContext httpContext, string documentName)
     {
-        var optionsMonitor = httpContext.RequestServices.GetService<IOptionsMonitor<SwaggerUiOptions>>()!;
+        var optionsMonitor = httpContext.RequestServices.GetService<IOptionsMonitor<SwaggerUIOptions>>()!;
 
-        var swaggerUiOptions = optionsMonitor.Get(documentName);
+        var swaggerUIOptions = optionsMonitor.Get(documentName);
 
-        return GetIndexCore(documentName, swaggerUiOptions);
+        return GetIndexCore(documentName, swaggerUIOptions);
     }
 
-    internal static string GetIndexCore(string documentName, SwaggerUiOptions swaggerUiOptions)
+    internal static string GetIndexCore(string documentName, SwaggerUIOptions swaggerUIOptions)
     {
         var result = new StringBuilder(GetIndexStart(documentName));
 
         AppendOption(result, $"var configObject = JSON.parse('" +
-            $"{JsonSerializer.Serialize(swaggerUiOptions, JsonSerializerOptions)}');\r\n");
+            $"{JsonSerializer.Serialize(swaggerUIOptions, JsonSerializerOptions)}');\r\n");
 
-        AppendOption(result, $"configObject.presets = [{string.Join(",", swaggerUiOptions.Presets)}];");
+        AppendOption(result, $"configObject.presets = [{string.Join(",", swaggerUIOptions.Presets)}];");
 
-        if (swaggerUiOptions.Plugins is not null)
+        if (swaggerUIOptions.Plugins is not null)
         {
-            AppendOption(result, $"configObject.plugins = [{string.Join(",", swaggerUiOptions.Plugins)}];");
+            AppendOption(result, $"configObject.plugins = [{string.Join(",", swaggerUIOptions.Plugins)}];");
         }
 
-        if (swaggerUiOptions.OperationsSorter is not null)
+        if (swaggerUIOptions.OperationsSorter is not null)
         {
-            if (swaggerUiOptions.OperationsSorter == "alpha")
+            if (swaggerUIOptions.OperationsSorter == "alpha")
             {
                 AppendOption(result, "configObject.operationsSorter = \"alpha\";");
             }
-            else if (swaggerUiOptions.OperationsSorter == "method")
+            else if (swaggerUIOptions.OperationsSorter == "method")
             {
                 AppendOption(result, "configObject.operationsSorter = \"method\";");
             }
             else
             {
-                AppendOption(result, $"configObject.operationsSorter = {swaggerUiOptions.OperationsSorter}");
+                AppendOption(result, $"configObject.operationsSorter = {swaggerUIOptions.OperationsSorter}");
             }
         }
 
-        if (swaggerUiOptions.TagsSorter is not null)
+        if (swaggerUIOptions.TagsSorter is not null)
         {
-            if (swaggerUiOptions.TagsSorter == "alpha")
+            if (swaggerUIOptions.TagsSorter == "alpha")
             {
                 AppendOption(result, "configObject.tagsSorter = \"alpha\";");
             }
             else
             {
-                AppendOption(result, $"configObject.tagsSorter = {swaggerUiOptions.TagsSorter}");
+                AppendOption(result, $"configObject.tagsSorter = {swaggerUIOptions.TagsSorter}");
             }
         }
 
-        if (swaggerUiOptions.OnComplete is not null)
+        if (swaggerUIOptions.OnComplete is not null)
         {
-            AppendOption(result, $"configObject.onComplete = {swaggerUiOptions.OnComplete}");
+            AppendOption(result, $"configObject.onComplete = {swaggerUIOptions.OnComplete}");
         }
 
-        if (swaggerUiOptions.RequestSnippets is not null)
+        if (swaggerUIOptions.RequestSnippets is not null)
         {
-            AppendOption(result, $"configObject.requestSnippets = {swaggerUiOptions.RequestSnippets}");
+            AppendOption(result, $"configObject.requestSnippets = {swaggerUIOptions.RequestSnippets}");
         }
 
-        if (swaggerUiOptions.RequestInterceptor is not null)
+        if (swaggerUIOptions.RequestInterceptor is not null)
         {
-            AppendOption(result, $"configObject.requestInterceptor = {swaggerUiOptions.RequestInterceptor}");
+            AppendOption(result, $"configObject.requestInterceptor = {swaggerUIOptions.RequestInterceptor}");
         }
 
-        if (swaggerUiOptions.ResponseInterceptor is not null)
+        if (swaggerUIOptions.ResponseInterceptor is not null)
         {
-            AppendOption(result, $"configObject.responseInterceptor = {swaggerUiOptions.ResponseInterceptor}");
+            AppendOption(result, $"configObject.responseInterceptor = {swaggerUIOptions.ResponseInterceptor}");
         }
 
-        if (swaggerUiOptions.ModelPropertyMacro is not null)
+        if (swaggerUIOptions.ModelPropertyMacro is not null)
         {
-            AppendOption(result, $"configObject.modelPropertyMacro = {swaggerUiOptions.ModelPropertyMacro}");
+            AppendOption(result, $"configObject.modelPropertyMacro = {swaggerUIOptions.ModelPropertyMacro}");
         }
 
-        if (swaggerUiOptions.ParameterMacro is not null)
+        if (swaggerUIOptions.ParameterMacro is not null)
         {
-            AppendOption(result, $"configObject.parameterMacro = {swaggerUiOptions.ParameterMacro}");
+            AppendOption(result, $"configObject.parameterMacro = {swaggerUIOptions.ParameterMacro}");
         }
 
         result.Append("\r\n");
@@ -118,35 +118,35 @@ internal static class Endpoints
 
         AppendOption(result, "const ui = SwaggerUIBundle(configObject);");
 
-        if (swaggerUiOptions.OAuthOptions is not null)
+        if (swaggerUIOptions.OAuthOptions is not null)
         {
             var oauthValue = $"""
-                var oauthConfigObject = JSON.parse('{JsonSerializer.Serialize(swaggerUiOptions.OAuthOptions, JsonSerializerOptions)}');
+                var oauthConfigObject = JSON.parse('{JsonSerializer.Serialize(swaggerUIOptions.OAuthOptions, JsonSerializerOptions)}');
                 ui.initOAuth(oauthConfigObject);
                 """;
 
             AppendOption(result, oauthValue);
         }
 
-        if (swaggerUiOptions.PreAuthorizeBasic is not null)
+        if (swaggerUIOptions.PreAuthorizeBasic is not null)
         {
             var preAuthorizeValue = $$"""
                 ui.onComplete = function() { ui.preauthorizeBasic(
-                  "{{swaggerUiOptions.PreAuthorizeBasic.AuthDefinitionKey}}",
-                  "{{swaggerUiOptions.PreAuthorizeBasic.Username}}",
-                  "{{swaggerUiOptions.PreAuthorizeBasic.Password}}");
+                  "{{swaggerUIOptions.PreAuthorizeBasic.AuthDefinitionKey}}",
+                  "{{swaggerUIOptions.PreAuthorizeBasic.Username}}",
+                  "{{swaggerUIOptions.PreAuthorizeBasic.Password}}");
                 }
                 """;
 
             AppendOption(result, preAuthorizeValue);
         }
 
-        if (swaggerUiOptions.PreAuthorizeApiKey is not null)
+        if (swaggerUIOptions.PreAuthorizeApiKey is not null)
         {
             var preAuthorizeApiKeyValue = $$"""
                 ui.onComplete = function() { ui.preauthorizeApiKey(
-                  "{{swaggerUiOptions.PreAuthorizeApiKey.AuthDefinitionKey}}",
-                  "{{swaggerUiOptions.PreAuthorizeApiKey.ApiKey}}");
+                  "{{swaggerUIOptions.PreAuthorizeApiKey.AuthDefinitionKey}}",
+                  "{{swaggerUIOptions.PreAuthorizeApiKey.ApiKey}}");
                 }
                 """;
 

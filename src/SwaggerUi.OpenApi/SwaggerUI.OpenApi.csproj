@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <RootNamespace>SwaggerUi</RootNamespace>
+    <RootNamespace>SwaggerUI</RootNamespace>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
@@ -13,8 +13,8 @@
     <Title>SwaggerUI.OpenApi</Title>
     <Description>A package to simplify adding Swagger UI to Microsoft.AspNetCore.OpenApi.</Description>
     <Authors>Shahriyar Qulami</Authors>
-    <PackageProjectUrl>https://github.com/ctyar/SwaggerUi.OpenApi</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/ctyar/SwaggerUi.OpenApi</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/ctyar/SwaggerUI.OpenApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ctyar/SwaggerUI.OpenApi</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="SwaggerUi.OpenApi.Tests" />
+    <InternalsVisibleTo Include="SwaggerUI.OpenApi.Tests" />
   </ItemGroup>
 
 </Project>

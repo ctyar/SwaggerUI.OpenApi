@@ -1,3 +1,3 @@
 Get-ChildItem -Path '.\artifacts' | Remove-Item -Force -Recurse
 
-dotnet pack src\SwaggerUi.OpenApi\SwaggerUi.OpenApi.csproj -o artifacts
+dotnet pack src\SwaggerUI.OpenApi\SwaggerUI.OpenApi.csproj -o artifacts

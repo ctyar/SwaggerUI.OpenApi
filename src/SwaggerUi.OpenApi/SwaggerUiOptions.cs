@@ -7,7 +7,7 @@ namespace Microsoft.AspNetCore.Builder;
 /// <summary>
 /// https://github.com/swagger-api/swagger-ui/blob/HEAD/docs/usage/configuration.md
 /// </summary>
-public sealed class SwaggerUiOptions
+public sealed class SwaggerUIOptions
 {
     /// <summary>
     /// URL to fetch external configuration document from.

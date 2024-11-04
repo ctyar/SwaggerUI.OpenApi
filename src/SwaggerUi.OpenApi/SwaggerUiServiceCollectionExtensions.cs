@@ -6,12 +6,12 @@ using SwaggerUI;
 namespace Microsoft.AspNetCore.Builder;
 
 /// <summary>
-/// SwaggerUi-related methods for <see cref="IServiceCollection"/>.
+/// SwaggerUI-related methods for <see cref="IServiceCollection"/>.
 /// </summary>
-public static class SwaggerUiServiceCollectionExtensions
+public static class SwaggerUIServiceCollectionExtensions
 {
     /// <summary>
-    /// Adds SwaggerUi services related to the given document name to the specified <see cref="IServiceCollection"/>.
+    /// Adds SwaggerUI services related to the given document name to the specified <see cref="IServiceCollection"/>.
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection"/> to register services onto.</param>
     /// <param name="documentName">The name of the OpenAPI document associated with registered services.</param>
@@ -21,19 +21,19 @@ public static class SwaggerUiServiceCollectionExtensions
     }
 
     /// <summary>
-    /// Adds SwaggerUi services related to the given document name to the specified <see cref="IServiceCollection"/>
+    /// Adds SwaggerUI services related to the given document name to the specified <see cref="IServiceCollection"/>
     /// with the specified options.
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection"/> to register services onto.</param>
     /// <param name="documentName">The name of the OpenAPI document associated with registered services.</param>
-    /// <param name="configureOptions">A delegate used to configure the target <see cref="SwaggerUiOptions"/>.</param>
+    /// <param name="configureOptions">A delegate used to configure the target <see cref="SwaggerUIOptions"/>.</param>
     public static IServiceCollection AddSwaggerUI(this IServiceCollection services, string documentName,
-        Action<SwaggerUiOptions> configureOptions)
+        Action<SwaggerUIOptions> configureOptions)
     {
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(configureOptions);
 
-        services.Configure<SwaggerUiOptions>(documentName, options =>
+        services.Configure<SwaggerUIOptions>(documentName, options =>
         {
             configureOptions(options);
 
@@ -47,13 +47,13 @@ public static class SwaggerUiServiceCollectionExtensions
     }
 
     /// <summary>
-    /// Adds SwaggerUi services related to the default document to the specified <see cref="IServiceCollection"/>
+    /// Adds SwaggerUI services related to the default document to the specified <see cref="IServiceCollection"/>
     /// with the specified options.
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection"/> to register services onto.</param>
-    /// <param name="configureOptions">A delegate used to configure the target <see cref="SwaggerUiOptions"/>.</param>
-    public static IServiceCollection AddSwaggerUI(this IServiceCollection services, Action<SwaggerUiOptions> configureOptions)
+    /// <param name="configureOptions">A delegate used to configure the target <see cref="SwaggerUIOptions"/>.</param>
+    public static IServiceCollection AddSwaggerUI(this IServiceCollection services, Action<SwaggerUIOptions> configureOptions)
     {
-        return services.AddSwaggerUI(SwaggerUiConstants.DefaultDocumentName, configureOptions);
+        return services.AddSwaggerUI(SwaggerUIConstants.DefaultDocumentName, configureOptions);
     }
 }

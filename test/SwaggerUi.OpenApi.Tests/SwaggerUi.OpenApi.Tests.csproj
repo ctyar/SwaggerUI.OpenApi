@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\samples\MinimalApi\MinimalApi.csproj" />
-    <ProjectReference Include="..\..\src\SwaggerUi.OpenApi\SwaggerUI.OpenApi.csproj" />
+    <ProjectReference Include="..\..\src\SwaggerUI.OpenApi\SwaggerUI.OpenApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>

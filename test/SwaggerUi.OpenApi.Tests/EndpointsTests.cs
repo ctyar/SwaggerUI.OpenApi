@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 using MinimalApi;
 
-namespace SwaggerUi.OpenApi.Tests;
+namespace SwaggerUI.OpenApi.Tests;
 
 public class EndpointsTests : IClassFixture<WebApplicationFactory<Program>>
 {

@@ -4,7 +4,7 @@ using SwaggerUI;
 
 namespace Microsoft.AspNetCore.Builder;
 
-public static class SwaggerUiEndpointRouteBuilderExtensions
+public static class SwaggerUIEndpointRouteBuilderExtensions
 {
     /// <summary>
     /// Register endpoints onto the current application for resolving the SwaggerUI associated

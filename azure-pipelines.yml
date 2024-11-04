@@ -34,7 +34,7 @@ stages:
       inputs:
         command: 'build'
         projects: |
-          SwaggerUi.OpenApi.sln
+          SwaggerUI.OpenApi.sln
 
     - task: DotNetCoreCLI@2
       displayName: 'Run tests'

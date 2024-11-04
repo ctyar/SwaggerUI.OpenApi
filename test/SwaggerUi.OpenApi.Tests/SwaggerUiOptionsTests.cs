@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using SwaggerUI;
 
-namespace SwaggerUi.OpenApi.Tests;
+namespace SwaggerUI.OpenApi.Tests;
 
-public class SwaggerUiOptionsTests
+public class SwaggerUIOptionsTests
 {
     [Fact]
     public void ConfigUrl()
@@ -13,7 +13,7 @@ public class SwaggerUiOptionsTests
             "configUrl":"/configs/urls.yaml"
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             ConfigUrl = "/configs/urls.yaml"
         });
@@ -29,7 +29,7 @@ public class SwaggerUiOptionsTests
             "urls":[{"url":"/openapi/doc1.json","name":"name1"},{"url":"/openapi/doc2.json","name":"name2"}]
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             Urls = [new UrlDescriptor {
                 Name = "name1",
@@ -51,7 +51,7 @@ public class SwaggerUiOptionsTests
             "urls.primaryName":"name2"
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             Urls = [new UrlDescriptor {
                 Name = "name1",
@@ -74,7 +74,7 @@ public class SwaggerUiOptionsTests
             "queryConfigEnabled":true
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             QueryConfigEnabled = true,
         });
@@ -90,7 +90,7 @@ public class SwaggerUiOptionsTests
             "layout":"BaseLayout"
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             Layout = "BaseLayout",
         });
@@ -106,7 +106,7 @@ public class SwaggerUiOptionsTests
             configObject.plugins = [SwaggerUIBundle.plugins.Auth,SwaggerUIBundle.plugins.Configs];
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             Plugins = ["SwaggerUIBundle.plugins.Auth", "SwaggerUIBundle.plugins.Configs"],
         });
@@ -151,7 +151,7 @@ public class SwaggerUiOptionsTests
             </html>
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             Plugins = null,
         });
@@ -167,7 +167,7 @@ public class SwaggerUiOptionsTests
             configObject.presets = [SwaggerUIStandalonePreset];
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             Presets = ["SwaggerUIStandalonePreset"],
         });
@@ -183,7 +183,7 @@ public class SwaggerUiOptionsTests
             "deepLinking":true
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DeepLinking = true,
         });
@@ -199,7 +199,7 @@ public class SwaggerUiOptionsTests
             "displayOperationId":true
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DisplayOperationId = true,
         });
@@ -215,7 +215,7 @@ public class SwaggerUiOptionsTests
             "defaultModelsExpandDepth":-1
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DefaultModelsExpandDepth = -1,
         });
@@ -231,7 +231,7 @@ public class SwaggerUiOptionsTests
             "defaultModelExpandDepth":1
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DefaultModelExpandDepth = 1,
         });
@@ -249,7 +249,7 @@ public class SwaggerUiOptionsTests
             "defaultModelRendering":"{jsonValue}"
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DefaultModelRendering = modelRendering,
         });
@@ -265,7 +265,7 @@ public class SwaggerUiOptionsTests
             "displayRequestDuration":true
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DisplayRequestDuration = true,
         });
@@ -284,7 +284,7 @@ public class SwaggerUiOptionsTests
             "docExpansion":"{jsonValue}"
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DocExpansion = docExpansion,
         });
@@ -300,7 +300,7 @@ public class SwaggerUiOptionsTests
             "filter":"my filter"
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             Filter = "my filter",
         });
@@ -316,7 +316,7 @@ public class SwaggerUiOptionsTests
             "maxDisplayedTags":5
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             MaxDisplayedTags = 5,
         });
@@ -335,7 +335,7 @@ public class SwaggerUiOptionsTests
             configObject.operationsSorter = {result}
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             OperationsSorter = operationsSorter,
         });
@@ -351,7 +351,7 @@ public class SwaggerUiOptionsTests
             "showExtensions":true
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             ShowExtensions = true,
         });
@@ -367,7 +367,7 @@ public class SwaggerUiOptionsTests
             "showCommonExtensions":false
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             ShowCommonExtensions = false,
         });
@@ -413,7 +413,7 @@ public class SwaggerUiOptionsTests
             </html>
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             ShowCommonExtensions = null,
         });
@@ -431,7 +431,7 @@ public class SwaggerUiOptionsTests
             configObject.tagsSorter = {result}
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             TagsSorter = tagsSorter,
         });
@@ -447,7 +447,7 @@ public class SwaggerUiOptionsTests
             configObject.onComplete = () => { if(window.completeCount) { window.completeCount++ } else { window.completeCount = 1 }
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             OnComplete = "() => { if(window.completeCount) { window.completeCount++ } else { window.completeCount = 1 } }",
         });
@@ -463,7 +463,7 @@ public class SwaggerUiOptionsTests
             "syntaxHighlight":{"activated":false}
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             SyntaxHighlight = new SyntaxHighlightOptions
             {
@@ -489,7 +489,7 @@ public class SwaggerUiOptionsTests
             "syntaxHighlight":{"theme":"{{jsonValue}}"}
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             SyntaxHighlight = new SyntaxHighlightOptions
             {
@@ -508,7 +508,7 @@ public class SwaggerUiOptionsTests
             "tryItOutEnabled":false
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             TryItOutEnabled = false,
         });
@@ -524,7 +524,7 @@ public class SwaggerUiOptionsTests
             "requestSnippetsEnabled":false
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             RequestSnippetsEnabled = false,
         });
@@ -570,7 +570,7 @@ public class SwaggerUiOptionsTests
             </html>
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             RequestSnippetsEnabled = null,
         });
@@ -603,7 +603,7 @@ public class SwaggerUiOptionsTests
              };
             """;
 
-        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUiOptions
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             RequestSnippets =
             """
