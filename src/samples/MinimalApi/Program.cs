@@ -13,8 +13,8 @@ public class Program
         builder.Services.AddOpenApi("public");
         builder.Services.AddOpenApi("internal");
 
-        builder.Services.AddSwaggerUi("public");
-        builder.Services.AddSwaggerUi("internal");
+        builder.Services.AddSwaggerUI("public");
+        builder.Services.AddSwaggerUI("internal");
 
         var app = builder.Build();
 

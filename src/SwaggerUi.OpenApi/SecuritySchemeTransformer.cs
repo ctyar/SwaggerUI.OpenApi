@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
 
-namespace SwaggerUi;
+namespace SwaggerUI;
 
 internal sealed class SecuritySchemeTransformer : IOpenApiDocumentTransformer
 {

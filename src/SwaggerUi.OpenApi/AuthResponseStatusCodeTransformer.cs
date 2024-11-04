@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
 
-namespace SwaggerUi;
+namespace SwaggerUI;
 
 internal class AuthResponseStatusCodeTransformer : IOpenApiOperationTransformer
 {

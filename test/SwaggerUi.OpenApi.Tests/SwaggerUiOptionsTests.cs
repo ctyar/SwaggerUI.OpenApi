@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using SwaggerUI;
 
 namespace SwaggerUi.OpenApi.Tests;
 

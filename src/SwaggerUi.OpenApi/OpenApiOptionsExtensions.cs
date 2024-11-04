@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web;
-using SwaggerUi;
+using SwaggerUI;
 
 namespace Microsoft.AspNetCore.OpenApi;
 

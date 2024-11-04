@@ -22,7 +22,7 @@ public class Program
         {
             o.AddIdentityServer("https://demo.duendesoftware.com", ["openid", "profile", "email", "api", "offline_access"]);
         });
-        builder.Services.AddSwaggerUi(o =>
+        builder.Services.AddSwaggerUI(o =>
         {
             o.AddIdentityServer("interactive.public", ["openid", "profile", "email", "api", "offline_access"]);
         });

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.OpenApi;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace SwaggerUi;
+namespace SwaggerUI;
 
 internal static class Endpoints
 {

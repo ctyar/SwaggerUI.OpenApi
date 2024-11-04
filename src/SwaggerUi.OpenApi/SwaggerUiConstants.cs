@@ -1,4 +1,4 @@
-﻿namespace SwaggerUi;
+﻿namespace SwaggerUI;
 
 internal class SwaggerUiConstants
 {

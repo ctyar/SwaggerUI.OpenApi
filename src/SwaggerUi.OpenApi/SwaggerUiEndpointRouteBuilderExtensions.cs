@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using SwaggerUi;
+using SwaggerUI;
 
 namespace Microsoft.AspNetCore.Builder;
 
