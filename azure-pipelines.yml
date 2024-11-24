@@ -26,6 +26,8 @@ stages:
       inputs:
         command: 'custom'
         custom: 'format'
+        env:
+          dotnetformat: true # part of a workaround for https://github.com/dotnet/sdk/issues/44951
         arguments: '--verify-no-changes'
 
     - task: DotNetCoreCLI@2
