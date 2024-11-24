@@ -21,14 +21,13 @@ stages:
       inputs:
         useGlobalJson: true
 
-    - task: DotNetCoreCLI@2
-      displayName: 'dotnet format'
-      inputs:
-        command: 'custom'
-        custom: 'format'
-        env:
-          dotnetformat: true # part of a workaround for https://github.com/dotnet/sdk/issues/44951
-        arguments: '--verify-no-changes'
+    # https://github.com/dotnet/sdk/issues/44951
+    # - task: DotNetCoreCLI@2
+    #   displayName: 'dotnet format'
+    #   inputs:
+    #     command: 'custom'
+    #     custom: 'format'
+    #     arguments: '--verify-no-changes'
 
     - task: DotNetCoreCLI@2
       displayName: 'Build solution'
