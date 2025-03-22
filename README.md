@@ -8,17 +8,25 @@ A package to simplify adding Swagger UI to .NET 9's Microsoft.AspNetCore.OpenApi
 
 ## Usage
 
-In your `Program.cs` file Add `app.AddSwaggerUI()` and `app.MapSwaggerUI()`:
+1. In your `Program.cs` file Add `app.AddSwaggerUI()` and `app.MapSwaggerUI()`:
 
-```csharp
-builder.Services.AddOpenApi();
-builder.Services.AddSwaggerUI();
+    ```diff
+      builder.Services.AddOpenApi();
+    + builder.Services.AddSwaggerUI();
 
-var app = builder.Build();
+      var app = builder.Build();
 
-app.MapOpenApi();
-app.MapSwaggerUI();
-```
+      app.MapOpenApi();
+    + app.MapSwaggerUI();
+    ```
+
+2. (Optional) Modify your `launchSettings.json` file to open Swagger automatically:
+    ```diff
+    -  "launchBrowser": false,
+    +  "launchBrowser": true,
+      "applicationUrl": "http://localhost:5150",
+    +  "launchUrl": "swagger",
+    ```
 
 If you want to add authentication to your Swagger you can use following helper methods:
 ```csharp
