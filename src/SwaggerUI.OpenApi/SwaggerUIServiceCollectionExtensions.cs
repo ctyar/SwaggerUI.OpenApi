@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using SwaggerUI;
 
@@ -56,11 +55,6 @@ public static class SwaggerUIServiceCollectionExtensions
         services.Configure<SwaggerUIOptions>(documentName, options =>
         {
             configureOptions(options);
-
-            if (!options.Urls.Any())
-            {
-                options.Urls = [new UrlDescriptor { Name = documentName, Url = $"/openapi/{documentName}.json" }];
-            }
         });
 
         return services;

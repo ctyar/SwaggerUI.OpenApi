@@ -28,20 +28,27 @@ internal static class Endpoints
         var optionsMonitor = httpContext.RequestServices.GetService<IOptionsMonitor<SwaggerUIOptions>>()!;
         var swaggerUIOptions = optionsMonitor.Get(documentNames[0]);
 
-        return GetIndexCore(documentNames[0], swaggerUIOptions);
+        return GetIndexCore(documentNames[0], swaggerUIOptions, documentNames);
     }
 
     public static string GetIndex(HttpContext httpContext, string documentName)
     {
+        var documentNames = GetDocumentNames(httpContext.RequestServices);
+
         var optionsMonitor = httpContext.RequestServices.GetService<IOptionsMonitor<SwaggerUIOptions>>()!;
 
         var swaggerUIOptions = optionsMonitor.Get(documentName);
 
-        return GetIndexCore(documentName, swaggerUIOptions);
+        return GetIndexCore(documentName, swaggerUIOptions, documentNames);
     }
 
-    internal static string GetIndexCore(string documentName, SwaggerUIOptions swaggerUIOptions)
+    internal static string GetIndexCore(string documentName, SwaggerUIOptions swaggerUIOptions, List<string> documentNames)
     {
+        if (!swaggerUIOptions.Urls.Any())
+        {
+            swaggerUIOptions.Urls = [.. documentNames.Select(d => new UrlDescriptor { Name = d, Url = $"/openapi/{d}.json" })];
+        }
+
         var result = new StringBuilder(GetIndexStart(documentName));
 
         AppendOption(result, $"var configObject = JSON.parse('" +

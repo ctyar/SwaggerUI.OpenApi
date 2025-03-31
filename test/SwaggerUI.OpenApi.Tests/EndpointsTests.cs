@@ -47,7 +47,7 @@ public class EndpointsTests : IClassFixture<WebApplicationFactory<Program>>
               <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
               <script>
                 window.onload = function() {
-                  var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[{"url":"/openapi/public.json","name":"public"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
+                  var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[{"url":"/openapi/public.json","name":"public"},{"url":"/openapi/internal.json","name":"internal"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
 
                   configObject.presets = [SwaggerUIBundle.presets.apis,SwaggerUIStandalonePreset];
                   configObject.plugins = [SwaggerUIBundle.plugins.DownloadUrl];

@@ -15,7 +15,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             ConfigUrl = "/configs/urls.yaml"
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -37,7 +37,7 @@ public class SwaggerUIOptionsTests
                 Name = "name2",
                 Url = "/openapi/doc2.json"
             }]
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -60,7 +60,7 @@ public class SwaggerUIOptionsTests
                 Url = "/openapi/doc2.json"
             }],
             PrimaryUrl = "name2"
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -76,7 +76,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             QueryConfigEnabled = true,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -92,7 +92,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             Layout = "BaseLayout",
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -108,7 +108,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             Plugins = ["SwaggerUIBundle.plugins.Auth", "SwaggerUIBundle.plugins.Configs"],
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -153,7 +153,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             Plugins = null,
-        });
+        }, []);
 
         Assert.Equal(expected, actual);
     }
@@ -169,7 +169,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             Presets = ["SwaggerUIStandalonePreset"],
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -185,7 +185,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DeepLinking = true,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -201,7 +201,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DisplayOperationId = true,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -217,7 +217,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DefaultModelsExpandDepth = -1,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -233,7 +233,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DefaultModelExpandDepth = 1,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -251,7 +251,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DefaultModelRendering = modelRendering,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -267,7 +267,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DisplayRequestDuration = true,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -286,7 +286,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             DocExpansion = docExpansion,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -302,7 +302,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             Filter = "my filter",
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -318,7 +318,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             MaxDisplayedTags = 5,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -337,7 +337,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             OperationsSorter = operationsSorter,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -353,7 +353,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             ShowExtensions = true,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -369,7 +369,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             ShowCommonExtensions = false,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -415,7 +415,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             ShowCommonExtensions = null,
-        });
+        }, []);
 
         Assert.Equal(expected, actual);
     }
@@ -433,7 +433,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             TagsSorter = tagsSorter,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -449,7 +449,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             OnComplete = "() => { if(window.completeCount) { window.completeCount++ } else { window.completeCount = 1 } }",
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -468,7 +468,7 @@ public class SwaggerUIOptionsTests
             {
                 Activated = false,
             },
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -479,6 +479,7 @@ public class SwaggerUIOptionsTests
     [InlineData(SyntaxHighlightThemeType.Monokai, "monokai")]
     [InlineData(SyntaxHighlightThemeType.Nord, "nord")]
     [InlineData(SyntaxHighlightThemeType.Obsidian, "obsidian")]
+    // TODO: Enable
     //[InlineData(SyntaxHighlightThemeType.TomorrowNight, "tomorrow-night")]
     [InlineData(SyntaxHighlightThemeType.Idea, "idea")]
     public void SyntaxHighlightOptions(SyntaxHighlightThemeType theme, string jsonValue)
@@ -494,7 +495,7 @@ public class SwaggerUIOptionsTests
             {
                 Theme = theme,
             },
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -510,7 +511,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             TryItOutEnabled = false,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -526,7 +527,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             RequestSnippetsEnabled = false,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
@@ -572,7 +573,7 @@ public class SwaggerUIOptionsTests
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
         {
             RequestSnippetsEnabled = null,
-        });
+        }, []);
 
         Assert.Equal(expected, actual);
     }
@@ -626,7 +627,7 @@ public class SwaggerUIOptionsTests
                     languages: ['curl_powershell'],
                   };
             """,
-        });
+        }, []);
 
         Assert.Contains(expected, actual);
     }
