@@ -28,7 +28,9 @@ A package to simplify adding Swagger UI to .NET 9's Microsoft.AspNetCore.OpenApi
     +  "launchUrl": "swagger",
     ```
 
-If you want to add authentication to your Swagger you can use following helper methods:
+## Features
+### Authentication
+If you want to add authentication to your Swagger you can use the following helper methods:
 ```csharp
 builder.Services.AddOpenApi("v1", o =>
 {
@@ -44,7 +46,6 @@ There are other helper methods for Duende Identity Server `AddIdentityServer()` 
 
 You can check the [samples](/src/samples) directory for complete working examples.
 
-## Features
 ### More snippet
 Adds PowerShell and CMD cURL to the request snippet by default
 ![Request snippet](https://github.com/ctyar/SwaggerUI.OpenApi/assets/1432648/34677d70-0720-4853-98d3-efa793f10b07)
