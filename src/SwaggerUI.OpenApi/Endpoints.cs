@@ -167,7 +167,7 @@ internal static class Endpoints
 
     private static void AppendOption(StringBuilder stringBuilder, string value)
     {
-        stringBuilder.Append($"      {value}\r\n");
+        stringBuilder.Append($"        {value}\r\n");
     }
 
     private static string GetIndexStart(string documentName)
@@ -175,21 +175,21 @@ internal static class Endpoints
         return $$"""
         <!DOCTYPE html>
         <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-          <title>{{documentName}}</title>
-          <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
-          <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/index.css" />
-          <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-32x32.png" sizes="32x32" />
-          <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-16x16.png" sizes="16x16" />
-        </head>
+          <head>
+            <meta charset="UTF-8">
+            <title>{{documentName}}</title>
+            <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
+            <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/index.css" />
+            <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-32x32.png" sizes="32x32" />
+            <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-16x16.png" sizes="16x16" />
+          </head>
 
-        <body>
-          <div id="swagger-ui"></div>
-          <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-          <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
-          <script>
-            window.onload = function() {
+          <body>
+            <div id="swagger-ui"></div>
+            <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
+            <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+            <script>
+              window.onload = function() {
 
         """;
     }
@@ -198,10 +198,10 @@ internal static class Endpoints
     {
         return """
 
-              window.ui = ui;
-            };
-          </script>
-        </body>
+                window.ui = ui;
+              };
+            </script>
+          </body>
         </html>
         """;
     }
