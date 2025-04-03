@@ -479,8 +479,7 @@ public class SwaggerUIOptionsTests
     [InlineData(SyntaxHighlightThemeType.Monokai, "monokai")]
     [InlineData(SyntaxHighlightThemeType.Nord, "nord")]
     [InlineData(SyntaxHighlightThemeType.Obsidian, "obsidian")]
-    // TODO: Enable
-    //[InlineData(SyntaxHighlightThemeType.TomorrowNight, "tomorrow-night")]
+    [InlineData(SyntaxHighlightThemeType.TomorrowNight, "tomorrow-night")]
     [InlineData(SyntaxHighlightThemeType.Idea, "idea")]
     public void SyntaxHighlightOptions(SyntaxHighlightThemeType theme, string jsonValue)
     {
@@ -578,30 +577,60 @@ public class SwaggerUIOptionsTests
         Assert.Equal(expected, actual);
     }
 
-    // TODO: Enable again
-    //[Fact]
-    internal void RequestSnippets()
+    [Fact]
+    public void RequestSnippets()
     {
-        var expected =
-            """
-            configObject.requestSnippets = {
-              generators: {
-                curl_powershell: {
-                  title: "cURL (PowerShell)",
-                  syntax: "powershell"
-                 },
-                 curl_bash: {
-                   title: "cURL (bash)",
-                   syntax: "bash"
-                 },
-                 curl_cmd: {
-                   title: "cURL (CMD)",
-                   syntax: "bash"
-                 },
-               },
-               defaultExpanded: true,
-               languages: ['curl_powershell'],
-             };
+        var expected = """
+            <!DOCTYPE html>
+            <html lang="en">
+              <head>
+                <meta charset="UTF-8">
+                <title>My Document</title>
+                <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
+                <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/index.css" />
+                <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-32x32.png" sizes="32x32" />
+                <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-16x16.png" sizes="16x16" />
+              </head>
+
+              <body>
+                <div id="swagger-ui"></div>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script>
+                  window.onload = function() {
+                    var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
+
+                    configObject.presets = [SwaggerUIBundle.presets.apis,SwaggerUIStandalonePreset];
+                    configObject.plugins = [SwaggerUIBundle.plugins.DownloadUrl];
+                    configObject.requestSnippets = {
+                      generators: {
+                        curl_powershell: {
+                          title: "cURL (PowerShell)",
+                          syntax: "powershell"
+                        },
+                        curl_bash: {
+                          title: "cURL (bash)",
+                          syntax: "bash"
+                        },
+                        curl_cmd: {
+                          title: "cURL (CMD)",
+                          syntax: "bash"
+                        },
+                      },
+                      defaultExpanded: true,
+                      languages: ['curl_powershell'],
+                    };
+
+                    if (!configObject.hasOwnProperty("oauth2RedirectUrl"))
+                      configObject.oauth2RedirectUrl = (new URL("swagger/oauth2-redirect.html", window.location.href)).href;
+
+                    const ui = SwaggerUIBundle(configObject);
+
+                    window.ui = ui;
+                  };
+                </script>
+              </body>
+            </html>
             """;
 
         var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
@@ -609,26 +638,26 @@ public class SwaggerUIOptionsTests
             RequestSnippets =
             """
             {
-                    generators: {
-                      curl_powershell: {
-                        title: "cURL (PowerShell)",
-                        syntax: "powershell"
+                      generators: {
+                        curl_powershell: {
+                          title: "cURL (PowerShell)",
+                          syntax: "powershell"
+                        },
+                        curl_bash: {
+                          title: "cURL (bash)",
+                          syntax: "bash"
+                        },
+                        curl_cmd: {
+                          title: "cURL (CMD)",
+                          syntax: "bash"
+                        },
                       },
-                      curl_bash: {
-                        title: "cURL (bash)",
-                        syntax: "bash"
-                      },
-                      curl_cmd: {
-                        title: "cURL (CMD)",
-                        syntax: "bash"
-                      },
-                    },
-                    defaultExpanded: true,
-                    languages: ['curl_powershell'],
-                  };
+                      defaultExpanded: true,
+                      languages: ['curl_powershell'],
+                    };
             """,
         }, []);
 
-        Assert.Contains(expected, actual);
+        Assert.Equal(expected, actual);
     }
 }

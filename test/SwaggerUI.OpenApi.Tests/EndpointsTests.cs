@@ -12,9 +12,8 @@ public class EndpointsTests : IClassFixture<WebApplicationFactory<Program>>
         _factory = factory;
     }
 
-    // TODO: Enable again
-    //[Fact]
-    private async Task OAuth2RedirectIsLatestVersion()
+    [Fact]
+    public async Task OAuth2RedirectIsLatestVersion()
     {
         using var httpClient = new HttpClient();
         var expected = await httpClient.GetStringAsync("https://raw.githubusercontent.com/swagger-api/swagger-ui/master/dist/oauth2-redirect.html");

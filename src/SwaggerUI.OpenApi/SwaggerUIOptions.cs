@@ -334,8 +334,8 @@ public enum SyntaxHighlightThemeType
     Monokai,
     Nord,
     Obsidian,
-    // TODO: Implement tomorrow-night
-    //TomorrowNight,
+    [JsonStringEnumMemberName("tomorrow-night")]
+    TomorrowNight,
     Idea,
 }
 
