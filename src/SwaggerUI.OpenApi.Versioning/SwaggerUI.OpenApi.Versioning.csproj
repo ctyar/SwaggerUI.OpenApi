@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>SwaggerUI.OpenApi.Versioning</PackageId>
+    <PackageTags>openapi;swagger;swaggerui;discovery;webapi;aspnet;aspnetcore;auth;authentication;oauth2;auth0;identityserver</PackageTags>
+    <Title>SwaggerUI.OpenApi.Versioning</Title>
+    <Description>A package to simplify adding Swagger UI to Microsoft.AspNetCore.OpenApi with Asp.Versioning.</Description>
+    <Authors>Shahriyar Qulami</Authors>
+    <PackageProjectUrl>https://github.com/ctyar/SwaggerUI.OpenApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ctyar/SwaggerUI.OpenApi</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--<PackageReference Include="SwaggerUI.OpenApi" Version="1.1.0" />-->
+    <PackageReference Include="Asp.Versioning.Http" Version="8.1.0" />
+    <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SwaggerUI.OpenApi\SwaggerUI.OpenApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>

@@ -26,6 +26,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwaggerUI.OpenApi", "src\Sw
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwaggerUI.OpenApi.Tests", "test\SwaggerUI.OpenApi.Tests\SwaggerUI.OpenApi.Tests.csproj", "{4327D752-4702-4574-8062-0853972BE657}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwaggerUI.OpenApi.Versioning", "src\SwaggerUI.OpenApi.Versioning\SwaggerUI.OpenApi.Versioning.csproj", "{CAD55788-569E-4AD9-9E20-DA57B055FC16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{4327D752-4702-4574-8062-0853972BE657}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4327D752-4702-4574-8062-0853972BE657}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4327D752-4702-4574-8062-0853972BE657}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAD55788-569E-4AD9-9E20-DA57B055FC16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAD55788-569E-4AD9-9E20-DA57B055FC16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAD55788-569E-4AD9-9E20-DA57B055FC16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAD55788-569E-4AD9-9E20-DA57B055FC16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
