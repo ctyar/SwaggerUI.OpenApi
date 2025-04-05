@@ -16,11 +16,11 @@ public class EndpointsTests : IClassFixture<WebApplicationFactory<Program>>
     public async Task OAuth2RedirectIsLatestVersion()
     {
         using var httpClient = new HttpClient();
-        var expected = await httpClient.GetStringAsync("https://raw.githubusercontent.com/swagger-api/swagger-ui/master/dist/oauth2-redirect.html");
+        var expected = await httpClient.GetStringAsync("https://raw.githubusercontent.com/swagger-api/swagger-ui/master/dist/oauth2-redirect.html", TestContext.Current.CancellationToken);
         expected = expected.Replace("\n", "\r\n");
 
         var client = _factory.CreateClient();
-        var actual = await client.GetStringAsync("swagger/oauth2-redirect.html");
+        var actual = await client.GetStringAsync("swagger/oauth2-redirect.html", TestContext.Current.CancellationToken);
 
         Assert.Equal(expected, actual);
     }
@@ -64,7 +64,7 @@ public class EndpointsTests : IClassFixture<WebApplicationFactory<Program>>
             """;
 
         var client = _factory.CreateClient();
-        var actual = await client.GetStringAsync("swagger");
+        var actual = await client.GetStringAsync("swagger", TestContext.Current.CancellationToken);
 
         Assert.Equal(expected, actual);
     }
