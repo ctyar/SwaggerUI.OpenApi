@@ -25,6 +25,7 @@
     <ProjectReference Include="..\..\src\samples\SingleDocument\SingleDocument.csproj" />
     <ProjectReference Include="..\..\src\samples\TwoDocuments\TwoDocuments.csproj" />
     <ProjectReference Include="..\..\src\SwaggerUI.OpenApi\SwaggerUI.OpenApi.csproj" />
+    <ProjectReference Include="..\MinimalApi.Testing\MinimalApi.Testing.csproj" />
     <ProjectReference Include="..\SingleDocumentConfig\SingleDocumentConfig.csproj" />
   </ItemGroup>
 
