@@ -203,7 +203,7 @@ public sealed class SwaggerUIOptions
     /// <see href="https://validator.swagger.io/validator">online validator</see>.
     /// You can use this parameter to set a different validator URL, for example for locally deployed validators
     /// (<see href="https://github.com/swagger-api/validator-badge">Validator Badge</see>).
-    /// Setting it to none 127.0.0.1 or localhost will disable validation.
+    /// Setting it to none, 127.0.0.1 or localhost will disable validation.
     /// </summary>
     public string? ValidatorUrl { get; set; }
 
@@ -213,7 +213,7 @@ public sealed class SwaggerUIOptions
     /// - as a result, you will have to rely on browser-supplied cookies (which this setting enables sending)
     /// that Swagger UI cannot control.
     /// </summary>
-    public string? WithCredentials { get; set; }
+    public bool? WithCredentials { get; set; }
 
     /// <summary>
     /// Function to set default values to each property in model. Accepts one argument modelPropertyMacro(property),

@@ -660,4 +660,204 @@ public class SwaggerUIOptionsTests
 
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void OAuth2RedirectUrl()
+    {
+        // https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md#network
+        var expected =
+            """
+            "oauth2RedirectUrl":"https://example.com"
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            OAuth2RedirectUrl = "https://example.com"
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void RequestInterceptor()
+    {
+        var expected =
+            """
+            requestInterceptor = function (req) { req.headers['MyCustomHeader'] = 'CustomValue'; return req; }
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            RequestInterceptor = "function (req) { req.headers['MyCustomHeader'] = 'CustomValue'; return req; }"
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void RequestCurlOptions()
+    {
+        var expected =
+            """
+            "request.curlOptions":["-g","--limit-rate 20k"]
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            RequestCurlOptions = ["-g", "--limit-rate 20k"]
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void ResponseInterceptor()
+    {
+        var expected =
+            """
+            responseInterceptor = function (res) { console.log(res); return res; }
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            ResponseInterceptor = "function (res) { console.log(res); return res; }"
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void ShowMutatedRequest()
+    {
+        var expected =
+            """
+            "showMutatedRequest":true
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            ShowMutatedRequest = true
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void SupportedSubmitMethods()
+    {
+        var expected =
+            """
+            "supportedSubmitMethods":["get","post"]
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            SupportedSubmitMethods = [SubmitMethod.Get, SubmitMethod.Post]
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void ValidatorUrl()
+    {
+        var expected =
+            """
+            "validatorUrl":"127.0.0.1"
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            ValidatorUrl = "127.0.0.1"
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void WithCredentials()
+    {
+        var expected =
+            """
+            "withCredentials":true
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            WithCredentials = true
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void ModelPropertyMacro()
+    {
+        // https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md#macros
+        var expected =
+            """
+            modelPropertyMacro = function (prop) { return (prop || {}).default; };
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            ModelPropertyMacro = "function (prop) { return (prop || {}).default; };"
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void ParameterMacro()
+    {
+        // https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md#macros
+        var expected =
+            """
+            parameterMacro = function (operation, parameter) { return 'my defult value' };
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            ParameterMacro = "function (operation, parameter) { return 'my defult value' };"
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void PersistAuthorization()
+    {
+        // https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md#authorization
+        var expected =
+            """
+            "persistAuthorization":false
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            PersistAuthorization = false
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void AdditionalItems()
+    {
+        // https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md#authorization
+        var expected =
+            """
+            "myKey":"myValue"
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            AdditionalItems = new Dictionary<string, object>
+            {
+                { "myKey", "myValue" }
+            }
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
 }
