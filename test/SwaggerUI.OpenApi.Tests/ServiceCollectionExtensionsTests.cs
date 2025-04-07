@@ -1,16 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
-namespace SwaggerUI.OpenApi.Tests.SwaggerUIServiceCollectionTests;
+namespace SwaggerUI.OpenApi.Tests;
 
-public class SingleDocumentTests : IClassFixture<WebApplicationFactory<SingleDocument.Program>>
+public class ServiceCollectionExtensionsTests
 {
-    private readonly WebApplicationFactory<SingleDocument.Program> _factory;
-
-    public SingleDocumentTests(WebApplicationFactory<SingleDocument.Program> factory)
-    {
-        _factory = factory;
-    }
-
     [Fact]
     public async Task AddSwaggerUIWithOneDocument()
     {
@@ -49,7 +45,18 @@ public class SingleDocumentTests : IClassFixture<WebApplicationFactory<SingleDoc
             </html>
             """;
 
-        var client = _factory.CreateClient();
+        var builder = WebApplication.CreateBuilder();
+        builder.WebHost.UseTestServer();
+        builder.Services.AddOpenApi();
+        builder.Services.AddSwaggerUI();
+
+        var app = builder.Build();
+        app.MapOpenApi();
+        app.MapSwaggerUI();
+
+        app.Start();
+        var client = app.GetTestClient();
+
         var actual = await client.GetStringAsync("swagger", TestContext.Current.CancellationToken);
 
         Assert.Equal(expected, actual);

@@ -22,7 +22,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\samples\MinimalApi\MinimalApi.csproj" />
     <ProjectReference Include="..\..\src\samples\Mvc\Mvc.csproj" />
-    <ProjectReference Include="..\..\src\samples\SingleDocument\SingleDocument.csproj" />
     <ProjectReference Include="..\..\src\samples\TwoDocuments\TwoDocuments.csproj" />
     <ProjectReference Include="..\..\src\SwaggerUI.OpenApi\SwaggerUI.OpenApi.csproj" />
     <ProjectReference Include="..\SingleDocumentConfig\SingleDocumentConfig.csproj" />
