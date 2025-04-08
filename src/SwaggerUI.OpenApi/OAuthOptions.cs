@@ -2,6 +2,9 @@
 
 namespace Microsoft.AspNetCore.Builder;
 
+/// <summary>
+/// https://github.com/swagger-api/swagger-ui/blob/HEAD/docs/usage/oauth2.md
+/// </summary>
 public sealed class OAuthOptions
 {
     /// <summary>
