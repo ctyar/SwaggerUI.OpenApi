@@ -245,14 +245,14 @@ public sealed class SwaggerUIOptions
     /// Set values for a Basic authorization scheme.
     /// </summary>
     [JsonIgnore]
-    public PreAuthorizeOptions? PreAuthorizeBasic { get; set; }
+    public PreAuthorizeBasicOptions? PreAuthorizeBasic { get; set; }
 
     /// <summary>
     /// Set values for an API key or Bearer authorization scheme. In case of OpenAPI 3.0 Bearer scheme, apiKeyValue must
     /// contain just the token itself without the Bearer prefix.
     /// </summary>
     [JsonIgnore]
-    public PreAuthorizeApiKey? PreAuthorizeApiKey { get; set; }
+    public PreAuthorizeApiKeyOptions? PreAuthorizeApiKey { get; set; }
 
     /// <summary>
     /// Set the Duende Identity Server clientId and scopes for the authorizatonCode flow with proof Key for Code Exchange.
@@ -351,7 +351,7 @@ public enum SubmitMethod
     Trace
 }
 
-public sealed class PreAuthorizeOptions
+public sealed class PreAuthorizeBasicOptions
 {
     public string AuthDefinitionKey { get; set; } = null!;
 
@@ -360,7 +360,7 @@ public sealed class PreAuthorizeOptions
     public string Password { get; set; } = null!;
 }
 
-public sealed class PreAuthorizeApiKey
+public sealed class PreAuthorizeApiKeyOptions
 {
     public string AuthDefinitionKey { get; set; } = null!;
 

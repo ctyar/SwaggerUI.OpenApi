@@ -860,4 +860,45 @@ public class SwaggerUIOptionsTests
 
         Assert.Contains(expected, actual);
     }
+
+    [Fact]
+    public void PreAuthorizeBasic()
+    {
+        var expected =
+            """
+            ui.onComplete = function() { ui.preauthorizeBasic('myAuthDefinitionKey', 'myUsername', 'myPassword') };
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            PreAuthorizeBasic = new PreAuthorizeBasicOptions
+            {
+                AuthDefinitionKey = "myAuthDefinitionKey",
+                Username = "myUsername",
+                Password = "myPassword",
+            }
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void PreAuthorizeApiKey()
+    {
+        var expected =
+            """
+            ui.onComplete = function() { ui.preauthorizeApiKey('myAuthDefinitionKey', 'myApiKey') };
+            """;
+
+        var actual = Endpoints.GetIndexCore("My Document", new SwaggerUIOptions
+        {
+            PreAuthorizeApiKey = new PreAuthorizeApiKeyOptions
+            {
+                AuthDefinitionKey = "myAuthDefinitionKey",
+                ApiKey = "myApiKey",
+            }
+        }, []);
+
+        Assert.Contains(expected, actual);
+    }
 }

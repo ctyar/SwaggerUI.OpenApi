@@ -127,37 +127,26 @@ internal static class Endpoints
 
         if (swaggerUIOptions.OAuthOptions is not null)
         {
-            var oauthValue = $"""
-                var oauthConfigObject = JSON.parse('{JsonSerializer.Serialize(swaggerUIOptions.OAuthOptions, JsonSerializerOptions)}');
-                ui.initOAuth(oauthConfigObject);
-                """;
+            var oauthValue =
+                $"var oauthConfigObject = JSON.parse('{JsonSerializer.Serialize(swaggerUIOptions.OAuthOptions, JsonSerializerOptions)}');";
 
             AppendOption(result, oauthValue);
+            AppendOption(result, "ui.initOAuth(oauthConfigObject);");
         }
 
         if (swaggerUIOptions.PreAuthorizeBasic is not null)
         {
-            var preAuthorizeValue = $$"""
-                ui.onComplete = function() { ui.preauthorizeBasic(
-                  "{{swaggerUIOptions.PreAuthorizeBasic.AuthDefinitionKey}}",
-                  "{{swaggerUIOptions.PreAuthorizeBasic.Username}}",
-                  "{{swaggerUIOptions.PreAuthorizeBasic.Password}}");
-                }
-                """;
-
-            AppendOption(result, preAuthorizeValue);
+            AppendOption(result, $"ui.onComplete = function() {{ ui.preauthorizeBasic(" +
+                $"'{swaggerUIOptions.PreAuthorizeBasic.AuthDefinitionKey}', " +
+                $"'{swaggerUIOptions.PreAuthorizeBasic.Username}', " +
+                $"'{swaggerUIOptions.PreAuthorizeBasic.Password}') }};");
         }
 
         if (swaggerUIOptions.PreAuthorizeApiKey is not null)
         {
-            var preAuthorizeApiKeyValue = $$"""
-                ui.onComplete = function() { ui.preauthorizeApiKey(
-                  "{{swaggerUIOptions.PreAuthorizeApiKey.AuthDefinitionKey}}",
-                  "{{swaggerUIOptions.PreAuthorizeApiKey.ApiKey}}");
-                }
-                """;
-
-            AppendOption(result, preAuthorizeApiKeyValue);
+            AppendOption(result, $"ui.onComplete = function() {{ ui.preauthorizeApiKey(" +
+                $"'{swaggerUIOptions.PreAuthorizeApiKey.AuthDefinitionKey}', " +
+                $"'{swaggerUIOptions.PreAuthorizeApiKey.ApiKey}') }};");
         }
 
         result.Append(GetIndexEnd());
