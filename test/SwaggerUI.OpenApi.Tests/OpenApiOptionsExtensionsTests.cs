@@ -18,6 +18,11 @@ public class OpenApiOptionsExtensionsTests
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
               },
+              "servers": [
+                {
+                  "url": "http://localhost/"
+                }
+              ],
               "paths": { },
               "components": {
                 "securitySchemes": {
@@ -72,6 +77,11 @@ public class OpenApiOptionsExtensionsTests
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
               },
+              "servers": [
+                {
+                  "url": "http://localhost/"
+                }
+              ],
               "paths": {
                 "/admin": {
                   "get": {
@@ -164,6 +174,11 @@ public class OpenApiOptionsExtensionsTests
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
               },
+              "servers": [
+                {
+                  "url": "http://localhost/"
+                }
+              ],
               "paths": {
                 "/profile": {
                   "get": {
@@ -276,6 +291,11 @@ public class OpenApiOptionsExtensionsTests
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
               },
+              "servers": [
+                {
+                  "url": "http://localhost/"
+                }
+              ],
               "paths": {
                 "/admin": {
                   "get": {
@@ -358,6 +378,11 @@ public class OpenApiOptionsExtensionsTests
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
               },
+              "servers": [
+                {
+                  "url": "http://localhost/"
+                }
+              ],
               "paths": { },
               "components": {
                 "securitySchemes": {
@@ -413,6 +438,11 @@ public class OpenApiOptionsExtensionsTests
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
               },
+              "servers": [
+                {
+                  "url": "http://localhost/"
+                }
+              ],
               "paths": { },
               "components": {
                 "securitySchemes": {
