@@ -48,7 +48,7 @@ You can check the [samples](/src/samples) directory for complete working example
 
 ### More snippet
 Adds PowerShell and CMD cURL to the request snippet by default
-![Request snippet](https://github.com/ctyar/SwaggerUI.OpenApi/assets/1432648/34677d70-0720-4853-98d3-efa793f10b07)
+![Request snippet](https://raw.githubusercontent.com/ctyar/SwaggerUI.OpenApi/refs/heads/main/doc/images/snippet.png)
 
 ### Styles
 Easily change syntax highlighting style
@@ -61,9 +61,9 @@ builder.Services.AddSwaggerUI(o =>
     };
 });
 ```
-![Agate](https://github.com/ctyar/SwaggerUI.OpenApi/assets/1432648/7b8b0739-c85f-4ec9-b82b-b269b52cb373)
-![Arta](https://github.com/ctyar/SwaggerUI.OpenApi/assets/1432648/bd2289d4-d21b-4214-a707-8c6852e7f663)
-![Obsidian](https://github.com/ctyar/SwaggerUI.OpenApi/assets/1432648/0e9e39f6-c4b7-4599-ad13-5c4b70fbdc13)
+![Agate](https://raw.githubusercontent.com/ctyar/SwaggerUI.OpenApi/refs/heads/main/doc/images/agate.png)
+![Arta](https://raw.githubusercontent.com/ctyar/SwaggerUI.OpenApi/refs/heads/main/doc/images/arta.png)
+![Obsidian](https://raw.githubusercontent.com/ctyar/SwaggerUI.OpenApi/refs/heads/main/doc/images/obsidian.png)
 
 ### Parameter validation
 Displays the common validations in the parameters form by default
@@ -73,7 +73,7 @@ app.MapGet("/products",
     [MinLength(3)][MaxLength(50)] string name,
     [RegularExpression("\\d\\d-\\d\\d")] string code) => id)
 ```
-![Validation](https://github.com/ctyar/SwaggerUI.OpenApi/assets/1432648/4d6e16a2-52d9-4265-9054-cde9542ed820)
+![Validation](https://raw.githubusercontent.com/ctyar/SwaggerUI.OpenApi/refs/heads/main/doc/images/validation.png)
 
 ### Authorization persistence
 Persists authorization data by default and it would not be lost on browser close or refresh so you don't have to authenticate everytime.
