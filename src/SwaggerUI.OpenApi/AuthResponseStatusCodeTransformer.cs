@@ -7,7 +7,7 @@ using Microsoft.OpenApi.Models;
 
 namespace SwaggerUI;
 
-internal class AuthResponseStatusCodeTransformer : IOpenApiOperationTransformer
+internal sealed class AuthResponseStatusCodeTransformer : IOpenApiOperationTransformer
 {
     public Task TransformAsync(OpenApiOperation operation, OpenApiOperationTransformerContext context,
         CancellationToken _)

@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.OpenApi;
 using Microsoft.Extensions.DependencyInjection;
 using SwaggerUI;
 
@@ -55,6 +56,13 @@ public static class SwaggerUIServiceCollectionExtensions
         services.Configure<SwaggerUIOptions>(documentName, options =>
         {
             configureOptions(options);
+        });
+
+        services.Configure<OpenApiOptions>(documentName, options =>
+        {
+            options.AddOperationTransformer<AuthResponseStatusCodeTransformer>();
+
+            options.AddSchemaTransformer<DataTypeSchemaTransformer>();
         });
 
         return services;

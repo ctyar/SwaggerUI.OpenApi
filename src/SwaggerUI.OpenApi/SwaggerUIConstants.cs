@@ -1,6 +1,6 @@
 ﻿namespace SwaggerUI;
 
-internal class SwaggerUIConstants
+internal static class SwaggerUIConstants
 {
     // Should match the:
     // https://github.com/dotnet/aspnetcore/blob/05744cae5f4efb681b934cd117bdd0634c0659ad/src/OpenApi/src/Services/OpenApiConstants.cs#L8
