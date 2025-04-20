@@ -1,6 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <RootNamespace>SwaggerUI</RootNamespace>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  
+  <PropertyGroup>
     <PackageId>SwaggerUI.OpenApi.Versioning</PackageId>
     <PackageTags>openapi;swagger;swaggerui;discovery;webapi;aspnet;aspnetcore;auth;authentication;oauth2;auth0;identityserver</PackageTags>
     <Title>SwaggerUI.OpenApi.Versioning</Title>
