@@ -88,7 +88,13 @@ Persists authorization data by default and it would not be lost on browser close
 
 ✅ Implement all Swagger UI options
 
-⏳ Improve test coverage
+✅ Improve test coverage
+
+⏳ Full data type support
+
+⏳ .NET 10 and OpenAPI v3.1.1
+
+⏳ Support for Asp.Versioning.Http package
 
 ## Acknowledgement
 
