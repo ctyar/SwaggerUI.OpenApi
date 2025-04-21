@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Mvc;
 
 public class SampleRequest
@@ -29,8 +31,6 @@ public class SampleRequest
     public IEnumerable<int> IEnumerable { get; set; } = null!;
     public Dictionary<int, string> Dictionary { get; set; } = null!;
     public Guid Guid { get; set; }
-    public Uri Uri { get; set; } = null!;
-    //[EmailAddress]
-    //public string Email { get; set; } = null!; // TODO fix
-    //public string IPAddress { get; set; } = null!; // TODO Fix
+    [EmailAddress]
+    public string Email { get; set; } = null!;
 }
