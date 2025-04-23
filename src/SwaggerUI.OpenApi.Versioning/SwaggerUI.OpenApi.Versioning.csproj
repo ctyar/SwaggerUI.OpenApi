@@ -17,17 +17,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!--<PackageReference Include="SwaggerUI.OpenApi" Version="1.1.0" />-->
+    <PackageReference Include="SwaggerUI.OpenApi" />
     <PackageReference Include="Asp.Versioning.Http" />
     <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" />
     <PackageReference Include="Nerdbank.GitVersioning">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\SwaggerUI.OpenApi\SwaggerUI.OpenApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>
