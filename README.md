@@ -90,7 +90,7 @@ Persists authorization data by default and it would not be lost on browser close
 
 ✅ Improve test coverage
 
-⏳ Full data type support
+✅ Full data type support (TimeOnly, TimeSpan, Email)
 
 ⏳ .NET 10 and OpenAPI v3.1.1
 
