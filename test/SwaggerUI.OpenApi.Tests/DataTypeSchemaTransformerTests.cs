@@ -514,7 +514,7 @@ public class DataTypeSchemaTransformerTests
         app.MapOpenApi();
         app.MapSwaggerUI();
 
-        app.MapPost("todos", ([EmailAddress]string email) => Results.Ok);
+        app.MapPost("todos", ([EmailAddress] string email) => Results.Ok);
 
         app.Start();
         var client = app.GetTestClient();
