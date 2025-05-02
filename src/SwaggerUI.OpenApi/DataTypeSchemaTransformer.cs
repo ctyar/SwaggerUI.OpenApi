@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
@@ -25,6 +26,17 @@ internal sealed class DataTypeSchemaTransformer : IOpenApiSchemaTransformer
                 TimeProvider.GetLocalNow().ToString("HH:mm:ss", CultureInfo.InvariantCulture));
         }
 
+        // This only works for parameters without a class
+        if (context.ParameterDescription?.ParameterDescriptor is IParameterInfoParameterDescriptor descriptor)
+        {
+            var emailAddressAttribute = descriptor.ParameterInfo.GetCustomAttribute<EmailAddressAttribute>(true);
+            if (emailAddressAttribute is not null)
+            {
+                schema.Format = "email";
+            }
+        }
+
+        // This only works for properties inside a class
         var emailProperties = context.JsonTypeInfo.Type.GetProperties()
             .Where(p => p.GetCustomAttribute<EmailAddressAttribute>(true) is not null)
             .Select(prop => prop.GetCustomAttribute<JsonPropertyNameAttribute>()?.Name ??
