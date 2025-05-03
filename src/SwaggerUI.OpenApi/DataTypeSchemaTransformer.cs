@@ -26,17 +26,22 @@ internal sealed class DataTypeSchemaTransformer : IOpenApiSchemaTransformer
                 TimeProvider.GetLocalNow().ToString("HH:mm:ss", CultureInfo.InvariantCulture));
         }
 
-        // This only works for parameters without a class
+        // This only works for parameters without a class like:
+        // app.MapPost("todos", ([EmailAddress] string email) => Results.Ok);
         if (context.ParameterDescription?.ParameterDescriptor is IParameterInfoParameterDescriptor descriptor)
         {
-            var emailAddressAttribute = descriptor.ParameterInfo.GetCustomAttribute<EmailAddressAttribute>(true);
+            var emailAddressAttribute = descriptor.ParameterInfo
+                .GetCustomAttribute<EmailAddressAttribute>(inherit: true);
+
             if (emailAddressAttribute is not null)
             {
                 schema.Format = "email";
             }
         }
 
-        // This only works for properties inside a class
+        // This only works for properties inside a class like:
+        // app.MapPost("todos", (Request req) => Results.Ok);
+        // class Request { [EmailAddress] public string Email { get; set; } }
         var emailProperties = context.JsonTypeInfo.Type.GetProperties()
             .Where(p => p.GetCustomAttribute<EmailAddressAttribute>(true) is not null)
             .Select(prop => prop.GetCustomAttribute<JsonPropertyNameAttribute>()?.Name ??
