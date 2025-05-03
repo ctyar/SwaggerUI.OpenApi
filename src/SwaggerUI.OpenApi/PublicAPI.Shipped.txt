@@ -1,0 +1,168 @@
+﻿#nullable enable
+Microsoft.AspNetCore.Builder.DocExpansion
+Microsoft.AspNetCore.Builder.DocExpansion.Full = 1 -> Microsoft.AspNetCore.Builder.DocExpansion
+Microsoft.AspNetCore.Builder.DocExpansion.List = 0 -> Microsoft.AspNetCore.Builder.DocExpansion
+Microsoft.AspNetCore.Builder.DocExpansion.None = 2 -> Microsoft.AspNetCore.Builder.DocExpansion
+Microsoft.AspNetCore.Builder.ModelRendering
+Microsoft.AspNetCore.Builder.ModelRendering.Example = 0 -> Microsoft.AspNetCore.Builder.ModelRendering
+Microsoft.AspNetCore.Builder.ModelRendering.Model = 1 -> Microsoft.AspNetCore.Builder.ModelRendering
+Microsoft.AspNetCore.Builder.OAuthOptions
+Microsoft.AspNetCore.Builder.OAuthOptions.AdditionalQueryStringParams.get -> System.Collections.Generic.Dictionary<string!, string!>?
+Microsoft.AspNetCore.Builder.OAuthOptions.AdditionalQueryStringParams.set -> void
+Microsoft.AspNetCore.Builder.OAuthOptions.AppName.get -> string?
+Microsoft.AspNetCore.Builder.OAuthOptions.AppName.set -> void
+Microsoft.AspNetCore.Builder.OAuthOptions.ClientId.get -> string?
+Microsoft.AspNetCore.Builder.OAuthOptions.ClientId.set -> void
+Microsoft.AspNetCore.Builder.OAuthOptions.ClientSecret.get -> string?
+Microsoft.AspNetCore.Builder.OAuthOptions.ClientSecret.set -> void
+Microsoft.AspNetCore.Builder.OAuthOptions.OAuthOptions() -> void
+Microsoft.AspNetCore.Builder.OAuthOptions.Realm.get -> string?
+Microsoft.AspNetCore.Builder.OAuthOptions.Realm.set -> void
+Microsoft.AspNetCore.Builder.OAuthOptions.Scopes.get -> System.Collections.Generic.IEnumerable<string!>?
+Microsoft.AspNetCore.Builder.OAuthOptions.Scopes.set -> void
+Microsoft.AspNetCore.Builder.OAuthOptions.ScopeSeparator.get -> string?
+Microsoft.AspNetCore.Builder.OAuthOptions.ScopeSeparator.set -> void
+Microsoft.AspNetCore.Builder.OAuthOptions.UseBasicAuthenticationWithAccessCodeGrant.get -> bool?
+Microsoft.AspNetCore.Builder.OAuthOptions.UseBasicAuthenticationWithAccessCodeGrant.set -> void
+Microsoft.AspNetCore.Builder.OAuthOptions.UsePkceWithAuthorizationCodeGrant.get -> bool?
+Microsoft.AspNetCore.Builder.OAuthOptions.UsePkceWithAuthorizationCodeGrant.set -> void
+Microsoft.AspNetCore.Builder.PreAuthorizeApiKeyOptions
+Microsoft.AspNetCore.Builder.PreAuthorizeApiKeyOptions.ApiKey.get -> string!
+Microsoft.AspNetCore.Builder.PreAuthorizeApiKeyOptions.ApiKey.set -> void
+Microsoft.AspNetCore.Builder.PreAuthorizeApiKeyOptions.AuthDefinitionKey.get -> string!
+Microsoft.AspNetCore.Builder.PreAuthorizeApiKeyOptions.AuthDefinitionKey.set -> void
+Microsoft.AspNetCore.Builder.PreAuthorizeApiKeyOptions.PreAuthorizeApiKeyOptions() -> void
+Microsoft.AspNetCore.Builder.PreAuthorizeBasicOptions
+Microsoft.AspNetCore.Builder.PreAuthorizeBasicOptions.AuthDefinitionKey.get -> string!
+Microsoft.AspNetCore.Builder.PreAuthorizeBasicOptions.AuthDefinitionKey.set -> void
+Microsoft.AspNetCore.Builder.PreAuthorizeBasicOptions.Password.get -> string!
+Microsoft.AspNetCore.Builder.PreAuthorizeBasicOptions.Password.set -> void
+Microsoft.AspNetCore.Builder.PreAuthorizeBasicOptions.PreAuthorizeBasicOptions() -> void
+Microsoft.AspNetCore.Builder.PreAuthorizeBasicOptions.Username.get -> string!
+Microsoft.AspNetCore.Builder.PreAuthorizeBasicOptions.Username.set -> void
+Microsoft.AspNetCore.Builder.SubmitMethod
+Microsoft.AspNetCore.Builder.SubmitMethod.Delete = 3 -> Microsoft.AspNetCore.Builder.SubmitMethod
+Microsoft.AspNetCore.Builder.SubmitMethod.Get = 0 -> Microsoft.AspNetCore.Builder.SubmitMethod
+Microsoft.AspNetCore.Builder.SubmitMethod.Head = 5 -> Microsoft.AspNetCore.Builder.SubmitMethod
+Microsoft.AspNetCore.Builder.SubmitMethod.Options = 4 -> Microsoft.AspNetCore.Builder.SubmitMethod
+Microsoft.AspNetCore.Builder.SubmitMethod.Patch = 6 -> Microsoft.AspNetCore.Builder.SubmitMethod
+Microsoft.AspNetCore.Builder.SubmitMethod.Post = 2 -> Microsoft.AspNetCore.Builder.SubmitMethod
+Microsoft.AspNetCore.Builder.SubmitMethod.Put = 1 -> Microsoft.AspNetCore.Builder.SubmitMethod
+Microsoft.AspNetCore.Builder.SubmitMethod.Trace = 7 -> Microsoft.AspNetCore.Builder.SubmitMethod
+Microsoft.AspNetCore.Builder.SwaggerUIEndpointRouteBuilderExtensions
+Microsoft.AspNetCore.Builder.SwaggerUIOptions
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.AddAuth0(string! clientId, params string![]! scopes) -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.AddIdentityServer(string! clientId, params string![]! scopes) -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.AdditionalItems.get -> System.Collections.Generic.Dictionary<string!, object!>!
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.AdditionalItems.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.AddOAuth2(string! clientId, params string![]! scopes) -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ConfigUrl.get -> string?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ConfigUrl.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DeepLinking.get -> bool?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DeepLinking.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DefaultModelExpandDepth.get -> int?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DefaultModelExpandDepth.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DefaultModelRendering.get -> Microsoft.AspNetCore.Builder.ModelRendering?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DefaultModelRendering.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DefaultModelsExpandDepth.get -> int?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DefaultModelsExpandDepth.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DisplayOperationId.get -> bool?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DisplayOperationId.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DisplayRequestDuration.get -> bool?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DisplayRequestDuration.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DocExpansion.get -> Microsoft.AspNetCore.Builder.DocExpansion?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.DocExpansion.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Filter.get -> string?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Filter.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Layout.get -> string!
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Layout.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.MaxDisplayedTags.get -> int?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.MaxDisplayedTags.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ModelPropertyMacro.get -> string?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ModelPropertyMacro.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.OAuth2RedirectUrl.get -> string?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.OAuth2RedirectUrl.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.OAuthOptions.get -> Microsoft.AspNetCore.Builder.OAuthOptions?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.OAuthOptions.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.OnComplete.get -> string?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.OnComplete.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.OperationsSorter.get -> string?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.OperationsSorter.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ParameterMacro.get -> string?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ParameterMacro.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.PersistAuthorization.get -> bool?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.PersistAuthorization.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Plugins.get -> System.Collections.Generic.IEnumerable<string!>?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Plugins.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.PreAuthorizeApiKey.get -> Microsoft.AspNetCore.Builder.PreAuthorizeApiKeyOptions?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.PreAuthorizeApiKey.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.PreAuthorizeBasic.get -> Microsoft.AspNetCore.Builder.PreAuthorizeBasicOptions?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.PreAuthorizeBasic.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Presets.get -> System.Collections.Generic.IEnumerable<string!>!
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Presets.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.PrimaryUrl.get -> string?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.PrimaryUrl.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.QueryConfigEnabled.get -> bool?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.QueryConfigEnabled.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.RequestCurlOptions.get -> System.Collections.Generic.IEnumerable<string!>?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.RequestCurlOptions.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.RequestInterceptor.get -> string?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.RequestInterceptor.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.RequestSnippets.get -> string?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.RequestSnippets.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.RequestSnippetsEnabled.get -> bool?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.RequestSnippetsEnabled.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ResponseInterceptor.get -> string?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ResponseInterceptor.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ShowCommonExtensions.get -> bool?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ShowCommonExtensions.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ShowExtensions.get -> bool?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ShowExtensions.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ShowMutatedRequest.get -> bool?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ShowMutatedRequest.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.SupportedSubmitMethods.get -> System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Builder.SubmitMethod>!
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.SupportedSubmitMethods.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.SwaggerUIOptions() -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.SyntaxHighlight.get -> Microsoft.AspNetCore.Builder.SyntaxHighlightOptions?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.SyntaxHighlight.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.TagsSorter.get -> string?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.TagsSorter.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.TryItOutEnabled.get -> bool?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.TryItOutEnabled.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Urls.get -> System.Collections.Generic.IEnumerable<Microsoft.AspNetCore.Builder.UrlDescriptor!>!
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Urls.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ValidatorUrl.get -> string?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.ValidatorUrl.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.WithCredentials.get -> bool?
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.WithCredentials.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIServiceCollectionExtensions
+Microsoft.AspNetCore.Builder.SyntaxHighlightOptions
+Microsoft.AspNetCore.Builder.SyntaxHighlightOptions.Activated.get -> bool?
+Microsoft.AspNetCore.Builder.SyntaxHighlightOptions.Activated.set -> void
+Microsoft.AspNetCore.Builder.SyntaxHighlightOptions.SyntaxHighlightOptions() -> void
+Microsoft.AspNetCore.Builder.SyntaxHighlightOptions.Theme.get -> Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType?
+Microsoft.AspNetCore.Builder.SyntaxHighlightOptions.Theme.set -> void
+Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType
+Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType.Agate = 0 -> Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType
+Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType.Arta = 1 -> Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType
+Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType.Idea = 6 -> Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType
+Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType.Monokai = 2 -> Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType
+Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType.Nord = 3 -> Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType
+Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType.Obsidian = 4 -> Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType
+Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType.TomorrowNight = 5 -> Microsoft.AspNetCore.Builder.SyntaxHighlightThemeType
+Microsoft.AspNetCore.Builder.UrlDescriptor
+Microsoft.AspNetCore.Builder.UrlDescriptor.Name.get -> string!
+Microsoft.AspNetCore.Builder.UrlDescriptor.Name.set -> void
+Microsoft.AspNetCore.Builder.UrlDescriptor.Url.get -> string!
+Microsoft.AspNetCore.Builder.UrlDescriptor.Url.set -> void
+Microsoft.AspNetCore.Builder.UrlDescriptor.UrlDescriptor() -> void
+Microsoft.AspNetCore.OpenApi.OpenApiOptionsExtensions
+static Microsoft.AspNetCore.Builder.SwaggerUIEndpointRouteBuilderExtensions.MapSwaggerUI(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! routeBuilder) -> Microsoft.AspNetCore.Routing.RouteGroupBuilder!
+static Microsoft.AspNetCore.Builder.SwaggerUIEndpointRouteBuilderExtensions.MapSwaggerUIFromGroup(Microsoft.AspNetCore.Routing.RouteGroupBuilder! group) -> Microsoft.AspNetCore.Routing.RouteGroupBuilder!
+static Microsoft.AspNetCore.Builder.SwaggerUIServiceCollectionExtensions.AddSwaggerUI(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Microsoft.AspNetCore.Builder.SwaggerUIServiceCollectionExtensions.AddSwaggerUI(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, string! documentName) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Microsoft.AspNetCore.Builder.SwaggerUIServiceCollectionExtensions.AddSwaggerUI(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, string! documentName, System.Action<Microsoft.AspNetCore.Builder.SwaggerUIOptions!>! configureOptions) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Microsoft.AspNetCore.Builder.SwaggerUIServiceCollectionExtensions.AddSwaggerUI(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, System.Action<Microsoft.AspNetCore.Builder.SwaggerUIOptions!>! configureOptions) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Microsoft.AspNetCore.OpenApi.OpenApiOptionsExtensions.AddAuth0(this Microsoft.AspNetCore.OpenApi.OpenApiOptions! openApiOptions, string! authority, string! audience, string![]! scopes) -> void
+static Microsoft.AspNetCore.OpenApi.OpenApiOptionsExtensions.AddIdentityServer(this Microsoft.AspNetCore.OpenApi.OpenApiOptions! openApiOptions, string! authority, string![]! scopes) -> void
+static Microsoft.AspNetCore.OpenApi.OpenApiOptionsExtensions.AddOAuth2(this Microsoft.AspNetCore.OpenApi.OpenApiOptions! openApiOptions, System.Uri! authorizationUrl, System.Uri! tokenUrl, string![]! scopes) -> void

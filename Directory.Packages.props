@@ -19,5 +19,6 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyModel" Version="9.0.4" />
     <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="9.0.4" />
     <PackageVersion Include="Microsoft.Extensions.TimeProvider.Testing" Version="9.4.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="3.3.4" />
   </ItemGroup>
 </Project>
