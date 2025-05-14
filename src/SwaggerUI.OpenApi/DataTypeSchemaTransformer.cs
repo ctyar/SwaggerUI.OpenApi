@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,8 +23,11 @@ internal sealed class DataTypeSchemaTransformer : IOpenApiSchemaTransformer
         if (context.JsonTypeInfo.Type == typeof(TimeOnly) || context.JsonTypeInfo.Type == typeof(TimeOnly?) ||
             context.JsonTypeInfo.Type == typeof(TimeSpan) || context.JsonTypeInfo.Type == typeof(TimeSpan?))
         {
-            schema.Example = new OpenApiString(
-                TimeProvider.GetLocalNow().ToString("HH:mm:ss", CultureInfo.InvariantCulture));
+#if NET10_0_OR_GREATER
+            schema.Example = JsonValue.Create(TimeProvider.GetLocalNow().ToString("HH:mm:ss", CultureInfo.InvariantCulture));
+#else
+            schema.Example = new OpenApiString(TimeProvider.GetLocalNow().ToString("HH:mm:ss", CultureInfo.InvariantCulture));
+#endif
         }
 
         // This only works for parameters without a class like:
@@ -51,7 +55,8 @@ internal sealed class DataTypeSchemaTransformer : IOpenApiSchemaTransformer
 
         foreach (var emailProperty in emailProperties)
         {
-            schema.Properties[emailProperty].Format = "email";
+            // TODO: Fix
+            //schema.Properties[emailProperty].Format = "email";
         }
 
         return Task.CompletedTask;
