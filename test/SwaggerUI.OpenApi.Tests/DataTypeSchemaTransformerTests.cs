@@ -13,9 +13,9 @@ public class DataTypeSchemaTransformerTests
     [Fact]
     public async Task TimeOnlyTransformerTest()
     {
-        var expected = """
+        var expected = $$$"""
             {
-              "openapi": "3.0.1",
+              "openapi": "{{{Constants.OpenApiVersion}}}",
               "info": {
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
@@ -98,9 +98,9 @@ public class DataTypeSchemaTransformerTests
     [Fact]
     public async Task NullableTimeOnlyTransformerTest()
     {
-        var expected = """
+        var expected = $$$"""
             {
-              "openapi": "3.0.1",
+              "openapi": "{{{Constants.OpenApiVersion}}}",
               "info": {
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
@@ -182,9 +182,9 @@ public class DataTypeSchemaTransformerTests
     [Fact]
     public async Task TimeSpanTransformerTest()
     {
-        var expected = """
+        var expected = $$$"""
             {
-              "openapi": "3.0.1",
+              "openapi": "{{{Constants.OpenApiVersion}}}",
               "info": {
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
@@ -267,9 +267,9 @@ public class DataTypeSchemaTransformerTests
     [Fact]
     public async Task NullableTimeSpanTransformerTest()
     {
-        var expected = """
+        var expected = $$$"""
             {
-              "openapi": "3.0.1",
+              "openapi": "{{{Constants.OpenApiVersion}}}",
               "info": {
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
@@ -351,9 +351,9 @@ public class DataTypeSchemaTransformerTests
     [Fact]
     public async Task EmailInClassTransformerTest()
     {
-        var expected = """
+        var expected = $$$"""
             {
-              "openapi": "3.0.1",
+              "openapi": "{{{Constants.OpenApiVersion}}}",
               "info": {
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
@@ -443,9 +443,9 @@ public class DataTypeSchemaTransformerTests
     [Fact]
     public async Task EmailTransformerTest()
     {
-        var expected = """
+        var expected = $$$"""
             {
-              "openapi": "3.0.1",
+              "openapi": "{{{Constants.OpenApiVersion}}}",
               "info": {
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"

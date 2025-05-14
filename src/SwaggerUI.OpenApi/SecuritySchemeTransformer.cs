@@ -76,7 +76,7 @@ internal sealed class SecuritySchemeTransformer : IOpenApiDocumentTransformer
                     {
                         {
 #if NET10_0_OR_GREATER
-                            new OpenApiSecuritySchemeReference(SchemeId),
+                            new OpenApiSecuritySchemeReference(SchemeId, document),
 #else
                             new OpenApiSecurityScheme
                             {

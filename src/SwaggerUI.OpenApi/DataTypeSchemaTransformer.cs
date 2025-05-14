@@ -55,8 +55,11 @@ internal sealed class DataTypeSchemaTransformer : IOpenApiSchemaTransformer
 
         foreach (var emailProperty in emailProperties)
         {
+#if NET10_0_OR_GREATER
             // TODO: Fix
-            //schema.Properties[emailProperty].Format = "email";
+#else
+            schema.Properties[emailProperty].Format = "email";
+#endif
         }
 
         return Task.CompletedTask;

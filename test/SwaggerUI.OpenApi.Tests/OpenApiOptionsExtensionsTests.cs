@@ -11,9 +11,9 @@ public class OpenApiOptionsExtensionsTests
     [Fact]
     public async Task AddOAuth2()
     {
-        var expected = """
+        var expected = $$$"""
             {
-              "openapi": "3.0.1",
+              "openapi": "{{{Constants.OpenApiVersion}}}",
               "info": {
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
@@ -70,9 +70,9 @@ public class OpenApiOptionsExtensionsTests
     [Fact]
     public async Task AddOAuth2WithProtectedEndpoint()
     {
-        var expected = """
+        var expected = $$$"""
             {
-              "openapi": "3.0.1",
+              "openapi": "{{{Constants.OpenApiVersion}}}",
               "info": {
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
@@ -165,11 +165,11 @@ public class OpenApiOptionsExtensionsTests
     }
 
     [Fact]
-    public async Task AddOAuth2WithMixedEnpoints()
+    public async Task AddOAuth2WithMixedEndpoints()
     {
-        var expected = """
+        var expected = $$$"""
             {
-              "openapi": "3.0.1",
+              "openapi": "{{{Constants.OpenApiVersion}}}",
               "info": {
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
@@ -284,9 +284,9 @@ public class OpenApiOptionsExtensionsTests
     [Fact]
     public async Task AddOAuth2WithProtectedEndpointAndAllowAnonymous()
     {
-        var expected = """
+        var expected = $$$"""
             {
-              "openapi": "3.0.1",
+              "openapi": "{{{Constants.OpenApiVersion}}}",
               "info": {
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
@@ -371,9 +371,9 @@ public class OpenApiOptionsExtensionsTests
     [Fact]
     public async Task AddIdentityServer()
     {
-        var expected = """
+        var expected = $$$"""
             {
-              "openapi": "3.0.1",
+              "openapi": "{{{Constants.OpenApiVersion}}}",
               "info": {
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
@@ -431,9 +431,9 @@ public class OpenApiOptionsExtensionsTests
     [Fact]
     public async Task AddAuth0()
     {
-        var expected = """
+        var expected = $$$"""
             {
-              "openapi": "3.0.1",
+              "openapi": "{{{Constants.OpenApiVersion}}}",
               "info": {
                 "title": "SwaggerUI.OpenApi.Tests | v1",
                 "version": "1.0.0"
