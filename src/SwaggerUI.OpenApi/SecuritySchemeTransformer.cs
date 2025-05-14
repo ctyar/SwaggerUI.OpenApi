@@ -5,6 +5,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi.Models;
+#if NET10_0_OR_GREATER
+using Microsoft.OpenApi.Models.Interfaces;
+using Microsoft.OpenApi.Models.References;
+#endif
 
 namespace SwaggerUI;
 
@@ -26,19 +30,22 @@ internal sealed class SecuritySchemeTransformer : IOpenApiDocumentTransformer
     public Task TransformAsync(OpenApiDocument document, OpenApiDocumentTransformerContext context,
         CancellationToken cancellationToken)
     {
-        var schemes = new Dictionary<string, OpenApiSecurityScheme>
+#if NET10_0_OR_GREATER
+        var schemes = new Dictionary<string, IOpenApiSecurityScheme>();
+#else
+        var schemes = new Dictionary<string, OpenApiSecurityScheme>();
+#endif
+
+        schemes[SchemeId] = new OpenApiSecurityScheme
         {
-            [SchemeId] = new OpenApiSecurityScheme
+            Type = SecuritySchemeType.OAuth2,
+            Flows = new OpenApiOAuthFlows
             {
-                Type = SecuritySchemeType.OAuth2,
-                Flows = new OpenApiOAuthFlows
+                AuthorizationCode = new OpenApiOAuthFlow
                 {
-                    AuthorizationCode = new OpenApiOAuthFlow
-                    {
-                        AuthorizationUrl = _authorizationUrl,
-                        TokenUrl = _tokenUrl,
-                        Scopes = _scopes?.ToDictionary(item => item, item => item),
-                    }
+                    AuthorizationUrl = _authorizationUrl,
+                    TokenUrl = _tokenUrl,
+                    Scopes = _scopes?.ToDictionary(item => item, item => item),
                 }
             }
         };
@@ -46,24 +53,44 @@ internal sealed class SecuritySchemeTransformer : IOpenApiDocumentTransformer
         document.Components ??= new OpenApiComponents();
         document.Components.SecuritySchemes = schemes;
 
-        foreach (var operation in document.Paths.Values.SelectMany(path => path.Operations))
+        foreach (var value in document.Paths.Values)
         {
-            if (operation.Value.Responses.Any(r => r.Key == "401"))
+            if (value.Operations is null)
             {
-                operation.Value.Security.Add(new OpenApiSecurityRequirement
+                continue;
+            }
+
+            foreach (var operation in value.Operations)
+            {
+                if (operation.Value?.Responses is null)
                 {
+                    continue;
+                }
+
+                if (operation.Value.Responses.Any(r => r.Key == "401"))
+                {
+                    operation.Value.Security ??= [];
+
+
+                    operation.Value.Security.Add(new OpenApiSecurityRequirement
                     {
-                        new OpenApiSecurityScheme
                         {
-                            Reference = new OpenApiReference
+#if NET10_0_OR_GREATER
+                            new OpenApiSecuritySchemeReference(SchemeId),
+#else
+                            new OpenApiSecurityScheme
                             {
-                                Id = SchemeId,
-                                Type = ReferenceType.SecurityScheme
-                            }
-                        },
-                        Array.Empty<string>()
-                    }
-                });
+                                Reference = new OpenApiReference
+                                {
+                                    Id = SchemeId,
+                                    Type = ReferenceType.SecurityScheme
+                                }
+                            },
+#endif
+                            []
+                        }
+                    });
+                }
             }
         }
 

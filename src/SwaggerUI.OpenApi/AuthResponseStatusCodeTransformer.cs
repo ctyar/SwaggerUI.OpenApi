@@ -22,6 +22,8 @@ internal sealed class AuthResponseStatusCodeTransformer : IOpenApiOperationTrans
             return Task.CompletedTask;
         }
 
+        operation.Responses ??= [];
+
         if (!operation.Responses.Any(r => r.Key == "401"))
         {
             operation.Responses.Add("401", new OpenApiResponse
