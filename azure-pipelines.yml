@@ -39,7 +39,6 @@ stages:
       displayName: 'Run tests'
       inputs:
         command: test
-        projects: 'test/*.Tests/*.csproj'
 
     - task: DotNetCoreCLI@2
       displayName: 'Pack'
