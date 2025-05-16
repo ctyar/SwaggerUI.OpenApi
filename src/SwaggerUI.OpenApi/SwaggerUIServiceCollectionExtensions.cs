@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.Extensions.DependencyInjection;
 using SwaggerUI;
@@ -64,6 +65,13 @@ public static class SwaggerUIServiceCollectionExtensions
 
             options.AddSchemaTransformer<DataTypeSchemaTransformer>();
         });
+
+#if NET10_0_OR_GREATER
+        services.ConfigureHttpJsonOptions(options =>
+        {
+            options.SerializerOptions.NumberHandling = JsonNumberHandling.Strict;
+        });
+#endif
 
         return services;
     }
