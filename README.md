@@ -28,6 +28,17 @@ A package to simplify adding Swagger UI to .NET 9's Microsoft.AspNetCore.OpenApi
     +  "launchUrl": "swagger",
     ```
 
+Please note that for .NET 10 and later, the library sets the `JsonSerializerOptions.NumberHandling` to `JsonNumberHandling.Strict` for better
+Swagger experience. If this is not desired, you can set it to `JsonNumberHandling.AllowReadingFromString` in your `Program.cs` file.
+```csharp
+builder.Services.AddSwaggerUI();
+
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.NumberHandling = JsonNumberHandling.AllowReadingFromString;
+});
+```
+
 ## Features
 ### Authentication
 If you want to add authentication to your Swagger you can use the following helper methods:
@@ -42,7 +53,7 @@ builder.Services.AddSwaggerUI("v1", o =>
     o.AddOAuth2(clientId, scopes);
 });
 ```
-There are other helper methods for Duende Identity Server `AddIdentityServer()` and Auth0 `AddAuth0`.
+There are other helper methods for Duende Identity Server `AddIdentityServer()` and Auth0 `AddAuth0()`.
 
 You can check the [samples](/src/samples) directory for complete working examples.
 
