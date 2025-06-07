@@ -79,7 +79,7 @@ public class SampleRequest
     public Dictionary<int, string> Dictionary { get; set; } = null!;
     public Guid Guid { get; set; }
     public Uri Uri { get; set; } = null!;
-    //[EmailAddress]
-    //public string Email { get; set; } = null!; // TODO fix
+    [EmailAddress]
+    public string Email { get; set; } = null!; // TODO fix
     //public string IPAddress { get; set; } = null!; // TODO Fix
 }
