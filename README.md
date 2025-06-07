@@ -28,8 +28,10 @@ A package to simplify adding Swagger UI to .NET 9's Microsoft.AspNetCore.OpenApi
     +  "launchUrl": "swagger",
     ```
 
-Please note that for .NET 10 and later, the library sets the `JsonSerializerOptions.NumberHandling` to `JsonNumberHandling.Strict` for better
-Swagger experience. If this is not desired, you can set it to `JsonNumberHandling.AllowReadingFromString` in your `Program.cs` file.
+Please note that for .NET 10 and later, the library sets the `JsonSerializerOptions.NumberHandling` to `Strict` for better
+Swagger experience.
+
+If this is not desired, you can set it to `AllowReadingFromString` in your `Program.cs` file.
 ```csharp
 builder.Services.AddSwaggerUI();
 
