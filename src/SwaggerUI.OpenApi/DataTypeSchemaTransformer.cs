@@ -3,13 +3,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.OpenApi;
-using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
 namespace SwaggerUI;
@@ -24,9 +22,9 @@ internal sealed class DataTypeSchemaTransformer : IOpenApiSchemaTransformer
             context.JsonTypeInfo.Type == typeof(TimeSpan) || context.JsonTypeInfo.Type == typeof(TimeSpan?))
         {
 #if NET10_0_OR_GREATER
-            schema.Example = JsonValue.Create(TimeProvider.GetLocalNow().ToString("HH:mm:ss", CultureInfo.InvariantCulture));
+            schema.Example = System.Text.Json.Nodes.JsonValue.Create(TimeProvider.GetLocalNow().ToString("HH:mm:ss", CultureInfo.InvariantCulture));
 #else
-            schema.Example = new OpenApiString(TimeProvider.GetLocalNow().ToString("HH:mm:ss", CultureInfo.InvariantCulture));
+            schema.Example = new Microsoft.OpenApi.Any.OpenApiString(TimeProvider.GetLocalNow().ToString("HH:mm:ss", CultureInfo.InvariantCulture));
 #endif
         }
 
