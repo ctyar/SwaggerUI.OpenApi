@@ -13,6 +13,7 @@
     <PackageProjectUrl>https://github.com/ctyar/SwaggerUI.OpenApi</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ctyar/SwaggerUI.OpenApi</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

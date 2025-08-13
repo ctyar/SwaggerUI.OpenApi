@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <RootNamespace>SwaggerUI</RootNamespace>
-    <IsPackable>false</IsPackable>
   </PropertyGroup>
   
   <PropertyGroup>
