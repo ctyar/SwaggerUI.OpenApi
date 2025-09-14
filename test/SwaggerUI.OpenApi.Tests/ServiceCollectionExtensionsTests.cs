@@ -425,7 +425,7 @@ public class ServiceCollectionExtensionsTests
     }
 
     [Fact]
-    public async Task OAuth2RedirectIsLatestVersion()
+    public async Task OAuth2RedirectHtmlIsLatestVersion()
     {
         using var httpClient = new HttpClient();
         var expected = await httpClient.GetStringAsync("https://raw.githubusercontent.com/swagger-api/swagger-ui/master/dist/oauth2-redirect.html", TestContext.Current.CancellationToken);
@@ -444,6 +444,30 @@ public class ServiceCollectionExtensionsTests
         var client = app.GetTestClient();
 
         var actual = await client.GetStringAsync("swagger/oauth2-redirect.html", TestContext.Current.CancellationToken);
+
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public async Task OAuth2RedirectJsIsLatestVersion()
+    {
+        using var httpClient = new HttpClient();
+        var expected = await httpClient.GetStringAsync("https://raw.githubusercontent.com/swagger-api/swagger-ui/master/dist/oauth2-redirect.js", TestContext.Current.CancellationToken);
+        expected = expected.Replace("\n", "\r\n");
+
+        var builder = WebApplication.CreateBuilder();
+        builder.WebHost.UseTestServer();
+        builder.Services.AddOpenApi();
+        builder.Services.AddSwaggerUI();
+
+        var app = builder.Build();
+        app.MapOpenApi();
+        app.MapSwaggerUI();
+
+        app.Start();
+        var client = app.GetTestClient();
+
+        var actual = await client.GetStringAsync("swagger/oauth2-redirect.js", TestContext.Current.CancellationToken);
 
         Assert.Equal(expected, actual);
     }

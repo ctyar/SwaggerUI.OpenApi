@@ -39,6 +39,9 @@ public static class SwaggerUIEndpointRouteBuilderExtensions
         group.MapGet("oauth2-redirect.html", () =>
             Results.Content(Endpoints.GetOAuthRedirectHtml(), "text/html"));
 
+        group.MapGet("oauth2-redirect.js", () =>
+            Results.Content(Endpoints.GetOAuthRedirectJs(), "text/javascript"));
+
         return group;
     }
 }
