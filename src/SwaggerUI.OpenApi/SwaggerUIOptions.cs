@@ -271,6 +271,14 @@ public sealed class SwaggerUIOptions
     ];
 
     /// <summary>
+    /// Gets or sets the list of JavaScript functions to be added to the Swagger UI before loading.
+    /// Each entry in the dictionary represents a function name and its corresponding JavaScript code.
+    /// E.g., configObject.myFunction = function() { ... }; where "myFunction" is the key and the function() { ... }; is the value.
+    /// </summary>
+    [JsonIgnore]
+    public Dictionary<string, string>? Functions { get; set; }
+
+    /// <summary>
     /// Set the Duende Identity Server clientId and scopes for the authorizatonCode flow with proof Key for Code Exchange.
     /// </summary>
     /// <param name="clientId">Default clientId</param>

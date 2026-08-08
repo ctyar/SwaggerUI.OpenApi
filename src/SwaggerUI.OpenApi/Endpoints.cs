@@ -123,6 +123,11 @@ internal static class Endpoints
         AppendOption(result, "if (!configObject.hasOwnProperty(\"oauth2RedirectUrl\"))");
         AppendOption(result, "  configObject.oauth2RedirectUrl = (new URL(\"swagger/oauth2-redirect.html\", window.location.href)).href;\r\n");
 
+        foreach (var function in swaggerUIOptions.Functions ?? [])
+        {
+            AppendOption(result, $"configObject.{function.Key} = {function.Value}");
+        }
+
         AppendOption(result, "const ui = SwaggerUIBundle(configObject);");
 
         if (swaggerUIOptions.OAuthOptions is not null)
