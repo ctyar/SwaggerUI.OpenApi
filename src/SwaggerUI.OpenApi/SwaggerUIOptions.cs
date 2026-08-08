@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text.Json.Serialization;
 
 namespace Microsoft.AspNetCore.Builder;
@@ -45,7 +46,7 @@ public sealed class SwaggerUIOptions
     /// Plugin functions to use in Swagger UI.
     /// </summary>
     [JsonIgnore]
-    public IEnumerable<string>? Plugins { get; set; } = ["SwaggerUIBundle.plugins.DownloadUrl"];
+    public Collection<string>? Plugins { get; set; } = ["SwaggerUIBundle.plugins.DownloadUrl"];
 
     /// <summary>
     /// Presets to use in Swagger UI. Usually, you'll want to include ApisPreset if you use this option.

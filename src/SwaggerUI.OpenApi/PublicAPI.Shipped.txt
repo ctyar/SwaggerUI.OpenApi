@@ -92,7 +92,6 @@ Microsoft.AspNetCore.Builder.SwaggerUIOptions.ParameterMacro.get -> string?
 Microsoft.AspNetCore.Builder.SwaggerUIOptions.ParameterMacro.set -> void
 Microsoft.AspNetCore.Builder.SwaggerUIOptions.PersistAuthorization.get -> bool?
 Microsoft.AspNetCore.Builder.SwaggerUIOptions.PersistAuthorization.set -> void
-Microsoft.AspNetCore.Builder.SwaggerUIOptions.Plugins.get -> System.Collections.Generic.IEnumerable<string!>?
 Microsoft.AspNetCore.Builder.SwaggerUIOptions.Plugins.set -> void
 Microsoft.AspNetCore.Builder.SwaggerUIOptions.PreAuthorizeApiKey.get -> Microsoft.AspNetCore.Builder.PreAuthorizeApiKeyOptions?
 Microsoft.AspNetCore.Builder.SwaggerUIOptions.PreAuthorizeApiKey.set -> void
