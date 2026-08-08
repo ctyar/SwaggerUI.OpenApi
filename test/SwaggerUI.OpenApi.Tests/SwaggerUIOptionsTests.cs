@@ -130,8 +130,8 @@ public class SwaggerUIOptionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -391,8 +391,8 @@ public class SwaggerUIOptionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[],"layout":"StandaloneLayout","requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -548,8 +548,8 @@ public class SwaggerUIOptionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[],"layout":"StandaloneLayout","showCommonExtensions":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -594,8 +594,8 @@ public class SwaggerUIOptionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -898,6 +898,44 @@ public class SwaggerUIOptionsTests
                 ApiKey = "myApiKey",
             }
         }, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void AddACustomScript()
+    {
+        var expected =
+            """
+                <div id="swagger-ui"></div>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
+                <script src="/swagger/custom.js"> </script>
+                <script>
+            """;
+
+        var options = new SwaggerUIOptions();
+        options.Scripts.Add("/swagger/custom.js");
+
+        var actual = Endpoints.GetIndexCore("My Document", options, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void RemoveAScript()
+    {
+        var expected =
+            """
+                <div id="swagger-ui"></div>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script>
+            """;
+
+        var options = new SwaggerUIOptions();
+        options.Scripts.RemoveAt(1);
+
+        var actual = Endpoints.GetIndexCore("My Document", options, []);
 
         Assert.Contains(expected, actual);
     }

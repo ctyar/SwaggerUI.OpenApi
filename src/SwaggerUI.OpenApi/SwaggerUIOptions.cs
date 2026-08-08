@@ -255,6 +255,17 @@ public sealed class SwaggerUIOptions
     public PreAuthorizeApiKeyOptions? PreAuthorizeApiKey { get; set; }
 
     /// <summary>
+    /// Gets the list of JavaScript files to be loaded in Swagger UI.
+    /// The default is to load the Swagger UI bundle and standalone preset from unpkg.com.
+    /// </summary>
+    [JsonIgnore]
+    public Collection<string> Scripts { get; set; } =
+    [
+        "https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js",
+        "https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js",
+    ];
+
+    /// <summary>
     /// Set the Duende Identity Server clientId and scopes for the authorizatonCode flow with proof Key for Code Exchange.
     /// </summary>
     /// <param name="clientId">Default clientId</param>

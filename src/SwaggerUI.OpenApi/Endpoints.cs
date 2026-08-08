@@ -49,7 +49,7 @@ internal static class Endpoints
             swaggerUIOptions.Urls = [.. documentNames.Select(d => new UrlDescriptor { Name = d, Url = $"/openapi/{d}.json" })];
         }
 
-        var result = new StringBuilder(GetIndexStart(documentName));
+        var result = GetIndexStart(documentName, swaggerUIOptions);
 
         AppendOption(result, $"var configObject = JSON.parse('" +
             $"{JsonSerializer.Serialize(swaggerUIOptions, JsonSerializerOptions)}');\r\n");
@@ -159,9 +159,11 @@ internal static class Endpoints
         stringBuilder.Append($"        {value}\r\n");
     }
 
-    private static string GetIndexStart(string documentName)
+    private static StringBuilder GetIndexStart(string documentName, SwaggerUIOptions swaggerUIOptions)
     {
-        return $$"""
+        var result = new StringBuilder();
+
+        result.Append($$"""
         <!DOCTYPE html>
         <html lang="en">
           <head>
@@ -175,12 +177,21 @@ internal static class Endpoints
 
           <body>
             <div id="swagger-ui"></div>
-            <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-            <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+
+        """);
+
+        foreach (var script in swaggerUIOptions.Scripts)
+        {
+            result.Append($"    <script src=\"{script}\"> </script>\r\n");
+        }
+
+        result.Append($$"""
             <script>
               window.onload = function() {
 
-        """;
+        """);
+
+        return result;
     }
 
     private static string GetIndexEnd()

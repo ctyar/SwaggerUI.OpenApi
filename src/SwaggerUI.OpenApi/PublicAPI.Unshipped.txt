@@ -1,1 +1,3 @@
 ﻿#nullable enable
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Scripts.get -> System.Collections.ObjectModel.Collection<string!>!
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Scripts.set -> void

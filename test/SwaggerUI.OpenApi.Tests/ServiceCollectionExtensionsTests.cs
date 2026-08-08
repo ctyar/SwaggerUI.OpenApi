@@ -24,8 +24,8 @@ public class ServiceCollectionExtensionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[{"url":"/openapi/v1.json","name":"v1"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -79,8 +79,8 @@ public class ServiceCollectionExtensionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"configUrl":"/configs/urls.yaml","dom_id":"#swagger-ui","urls":[{"url":"/openapi/v1.json","name":"v1"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -137,8 +137,8 @@ public class ServiceCollectionExtensionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[{"url":"/openapi/doc1.json","name":"doc1"},{"url":"/openapi/doc2.json","name":"doc2"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -193,8 +193,8 @@ public class ServiceCollectionExtensionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[{"url":"/openapi/v1.json","name":"v1"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -248,8 +248,8 @@ public class ServiceCollectionExtensionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[{"url":"/openapi/doc1.json","name":"doc1"},{"url":"/openapi/doc2.json","name":"doc2"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -283,8 +283,8 @@ public class ServiceCollectionExtensionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[{"url":"/openapi/doc1.json","name":"doc1"},{"url":"/openapi/doc2.json","name":"doc2"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -341,8 +341,8 @@ public class ServiceCollectionExtensionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"configUrl":"/configs/urls.yaml","dom_id":"#swagger-ui","urls":[{"url":"/openapi/doc1.json","name":"doc1"},{"url":"/openapi/doc2.json","name":"doc2"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -376,8 +376,8 @@ public class ServiceCollectionExtensionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[{"url":"/openapi/doc1.json","name":"doc1"},{"url":"/openapi/doc2.json","name":"doc2"}],"queryConfigEnabled":true,"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -489,8 +489,8 @@ public class ServiceCollectionExtensionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[{"url":"/openapi/v1.json","name":"v1"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -549,8 +549,8 @@ public class ServiceCollectionExtensionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[{"url":"/openapi/v1.json","name":"v1"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
@@ -609,8 +609,8 @@ public class ServiceCollectionExtensionsTests
 
               <body>
                 <div id="swagger-ui"></div>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js" charset="UTF-8"> </script>
-                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js"> </script>
+                <script src="https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js"> </script>
                 <script>
                   window.onload = function() {
                     var configObject = JSON.parse('{"dom_id":"#swagger-ui","urls":[{"url":"/openapi/v1.json","name":"v1"}],"layout":"StandaloneLayout","showCommonExtensions":true,"requestSnippetsEnabled":true,"supportedSubmitMethods":["get","put","post","delete","options","head","patch","trace"],"persistAuthorization":true}');
