@@ -170,6 +170,7 @@ public sealed class SwaggerUIOptions
     /// that resolves to the modified request.
     /// Ex: "function (req) { req.headers['MyCustomHeader'] = 'CustomValue'; return req; }"
     /// </summary>
+    [JsonIgnore]
     public string? RequestInterceptor { get; set; }
 
     /// <summary>
@@ -185,6 +186,7 @@ public sealed class SwaggerUIOptions
     /// that resolves to the modified response.
     /// Ex: "function (res) { console.log(res); return res; }"
     /// </summary>
+    [JsonIgnore]
     public string? ResponseInterceptor { get; set; }
 
     /// <summary>
@@ -220,12 +222,14 @@ public sealed class SwaggerUIOptions
     /// Function to set default values to each property in model. Accepts one argument modelPropertyMacro(property),
     /// property is immutable
     /// </summary>
+    [JsonIgnore]
     public string? ModelPropertyMacro { get; set; }
 
     /// <summary>
     ///  Function to set default value to parameters. Accepts two arguments parameterMacro(operation, parameter).
     ///  Operation and parameter are objects passed for context, both remain immutable
     /// </summary>
+    [JsonIgnore]
     public string? ParameterMacro { get; set; }
 
     /// <summary>
