@@ -4,3 +4,5 @@ Microsoft.AspNetCore.Builder.SwaggerUIOptions.Functions.set -> void
 Microsoft.AspNetCore.Builder.SwaggerUIOptions.Plugins.get -> System.Collections.ObjectModel.Collection<string!>?
 Microsoft.AspNetCore.Builder.SwaggerUIOptions.Scripts.get -> System.Collections.ObjectModel.Collection<string!>!
 Microsoft.AspNetCore.Builder.SwaggerUIOptions.Scripts.set -> void
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Stylesheets.get -> System.Collections.ObjectModel.Collection<string!>!
+Microsoft.AspNetCore.Builder.SwaggerUIOptions.Stylesheets.set -> void

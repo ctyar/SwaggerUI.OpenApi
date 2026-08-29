@@ -941,6 +941,52 @@ public class SwaggerUIOptionsTests
     }
 
     [Fact]
+    public void AddACustomStylesheet()
+    {
+        var expected =
+            """
+              <head>
+                <meta charset="UTF-8">
+                <title>My Document</title>
+                <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
+                <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/index.css" />
+                <link rel="stylesheet" type="text/css" href="/swagger/custom.css" />
+                <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-32x32.png" sizes="32x32" />
+                <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-16x16.png" sizes="16x16" />
+              </head>
+            """;
+
+        var options = new SwaggerUIOptions();
+        options.Stylesheets.Add("/swagger/custom.css");
+
+        var actual = Endpoints.GetIndexCore("My Document", options, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
+    public void RemoveAStylesheet()
+    {
+        var expected =
+            """
+              <head>
+                <meta charset="UTF-8">
+                <title>My Document</title>
+                <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
+                <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-32x32.png" sizes="32x32" />
+                <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-16x16.png" sizes="16x16" />
+              </head>
+            """;
+
+        var options = new SwaggerUIOptions();
+        options.Stylesheets.RemoveAt(1);
+
+        var actual = Endpoints.GetIndexCore("My Document", options, []);
+
+        Assert.Contains(expected, actual);
+    }
+
+    [Fact]
     public void Functions()
     {
         var expected =

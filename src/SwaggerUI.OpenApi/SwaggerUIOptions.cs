@@ -260,7 +260,7 @@ public sealed class SwaggerUIOptions
     public PreAuthorizeApiKeyOptions? PreAuthorizeApiKey { get; set; }
 
     /// <summary>
-    /// Gets the list of JavaScript files to be loaded in Swagger UI.
+    /// Gets or setsthe list of JavaScript files to be loaded in Swagger UI.
     /// The default is to load the Swagger UI bundle and standalone preset from unpkg.com.
     /// </summary>
     [JsonIgnore]
@@ -268,6 +268,17 @@ public sealed class SwaggerUIOptions
     [
         "https://unpkg.com/swagger-ui-dist/swagger-ui-bundle.js",
         "https://unpkg.com/swagger-ui-dist/swagger-ui-standalone-preset.js",
+    ];
+
+    /// <summary>
+    /// Gets or sets the list of CSS files to be loaded in Swagger UI.
+    /// The default is to load the Swagger UI CSS and index CSS from unpkg.com.
+    /// </summary>
+    [JsonIgnore]
+    public Collection<string> Stylesheets { get; set; } =
+    [
+        "https://unpkg.com/swagger-ui-dist/swagger-ui.css",
+        "https://unpkg.com/swagger-ui-dist/index.css",
     ];
 
     /// <summary>

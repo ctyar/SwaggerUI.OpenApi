@@ -174,8 +174,15 @@ internal static class Endpoints
           <head>
             <meta charset="UTF-8">
             <title>{{documentName}}</title>
-            <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/swagger-ui.css" />
-            <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist/index.css" />
+
+        """);
+
+        foreach (var style in swaggerUIOptions.Stylesheets)
+        {
+            result.Append($"    <link rel=\"stylesheet\" type=\"text/css\" href=\"{style}\" />\r\n");
+        }
+
+        result.Append($$"""
             <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-32x32.png" sizes="32x32" />
             <link rel="icon" type="image/png" href="https://unpkg.com/swagger-ui-dist/favicon-16x16.png" sizes="16x16" />
           </head>
