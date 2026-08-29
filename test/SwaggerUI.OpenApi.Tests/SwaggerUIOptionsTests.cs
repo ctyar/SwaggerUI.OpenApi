@@ -939,4 +939,34 @@ public class SwaggerUIOptionsTests
 
         Assert.Contains(expected, actual);
     }
+
+    [Fact]
+    public void Functions()
+    {
+        var expected =
+            """
+            configObject.configs.apiKeyAuthFormPlugin = {
+                localStorage: {
+                    IdentityBearer: {},
+                    IdentityBearerGetQueryString: {},
+                }
+            };
+            """;
+
+        var options = new SwaggerUIOptions();
+        options.Functions ??= [];
+        options.Functions.Add("configs.apiKeyAuthFormPlugin",
+            """
+            {
+                localStorage: {
+                    IdentityBearer: {},
+                    IdentityBearerGetQueryString: {},
+                }
+            };
+            """);
+
+        var actual = Endpoints.GetIndexCore("My Document", options, []);
+
+        Assert.Contains(expected, actual);
+    }
 }
