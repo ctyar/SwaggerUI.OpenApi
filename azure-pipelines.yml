@@ -44,12 +44,11 @@ stages:
       displayName: 'Run tests'
       inputs:
         command: 'test'
-        arguments: '--no-build --report-trx'
 
     - task: DotNetCoreCLI@2
       displayName: 'Pack'
       inputs:
-        command: pack
+        command: 'pack'
         packDirectory: 'artifacts'
 
     - publish: '$(Build.Repository.LocalPath)/artifacts'
