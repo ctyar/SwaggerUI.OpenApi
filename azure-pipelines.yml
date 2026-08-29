@@ -55,14 +55,6 @@ stages:
       displayName: 'Publish artifacts'
       artifact: 'packages'
 
-    - task: DotNetCoreCLI@2
-      displayName: 'Push to GitHub'
-      condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
-      inputs:
-        command: 'custom'
-        custom: 'nuget'
-        arguments: 'push artifacts/*.nupkg --skip-duplicate --api-key $(GitHubPackageRepositoryKey) --source https://nuget.pkg.github.com/ctyar/index.json'
-
 - stage: DeployStage
   displayName: 'Deploy'
   jobs:
