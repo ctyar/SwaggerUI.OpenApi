@@ -43,7 +43,8 @@ stages:
     - task: DotNetCoreCLI@2
       displayName: 'Run tests'
       inputs:
-        command: test
+        command: 'test'
+        arguments: '--no-build --report-trx'
 
     - task: DotNetCoreCLI@2
       displayName: 'Pack'
