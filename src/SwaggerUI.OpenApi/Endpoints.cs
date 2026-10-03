@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+#if NET10_0_OR_GREATER
+using System.Runtime.CompilerServices;
+#else
+using Microsoft.AspNetCore.OpenApi;
+#endif
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.OpenApi;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
@@ -241,8 +245,25 @@ internal static class Endpoints
     private static List<string> GetDocumentNames(IServiceProvider serviceProvider)
     {
         // https://github.com/dotnet/runtime/issues/100105
+        // https://github.com/dotnet/aspnetcore/blob/4449eb585c8c82b5cf0e6f5d88f7ba73cbcadf62/src/OpenApi/src/Services/OpenApiDocumentProvider.cs#L60
 
-        // https://github.com/dotnet/aspnetcore/blob/3117946082a9c456f50e70075403bb024f9e323b/src/OpenApi/src/Services/OpenApiDocumentProvider.cs#L51
+#if NET10_0_OR_GREATER
+        var documentProvider = serviceProvider.GetService(ProviderType)
+            ?? throw new InvalidOperationException("IDocumentProvider is not registered.");
+
+        return GetDocumentNamesWithReflection(documentProvider).ToList();
+    }
+
+    private const string ProviderTypeName =
+        "Microsoft.Extensions.ApiDescriptions.IDocumentProvider, " + // Type
+        "Microsoft.AspNetCore.OpenApi"; // Assembly
+
+    private static readonly Type ProviderType = Type.GetType(ProviderTypeName, throwOnError: true)!;
+
+    [UnsafeAccessor(UnsafeAccessorKind.Method, Name = "GetDocumentNames")]
+    private static extern IEnumerable<string> GetDocumentNamesWithReflection(
+        [UnsafeAccessorType(ProviderTypeName)] object documentProvider);
+#else
         var type = typeof(OpenApiOptions).Assembly.GetType("Microsoft.Extensions.ApiDescriptions.OpenApiDocumentProvider")!;
         var ctor = type.GetConstructor([typeof(IServiceProvider)])!;
         var openApiDocumentProvider = ctor.Invoke([serviceProvider]);
@@ -251,4 +272,5 @@ internal static class Endpoints
         var documentNames = (IEnumerable<string>)method.Invoke(openApiDocumentProvider, [])!;
         return documentNames.ToList();
     }
+#endif
 }

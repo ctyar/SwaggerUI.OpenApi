@@ -107,7 +107,7 @@ Persists authorization data by default and it would not be lost on browser close
 
 ✅ .NET 10 and OpenAPI v3.1.1
 
-⏳ Support for Asp.Versioning.Http package
+✅ Support for [ASP.NET API Versioning](https://github.com/dotnet/aspnet-api-versioning)
 
 ## Acknowledgement
 
