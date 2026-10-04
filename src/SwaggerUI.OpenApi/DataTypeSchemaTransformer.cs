@@ -26,7 +26,8 @@ internal sealed class DataTypeSchemaTransformer : IOpenApiSchemaTransformer
             context.JsonTypeInfo.Type == typeof(TimeSpan) || context.JsonTypeInfo.Type == typeof(TimeSpan?))
         {
 #if NET10_0_OR_GREATER
-            schema.Example = System.Text.Json.Nodes.JsonValue.Create(TimeProvider.GetLocalNow().ToString("HH:mm:ss", CultureInfo.InvariantCulture));
+            schema.Examples ??= [];
+            schema.Examples.Add(System.Text.Json.Nodes.JsonValue.Create(TimeProvider.GetLocalNow().ToString("HH:mm:ss", CultureInfo.InvariantCulture)));
 #else
             schema.Example = new Microsoft.OpenApi.Any.OpenApiString(TimeProvider.GetLocalNow().ToString("HH:mm:ss", CultureInfo.InvariantCulture));
 #endif
