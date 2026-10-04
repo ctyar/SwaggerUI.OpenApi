@@ -6,7 +6,7 @@
 
   <PropertyGroup>
     <PackageId>SwaggerUI.OpenApi</PackageId>
-    <PackageTags>openapi;swagger;swaggerui;discovery;webapi;aspnet;aspnetcore;auth;authentication;oauth2;auth0;identityserver</PackageTags>
+    <PackageTags>openapi;swagger;swaggerui;discovery;webapi;aspnet;aspnetcore;auth;authentication;oauth2;auth0;identityserver;versioning</PackageTags>
     <Title>SwaggerUI.OpenApi</Title>
     <Description>A package to simplify adding Swagger UI to Microsoft.AspNetCore.OpenApi.</Description>
     <Authors>Shahriyar Qulami</Authors>
