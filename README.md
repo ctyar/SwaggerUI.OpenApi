@@ -42,6 +42,31 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 ```
 
 ## Features
+
+### API Versioning (Asp.Versioning)
+This library supports API versioning with the [Asp.Versioning](https://github.com/dotnet/aspnet-api-versioning) packages.
+
+For a full working setup, see the [VersionedMvc sample](/src/samples/VersionedMvc).
+
+Basic setup example:
+```csharp
+builder.Services
+    .AddApiVersioning(options =>
+    {
+        options.ApiVersionReader = new UrlSegmentApiVersionReader();
+    })
+    .AddMvc()
+    .AddApiExplorer(options =>
+    {
+        options.GroupNameFormat = "'v'VVV";
+        options.SubstituteApiVersionInUrl = true;
+    })
+    .AddOpenApi();
+
+app.MapOpenApi().WithDocumentPerVersion();
+app.MapSwaggerUI();
+```
+
 ### Authentication
 If you want to add authentication to your Swagger you can use the following helper methods:
 ```csharp

@@ -7,11 +7,12 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllers();
-        builder.Services.AddApiVersioning(options =>
-        {
-            options.ApiVersionReader = new UrlSegmentApiVersionReader();
+        builder.Services
+            .AddApiVersioning(options =>
+            {
+                options.ApiVersionReader = new UrlSegmentApiVersionReader();
 
-        })
+            })
             .AddMvc()
             .AddApiExplorer(options =>
             {
