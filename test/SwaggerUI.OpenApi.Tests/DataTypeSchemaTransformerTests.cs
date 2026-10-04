@@ -13,6 +13,67 @@ public class DataTypeSchemaTransformerTests
     [Fact]
     public async Task TimeOnlyTransformerTest()
     {
+#if NET10_0_OR_GREATER
+        var expected = $$$"""
+            {
+              "openapi": "{{{Constants.OpenApiVersion}}}",
+              "info": {
+                "title": "SwaggerUI.OpenApi.Tests | v1",
+                "version": "1.0.0"
+              },
+              "servers": [
+                {
+                  "url": "http://localhost/"
+                }
+              ],
+              "paths": {
+                "/todos": {
+                  "post": {
+                    "tags": [
+                      "SwaggerUI.OpenApi.Tests"
+                    ],
+                    "parameters": [
+                      {
+                        "name": "timeOnly",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                          "examples": [
+                            "18:41:23"
+                          ],
+                          "type": "string",
+                          "format": "time"
+                        }
+                      }
+                    ],
+                    "responses": {
+                      "200": {
+                        "description": "OK",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "$ref": "#/components/schemas/AnonymousTypeOfObjectAndIResult"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "components": {
+                "schemas": {
+                  "AnonymousTypeOfObjectAndIResult": { }
+                }
+              },
+              "tags": [
+                {
+                  "name": "SwaggerUI.OpenApi.Tests"
+                }
+              ]
+            }
+            """;
+#else
         var expected = $$$"""
             {
               "openapi": "{{{Constants.OpenApiVersion}}}",
@@ -70,6 +131,7 @@ public class DataTypeSchemaTransformerTests
               ]
             }
             """;
+#endif
         expected = expected.Replace("\r\n", "\n");
 
         var now = new DateTimeOffset(2025, 04, 23, 18, 41, 23, TimeSpan.Zero);
@@ -98,6 +160,66 @@ public class DataTypeSchemaTransformerTests
     [Fact]
     public async Task NullableTimeOnlyTransformerTest()
     {
+#if NET10_0_OR_GREATER
+        var expected = $$$"""
+            {
+              "openapi": "{{{Constants.OpenApiVersion}}}",
+              "info": {
+                "title": "SwaggerUI.OpenApi.Tests | v1",
+                "version": "1.0.0"
+              },
+              "servers": [
+                {
+                  "url": "http://localhost/"
+                }
+              ],
+              "paths": {
+                "/todos": {
+                  "post": {
+                    "tags": [
+                      "SwaggerUI.OpenApi.Tests"
+                    ],
+                    "parameters": [
+                      {
+                        "name": "timeOnly",
+                        "in": "query",
+                        "schema": {
+                          "examples": [
+                            "18:41:23"
+                          ],
+                          "type": "string",
+                          "format": "time"
+                        }
+                      }
+                    ],
+                    "responses": {
+                      "200": {
+                        "description": "OK",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "$ref": "#/components/schemas/AnonymousTypeOfObjectAndIResult"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "components": {
+                "schemas": {
+                  "AnonymousTypeOfObjectAndIResult": { }
+                }
+              },
+              "tags": [
+                {
+                  "name": "SwaggerUI.OpenApi.Tests"
+                }
+              ]
+            }
+            """;
+#else
         var expected = $$$"""
             {
               "openapi": "{{{Constants.OpenApiVersion}}}",
@@ -154,6 +276,7 @@ public class DataTypeSchemaTransformerTests
               ]
             }
             """;
+#endif
         expected = expected.Replace("\r\n", "\n");
 
         var now = new DateTimeOffset(2025, 04, 23, 18, 41, 23, TimeSpan.Zero);
@@ -182,6 +305,67 @@ public class DataTypeSchemaTransformerTests
     [Fact]
     public async Task TimeSpanTransformerTest()
     {
+#if NET10_0_OR_GREATER
+        var expected = $$$"""
+            {
+              "openapi": "{{{Constants.OpenApiVersion}}}",
+              "info": {
+                "title": "SwaggerUI.OpenApi.Tests | v1",
+                "version": "1.0.0"
+              },
+              "servers": [
+                {
+                  "url": "http://localhost/"
+                }
+              ],
+              "paths": {
+                "/todos": {
+                  "post": {
+                    "tags": [
+                      "SwaggerUI.OpenApi.Tests"
+                    ],
+                    "parameters": [
+                      {
+                        "name": "timeSpan",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                          "examples": [
+                            "18:41:23"
+                          ],
+                          "pattern": "^-?(\\d+\\.)?\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,7})?$",
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "responses": {
+                      "200": {
+                        "description": "OK",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "$ref": "#/components/schemas/AnonymousTypeOfObjectAndIResult"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "components": {
+                "schemas": {
+                  "AnonymousTypeOfObjectAndIResult": { }
+                }
+              },
+              "tags": [
+                {
+                  "name": "SwaggerUI.OpenApi.Tests"
+                }
+              ]
+            }
+            """;
+#else
         var expected = $$$"""
             {
               "openapi": "{{{Constants.OpenApiVersion}}}",
@@ -239,6 +423,7 @@ public class DataTypeSchemaTransformerTests
               ]
             }
             """;
+#endif
         expected = expected.Replace("\r\n", "\n");
 
         var now = new DateTimeOffset(2025, 04, 23, 18, 41, 23, TimeSpan.Zero);
@@ -267,6 +452,66 @@ public class DataTypeSchemaTransformerTests
     [Fact]
     public async Task NullableTimeSpanTransformerTest()
     {
+#if NET10_0_OR_GREATER
+        var expected = $$$"""
+            {
+              "openapi": "{{{Constants.OpenApiVersion}}}",
+              "info": {
+                "title": "SwaggerUI.OpenApi.Tests | v1",
+                "version": "1.0.0"
+              },
+              "servers": [
+                {
+                  "url": "http://localhost/"
+                }
+              ],
+              "paths": {
+                "/todos": {
+                  "post": {
+                    "tags": [
+                      "SwaggerUI.OpenApi.Tests"
+                    ],
+                    "parameters": [
+                      {
+                        "name": "timeSpan",
+                        "in": "query",
+                        "schema": {
+                          "examples": [
+                            "18:41:23"
+                          ],
+                          "pattern": "^-?(\\d+\\.)?\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,7})?$",
+                          "type": "string"
+                        }
+                      }
+                    ],
+                    "responses": {
+                      "200": {
+                        "description": "OK",
+                        "content": {
+                          "application/json": {
+                            "schema": {
+                              "$ref": "#/components/schemas/AnonymousTypeOfObjectAndIResult"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "components": {
+                "schemas": {
+                  "AnonymousTypeOfObjectAndIResult": { }
+                }
+              },
+              "tags": [
+                {
+                  "name": "SwaggerUI.OpenApi.Tests"
+                }
+              ]
+            }
+            """;
+#else
         var expected = $$$"""
             {
               "openapi": "{{{Constants.OpenApiVersion}}}",
@@ -323,6 +568,7 @@ public class DataTypeSchemaTransformerTests
               ]
             }
             """;
+#endif
         expected = expected.Replace("\r\n", "\n");
 
         var now = new DateTimeOffset(2025, 04, 23, 18, 41, 23, TimeSpan.Zero);
